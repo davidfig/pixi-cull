@@ -4,7 +4,7 @@
   "description": "a library to visibly cull objects designed to work with pixi.js",
   "main": "index.js",
   "scripts": {
-    "test": "budo docs/index.js --live"
+    "test": "budo docs/index.js:bundle.js --dir docs"
   },
   "keywords": [
     "pixi.js",
@@ -18,8 +18,12 @@
   ],
   "author": "David S. Figatner",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "fork-me-github": "^1.2.0",
     "pixi-viewport": "^3.11.2",
-    "pixi.js": "^4.8.2"
+    "pixi.js": "^4.8.2",
+    "yy-drawer": "^1.0.1",
+    "yy-random": "^1.7.3"
   }
 }

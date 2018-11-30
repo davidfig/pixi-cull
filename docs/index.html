@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>pixi-cull</title>
+        <link rel="stylesheet" href="index.css" type="text/css">
+        <script src="bundle.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <canvas class="pixi"></canvas>
+            <div class="controls">
+                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 1em">pixi-cull</div>
+                <div>Cull Types</div>
+                <div id="choices">
+                    <div>
+                        <label>
+                            <input value="simple" name="cull-types" type="radio" checked />
+                            simple
+                        </label></div>
+                    <div>
+                        <label>
+                            <input value="hash" name="cull-types" type="radio" />
+                            hash
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input value="none" name="cull-types" type="radio" />
+                            none
+                        </label>
+                    </div>
+                </div>
+
+                <div style="margin: 1em 0">
+                    <div>Visible dots: <span id="visible"></span></div>
+                    <div>Culled dots: <span id="culled"></span></div>
+                    <div>Total dots: <span id="total"></span></div>
+                </div>
+
+                <div id="buckets">
+                    <div>Visible Buckets: <span id="visible-buckets"></span></div>
+                    <div>Culled Buckets: <span id="culled-buckets"></span></div>
+                    <div>Total Buckets: <span id="total-buckets"></span></div>
+                    <div style="margin-top: 0.5em"><label><input id="simple-test" type="checkbox" checked>options.simpleTest</label>
+                </div>
+            </div>
+        </div>
+        <div class="instructions fade">Pinch and drag to move the viewport</div>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.controls
+{
+    padding: 0.5em;
+    border-left: 10px solid rgb(220,220,220);
+    background: rgb(240,240,240);
+    height: 100%;
+    white-space: nowrap;
+}
+
+.pixi
+{
+    height: 100%;
+    flex-grow: 1;
+}
+
+.instructions
+{
+    border-radius: 1em;
+    background: rgb(240,240,240);
+    border: 10px solid rgb(220,220,220);
+    padding: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    max-width: 8em;
+    text-align: center;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.fade
+{
+    transition-delay: 2s;
+    transition-property: opacity;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+}

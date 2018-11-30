@@ -1,25 +1,41 @@
-class SpatialHash
+module.exports = class CullSpatialHash
 {
     /**
+     * @param {PIXI.DisplayObject[]} [list] of objects to cull
      * @param {object} [options]
-     * @param {number} [size=1000] cell size used to create hash (xSize = ySize)
-     * @param {number} [xSize] horizontal cell size
-     * @param {number} [ySize] vertical cell size
-     * @param {string} [AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }
-     * @param {string} [spatial=spatial] object property that holds object's hash list
-     * @param {number} [width=Infinity] maximum number of cells in the x direction
-     * @param {number} [height=Infinity] maximum number of cells in the y direction
+     * @param {number} [options.size=1000] cell size used to create hash (xSize = ySize)
+     * @param {number} [options.xSize] horizontal cell size
+     * @param {number} [options.ySize] vertical cell size
+     * @param {boolean} [options.calculatePIXI=true] calculate bounding box automatically
+     * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
+     * @param {boolean} [options.simpleTest=true] iterate through visible buckets to check for bounds
+     * @param {string} [options.dirtyTest] only update spatial hash for objects with object[options.dirtyTest]=true
+     * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }
+     * @param {string} [options.spatial=spatial] object property that holds object's hash list
      */
-    constructor(options)
+    constructor(list, options)
     {
         options = options || {}
         this.xSize = options.xSize || options.size || 1000
         this.ySize = options.ySize || options.size || 1000
         this.AABB = options.type || 'AABB'
         this.spatial = options.spatial || 'spatial'
-        this.width = options.width || Infinity
-        this.height = options.height || Infinity
-        this.list = {}
+        this.calculatePIXI = typeof options.calculatePIXI !== 'undefined' ? options.calculatePIXI : true
+        this.visibleText = typeof options.visibleTest !== 'undefined' ? options.visibleTest : true
+        this.simpleTest = typeof options.simpleTest !== 'undefined' ? options.simpleTest : true
+        this.dirtyTest = options.dirtyTest
+        this.visible = options.visible || 'visible'
+        this.width = this.height = 0
+        this.hash = {}
+        this.all = []
+        if (Array.isArray(list))
+        {
+            list.forEach(object => this.insert(object))
+        }
+        else
+        {
+            this.insert(list)
+        }
     }
 
     /**
@@ -33,21 +49,82 @@ class SpatialHash
         {
             object[this.spatial] = { hashes: [] }
         }
-        const AABB = object[this.AABB]
+        this.updateObject(object)
+        this.all.push(object)
+    }
+
+    /**
+     * update the hashes and cull the items in the list
+     * @param {object} bounds
+     * @param {number} bounds.x
+     * @param {number} bounds.y
+     * @param {number} bounds.width
+     * @param {number} bounds.height
+     * @return {Stats} bucket count (not sprites in buckets)
+     */
+    update(bounds)
+    {
+        if (this.dirtyTest)
+        {
+            this.all.forEach(object =>
+            {
+                if (object[this.dirtyTest])
+                {
+                    this.updateObject(object)
+                }
+            })
+        }
+        else
+        {
+            this.all.forEach(object => this.updateObject(object))
+        }
+        this.all.forEach(object => object[this.visible] = false)
+        const objects = this.query(bounds)
+        if (this.simpleTest)
+        {
+            objects.forEach(object =>
+            {
+                const AABB = object.AABB
+                object[this.visible] = AABB.x + AABB.width > bounds.x && AABB.x - AABB.width < bounds.x + bounds.width &&
+                    AABB.y + AABB.height > bounds.y && AABB.y - AABB.height < bounds.y + bounds.height
+            })
+        }
+        else
+        {
+            objects.forEach(object => object[this.visible] = true)
+        }
+        return this.lastBuckets
+    }
+
+    updateObject(object)
+    {
+        let AABB
+        if (this.calculatePIXI)
+        {
+            const box = object.getLocalBounds()
+            AABB = object.AABB = {
+                x: box.x * object.anchor.x + object.x,
+                y: box.y * object.anchor.y + object.y,
+                width: object.width,
+                height: object.height
+            }
+        }
+        else
+        {
+            AABB = object[this.AABB]
+        }
         const spatial = object[this.spatial]
         let xStart = Math.floor(AABB.x / this.xSize)
         xStart = xStart < 0 ? 0 : xStart
         let yStart = Math.floor(AABB.y / this.ySize)
         yStart = yStart < 0 ? 0 : yStart
         let xEnd = Math.floor((AABB.x + AABB.width) / this.xSize)
-        xEnd = xEnd >= this.width ? this.width - 1 : xEnd
         let yEnd = Math.floor((AABB.y + AABB.height) / this.ySize)
-        yEnd = yEnd >= this.height ? this.height - 1 : yEnd
 
         // only remove and insert if mapping has changed
         if (spatial.xStart !== xStart || spatial.yStart !== yStart || spatial.xEnd !== xEnd || spatial.yEnd !== yEnd)
         {
-            if (spatial.maps.length)
+            if (spatial.hashes.length)
             {
                 this.remove(object)
             }
@@ -56,13 +133,13 @@ class SpatialHash
                 for (let x = xStart; x <= xEnd; x++)
                 {
                     const key = x + ',' + y
-                    if (!this.list[key])
+                    if (!this.hash[key])
                     {
-                        this.list[key] = [object]
+                        this.hash[key] = [object]
                     }
                     else
                     {
-                        this.list[key].push(object)
+                        this.hash[key].push(object)
                     }
                     spatial.hashes.push(key)
                 }
@@ -84,15 +161,16 @@ class SpatialHash
         while (spatial.hashes.length)
         {
             const entry = spatial.hashes.pop()
-            if (entry.list.length === 1)
+            if (entry.length === 1)
             {
-                this.list[entry.key] = null
+                this.hash[entry.key] = null
             }
             else
             {
-                entry.list.splice(entry.list.indexOf(object), 1)
+                entry.splice(entry.indexOf(object), 1)
             }
         }
+        this.all.splice(this.all.indexOf(object), 1)
     }
 
     /**
@@ -106,26 +184,27 @@ class SpatialHash
      */
     query(AABB)
     {
-        const results = []
+        let buckets = 0
+        let results = []
         let xStart = Math.floor(AABB.x / this.xSize)
         xStart = xStart < 0 ? 0 : xStart
         let yStart = Math.floor(AABB.y / this.ySize)
         yStart = yStart < 0 ? 0 : yStart
         let xEnd = Math.floor((AABB.x + AABB.width) / this.xSize)
-        xEnd = xEnd >= this.width ? this.width - 1 : xEnd
         let yEnd = Math.floor((AABB.y + AABB.height) / this.ySize)
-        yEnd = yEnd >= this.height ? this.height - 1 : yEnd
         for (let y = yStart; y <= yEnd; y++)
         {
             for (let x = xStart; x <= xEnd; x++)
             {
-                const entry = this.list[x + ',' + y]
+                const entry = this.hash[x + ',' + y]
                 if (entry)
                 {
-                    results = results.concat(entry.list)
+                    results = results.concat(entry)
+                    buckets++
                 }
             }
         }
+        this.lastBuckets = buckets
         return results
     }
 
@@ -154,12 +233,12 @@ class SpatialHash
         {
             for (let x = xStart; x <= xEnd; x++)
             {
-                const entry = this.list[x + ',' + y]
+                const entry = this.hash[x + ',' + y]
                 if (entry)
                 {
-                    for (let i = 0; i < entry.list.length; i++)
+                    for (let i = 0; i < entry.length; i++)
                     {
-                        if (callback(entry.list[i]))
+                        if (callback(entry[i]))
                         {
                             return true
                         }
@@ -171,12 +250,28 @@ class SpatialHash
     }
 
     /**
+     * get stats
+     * @return {Stats}
+     */
+    stats()
+    {
+        let visible = 0
+        this.all.forEach(object => visible += object.visible ? 1 : 0)
+
+        return {
+            total: this.all.length,
+            visible,
+            culled: this.all.length - visible
+        }
+    }
+
+    /**
      * helper function to evaluate hash table
      * @return {number} the number of buckets in the hash table
      * */
     getBuckets()
     {
-        return Object.keys(this.list).length
+        return Object.keys(this.hash).length
     }
 
     /**
@@ -186,9 +281,9 @@ class SpatialHash
     getAverageSize()
     {
         let total = 0
-        for (let key in this.list)
+        for (let key in this.hash)
         {
-            total += this.list[key].length
+            total += this.hash[key].length
         }
         return total / this.getBuckets()
     }
@@ -200,11 +295,11 @@ class SpatialHash
     getLargest()
     {
         let largest = 0
-        for (let key in this.list)
+        for (let key in this.hash)
         {
-            if (this.list[key].length > largest)
+            if (this.hash[key].length > largest)
             {
-                largest = this.list[key].length
+                largest = this.hash[key].length
             }
         }
         return largest
@@ -229,7 +324,7 @@ class SpatialHash
         {
             for (let x = xStart; x < xEnd; x++)
             {
-                count += (this.list[x + ',' + y] ? 1 : 0)
+                count += (this.hash[x + ',' + y] ? 1 : 0)
                 total++
             }
         }
@@ -237,4 +332,9 @@ class SpatialHash
     }
 }
 
-module.exports = SpatialHash
+/**
+ * @typedef {object} Stats
+ * @property {number} total
+ * @property {number} visible
+ * @property {number} culled
+ */
