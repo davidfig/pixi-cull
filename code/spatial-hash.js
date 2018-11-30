@@ -1,4 +1,4 @@
-module.exports = class CullSpatialHash
+module.exports = class SpatialHash
 {
     /**
      * @param {PIXI.DisplayObject[]} [list] of objects to cull

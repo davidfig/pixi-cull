@@ -1,4 +1,4 @@
-module.exports = class CullSimple
+module.exports = class Simple
 {
     /**
      * creates a simple cull
