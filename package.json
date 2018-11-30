@@ -1,0 +1,25 @@
+{
+  "name": "pixi-cull",
+  "version": "0.1.0",
+  "description": "a library to visibly cull objects designed to work with pixi.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "budo docs/index.js --live"
+  },
+  "keywords": [
+    "pixi.js",
+    "cull",
+    "pixi-viewport",
+    "viewport",
+    "spatial",
+    "hash",
+    "simple",
+    "cull"
+  ],
+  "author": "David S. Figatner",
+  "license": "MIT",
+  "dependencies": {
+    "pixi-viewport": "^3.11.2",
+    "pixi.js": "^4.8.2"
+  }
+}
