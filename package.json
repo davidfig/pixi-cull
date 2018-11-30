@@ -2,9 +2,11 @@
   "name": "pixi-cull",
   "version": "0.1.0",
   "description": "a library to visibly cull objects designed to work with pixi.js",
-  "main": "index.js",
+  "main": "code/index.js",
   "scripts": {
-    "test": "budo docs/index.js:bundle.js --dir docs"
+    "test": "budo docs/index.js:bundle.js --dir docs",
+    "build": "browserify docs/index.js -o docs/bundle.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "pixi.js",
