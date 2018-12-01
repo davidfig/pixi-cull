@@ -1,6 +1,6 @@
 {
   "name": "pixi-cull",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a library to visibly cull objects designed to work with pixi.js",
   "main": "code/index.js",
   "scripts": {

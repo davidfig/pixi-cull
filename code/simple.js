@@ -49,7 +49,7 @@ module.exports = class Simple
     }
 
     /**
-     * cull the items in the list
+     * cull the items in the list by setting visible parameter
      * @param {object} bounds
      * @param {number} bounds.x
      * @param {number} bounds.y
@@ -65,6 +65,35 @@ module.exports = class Simple
             box.y = box.y * child.anchor.y + child.y
             child[this.visible] = box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
                 box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height
+        }
+    }
+
+    /**
+     * cull the items in the list using callbacks instead of setting visible parameter
+     * @param {object} bounds
+     * @param {number} bounds.x
+     * @param {number} bounds.y
+     * @param {number} bounds.width
+     * @param {number} bounds.height
+     * @param {Function} visible
+     * @param {Function} culled
+     */
+    updateCallback(bounds, visible, culled)
+    {
+        for (let child of this.list)
+        {
+            const box = child.getLocalBounds()
+            box.x = box.x * child.anchor.x + child.x
+            box.y = box.y * child.anchor.y + child.y
+            if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
+                box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height)
+            {
+                visible(child, box)
+            }
+            else
+            {
+                culled(child, box)
+            }
         }
     }
 

@@ -64,20 +64,7 @@ module.exports = class SpatialHash
      */
     update(bounds)
     {
-        if (this.dirtyTest)
-        {
-            this.all.forEach(object =>
-            {
-                if (object[this.dirtyTest])
-                {
-                    this.updateObject(object)
-                }
-            })
-        }
-        else
-        {
-            this.all.forEach(object => this.updateObject(object))
-        }
+        this.updateObjects()
         this.all.forEach(object => object[this.visible] = false)
         const objects = this.query(bounds)
         if (this.simpleTest)
@@ -94,6 +81,24 @@ module.exports = class SpatialHash
             objects.forEach(object => object[this.visible] = true)
         }
         return this.lastBuckets
+    }
+
+    updateObjects()
+    {
+        if (this.dirtyTest)
+        {
+            this.all.forEach(object =>
+            {
+                if (object[this.dirtyTest])
+                {
+                    this.updateObject(object)
+                }
+            })
+        }
+        else
+        {
+            this.all.forEach(object => this.updateObject(object))
+        }
     }
 
     updateObject(object)
