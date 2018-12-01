@@ -573,7 +573,8 @@ var SpatialHash = function () {
     }, {
         key: 'remove',
         value: function remove(object) {
-            this.lists[0].splice(this.list.indexOf(object), 1);
+            this.lists[0].splice(this.list[0].indexOf(object), 1);
+            this.removeFromHash(object);
             return object;
         }
 
@@ -633,7 +634,12 @@ var SpatialHash = function () {
     }, {
         key: 'removeList',
         value: function removeList(array) {
+            var _this = this;
+
             this.lists.splice(this.lists.indexOf(array), 1);
+            array.forEach(function (object) {
+                return _this.removeFromHash(object);
+            });
             return array;
         }
 
@@ -647,7 +653,7 @@ var SpatialHash = function () {
     }, {
         key: 'cull',
         value: function cull(AABB, skipUpdate) {
-            var _this = this;
+            var _this2 = this;
 
             if (!skipUpdate) {
                 this.updateObjects();
@@ -655,7 +661,7 @@ var SpatialHash = function () {
             this.invisible();
             var objects = this.query(AABB, this.simpleTest);
             objects.forEach(function (object) {
-                return object[_this.visible] = true;
+                return object[_this2.visible] = true;
             });
             return this.lastBuckets;
         }
@@ -667,7 +673,7 @@ var SpatialHash = function () {
     }, {
         key: 'invisible',
         value: function invisible() {
-            var _this2 = this;
+            var _this3 = this;
 
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
@@ -678,7 +684,7 @@ var SpatialHash = function () {
                     var list = _step2.value;
 
                     list.forEach(function (object) {
-                        return object[_this2.visible] = false;
+                        return object[_this3.visible] = false;
                     });
                 }
             } catch (err) {
@@ -705,7 +711,7 @@ var SpatialHash = function () {
     }, {
         key: 'updateObjects',
         value: function updateObjects() {
-            var _this3 = this;
+            var _this4 = this;
 
             if (this.dirtyTest) {
                 var _iteratorNormalCompletion3 = true;
@@ -767,7 +773,7 @@ var SpatialHash = function () {
                         var _list = _step5.value;
 
                         _list.forEach(function (object) {
-                            return _this3.updateObject(object);
+                            return _this4.updateObject(object);
                         });
                     }
                 } catch (err) {
@@ -823,7 +829,7 @@ var SpatialHash = function () {
 
             if (spatial.xStart !== xStart || spatial.yStart !== yStart || spatial.xEnd !== xEnd || spatial.yEnd !== yEnd) {
                 if (spatial.hashes.length) {
-                    this.remove(object);
+                    this.removeFromHash(object);
                 }
                 for (var y = yStart; y <= yEnd; y++) {
                     for (var x = xStart; x <= xEnd; x++) {
@@ -877,23 +883,20 @@ var SpatialHash = function () {
 
         /**
          * removes object from the hash table
+         * should be called when removing an object
          * automatically called from updateObject()
          * @param {object} object
          */
 
     }, {
-        key: 'remove',
-        value: function remove(object) {
+        key: 'removeFromHash',
+        value: function removeFromHash(object) {
             var spatial = object[this.spatial];
             while (spatial.hashes.length) {
-                var entry = spatial.hashes.pop();
-                if (entry.length === 1) {
-                    this.hash[entry.key] = null;
-                } else {
-                    entry.splice(entry.indexOf(object), 1);
-                }
+                var key = spatial.hashes.pop();
+                var list = this.hash[key];
+                list.splice(list.indexOf(object), 1);
             }
-            this.all.splice(this.all.indexOf(object), 1);
         }
 
         /**

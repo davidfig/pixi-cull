@@ -329,7 +329,8 @@ class SpatialHash
      */
     remove(object)
     {
-        this.lists[0].splice(this.list.indexOf(object), 1)
+        this.lists[0].splice(this.list[0].indexOf(object), 1)
+        this.removeFromHash(object)
         return object
     }
 
@@ -368,6 +369,7 @@ class SpatialHash
     removeList(array)
     {
         this.lists.splice(this.lists.indexOf(array), 1)
+        array.forEach(object => this.removeFromHash(object))
         return array
     }
 
@@ -461,7 +463,7 @@ class SpatialHash
         {
             if (spatial.hashes.length)
             {
-                this.remove(object)
+                this.removeFromHash(object)
             }
             for (let y = yStart; y <= yEnd; y++)
             {
@@ -516,25 +518,19 @@ class SpatialHash
 
     /**
      * removes object from the hash table
+     * should be called when removing an object
      * automatically called from updateObject()
      * @param {object} object
      */
-    remove(object)
+    removeFromHash(object)
     {
         const spatial = object[this.spatial]
         while (spatial.hashes.length)
         {
-            const entry = spatial.hashes.pop()
-            if (entry.length === 1)
-            {
-                this.hash[entry.key] = null
-            }
-            else
-            {
-                entry.splice(entry.indexOf(object), 1)
-            }
+            const key = spatial.hashes.pop()
+            const list = this.hash[key]
+            list.splice(list.indexOf(object), 1)
         }
-        this.all.splice(this.all.indexOf(object), 1)
     }
 
     /**
