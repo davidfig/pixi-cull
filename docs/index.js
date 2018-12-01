@@ -5,7 +5,7 @@ const forkMe = require('fork-me-github')
 
 const Cull = require('../code/')
 
-let _application, _viewport, _div, _simple, _hash, _mode = 'simple', _stats
+let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats //, _test
 
 const WIDTH = 50000
 const HEIGHT = 50000
@@ -50,23 +50,26 @@ function pixi()
     _application = new PIXI.Application({ width: view.offsetWidth, height: view.offsetHeight, view, transparent: true })
     _viewport = _application.stage.addChild(new Viewport())
     _viewport.drag().pinch().decelerate().wheel()
-    _viewport.resize(view.offsetWidth, window.innerHeight, WIDTH, HEIGHT)
+    _viewport.resize(view.offsetWidth, view.offsetHeight, WIDTH, HEIGHT)
     _viewport.moveCenter(WIDTH / 2, HEIGHT / 2)
     PIXI.ticker.shared.add(update)
+    // _test = _viewport.addChild(new PIXI.Graphics())
 }
 
 function dots()
 {
+    _dots = []
     for (let i = 0; i < DOTS; i++)
     {
         const dot = _viewport.addChild(new PIXI.Sprite(PIXI.Texture.WHITE))
         dot.tint = Random.color()
         dot.width = dot.height = DOTS_SIZE
         dot.position.set(Random.get(WIDTH), Random.get(HEIGHT))
+        _dots.push(dot)
     }
 
-    _simple = new Cull.Simple(_viewport.children)
-    _hash = new Cull.SpatialHash(_viewport.children)
+    _simple = new Cull.Simple(_dots)
+    _hash = new Cull.SpatialHash(_dots)
 }
 
 function update()
@@ -83,12 +86,12 @@ function updateCull()
     switch (_mode)
     {
         case 'simple':
-            _simple.update(_viewport.getVisibleBounds())
+            _simple.cull(_viewport.getVisibleBounds())
             _stats = _simple.stats()
             break
 
         case 'hash':
-            const visible = _div.visibleBuckets.innerHTML = _hash.update(_viewport.getVisibleBounds())
+            const visible = _div.visibleBuckets.innerHTML = _hash.cull(_viewport.getVisibleBounds())
             const buckets = _div.culledBuckets.innerHTML = _hash.getBuckets() - visible
             _div.totalBuckets.innerHTML = buckets
             _stats = _hash.stats()

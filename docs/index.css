@@ -16,15 +16,24 @@ body
 
 .controls
 {
-    padding: 0.5em;
+    padding: 0 0.5em;
     border-left: 10px solid rgb(220,220,220);
     background: rgb(240,240,240);
     height: 100%;
     white-space: nowrap;
+    width: 15em;
+}
+
+.title
+{
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0.5em 0 1em;
 }
 
 .pixi
 {
+    width: 100%;
     height: 100%;
     flex-grow: 1;
 }
