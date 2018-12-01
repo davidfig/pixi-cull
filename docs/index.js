@@ -2,10 +2,11 @@ const PIXI = require('pixi.js')
 const Viewport = require('pixi-viewport')
 const Random = require('yy-random')
 const forkMe = require('fork-me-github')
+const FPS = require('yy-fps')
 
 const Cull = require('../code/')
 
-let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats //, _test
+let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats, _fps //, _test
 
 const WIDTH = 50000
 const HEIGHT = 50000
@@ -14,6 +15,7 @@ const DOTS_SIZE = 40
 
 function ui()
 {
+    _fps = new FPS({ side: 'bottomleft' })
     _div = {
         choices: document.getElementById('choices'),
         visible: document.getElementById('visible'),
@@ -23,7 +25,8 @@ function ui()
         visibleBuckets: document.getElementById('visible-buckets'),
         culledBuckets: document.getElementById('culled-buckets'),
         totalBuckets: document.getElementById('total-buckets'),
-        simpleTest: document.getElementById('simple-test')
+        simpleTest: document.getElementById('simple-test'),
+        dirtyTest: document.getElementById('dirty-test')
     }
 
     _div.buckets.style.display = _mode === 'hash' ? 'block' : 'none'
@@ -31,6 +34,13 @@ function ui()
     _div.choices.addEventListener('change', () =>
     {
         _mode = _div.choices.querySelector('input[name=cull-types]:checked').value
+        if (_mode === 'none')
+        {
+            for (let dot of _dots)
+            {
+                dot.visible = true
+            }
+        }
         updateCull()
         _div.buckets.style.display = _mode === 'hash' ? 'block' : 'none'
     })
@@ -40,6 +50,12 @@ function ui()
         _hash.simpleTest = _div.simpleTest.checked
         updateCull()
     })
+
+    _div.dirtyTest.addEventListener('change', () =>
+    {
+        _hash.dirtyTest = _simple.dirtyTest = _div.dirtyTest.checked
+    })
+
     document.querySelector('.instructions').style.opacity = 0;
     forkMe(null, { side: 'left' })
 }
@@ -68,8 +84,10 @@ function dots()
         _dots.push(dot)
     }
 
-    _simple = new Cull.Simple(_dots)
-    _hash = new Cull.SpatialHash(_dots)
+    _simple = new Cull.Simple()
+    _simple.addList(_dots, true)
+    _hash = new Cull.SpatialHash()
+    _hash.addList(_dots, true)
 }
 
 function update()
@@ -79,6 +97,7 @@ function update()
         updateCull()
         _viewport.dirty = false
     }
+    _fps.frame()
 }
 
 function updateCull()
@@ -95,6 +114,10 @@ function updateCull()
             const buckets = _div.culledBuckets.innerHTML = _hash.getBuckets() - visible
             _div.totalBuckets.innerHTML = buckets
             _stats = _hash.stats()
+            break
+
+        case 'none':
+            _stats = { visible: _dots.length, culled: 0, total: _dots.length }
             break
     }
     _viewport.dirty = false

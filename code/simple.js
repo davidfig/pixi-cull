@@ -1,46 +1,41 @@
-/**
- * pixi-cull.Simple
- * Copyright 2018 YOPEY YOPEY LLC
- * David Figatner
- * MIT License
- */
+// pixi-cull.SpatialHash
+// Copyright 2018 YOPEY YOPEY LLC
+// David Figatner
+// MIT License
 
-module.exports = class Simple
+class Simple
 {
     /**
      * creates a simple cull
-     * this sets the visibility
-     * @param {(*|Array)} [objects] object or list of objects to cull
      * @param {object} [options]
      * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {boolean} [options.calculatePIXI=true] calculate bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
+     * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
+     * @param {string} [options.dirtyTest=true] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }; not needed if options.calculatePIXI=true
      */
-    constructor(objects, options)
+    constructor(options)
     {
         options = options || {}
         this.visible = options.visible || 'visible'
         this.calculatePIXI = typeof options.calculatePIXI !== 'undefined' ? options.calculatePIXI : true
+        this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true
         this.AABB = options.AABB || 'AABB'
         this.lists = [[]]
-        if (Array.isArray(objects))
-        {
-            this.addList(objects)
-        }
-        else
-        {
-            this.add(objects)
-        }
     }
 
     /**
      * add an array of objects to be culled
      * @param {Array} array
-     * @return {Array}
+     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @return {Array} array
      */
-    addList(array)
+    addList(array, staticObject)
     {
         this.lists.push(array)
+        if (staticObject)
+        {
+            array.staticObject = true
+        }
         return array
     }
 
@@ -58,10 +53,15 @@ module.exports = class Simple
     /**
      * add an object to be culled
      * @param {*} object
-     * @return {*}
+     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @return {*} object
      */
-    add(object)
+    add(object, staticObject)
     {
+        if (staticObject)
+        {
+            object.staticObject = true
+        }
         this.lists[0].push(object)
         return object
     }
@@ -69,7 +69,7 @@ module.exports = class Simple
     /**
      * remove an object added by add()
      * @param {*} object
-     * @return {*}
+     * @return {*} object
      */
     remove(object)
     {
@@ -110,11 +110,37 @@ module.exports = class Simple
      */
     updateObjects()
     {
-        for (let list of this.lists)
+        if (this.dirtyTest)
         {
-            for (let object of list)
+            for (let list of this.lists)
             {
-                this.updateObject(object)
+                if (!list.staticObject)
+                {
+                    for (let object of list)
+                    {
+                        if (!object.staticObject && object[this.dirty])
+                        {
+                            this.updateObject(object)
+                            object[this.dirty] = false
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (let list of this.lists)
+            {
+                if (!list.staticObject)
+                {
+                    for (let object of list)
+                    {
+                        if (!object.staticObject)
+                        {
+                            this.updateObject(object)
+                        }
+                    }
+                }
             }
         }
     }
@@ -216,3 +242,5 @@ module.exports = class Simple
  * @property {number} visible
  * @property {number} culled
  */
+
+module.exports = Simple

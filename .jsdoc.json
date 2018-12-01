@@ -1,0 +1,54 @@
+{
+    "applicationName": "pixi-cull",
+    "disqus": "",
+    "openGraph": {
+        "title": "",
+        "type": "website",
+        "image": "",
+        "site_name": "",
+        "url": ""
+    },
+    "meta": {
+        "title": "pixi-cull",
+        "description": "",
+        "keyword": ""
+    },
+    "linenums": true,
+    "source": {
+        "include": [
+            "./code"
+        ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+        "readme": "./README.md",
+        "encoding": "utf8",
+        "recurse": true,
+        "private": false,
+        "lenient": true,
+        "destination": "./docs/jsdoc",
+        "template": "./node_modules/yy-jsdoc-template"
+    },
+    "plugins": [
+        "./node_modules/yy-jsdoc-template/plugins/skip-node_modules",
+        "plugins/markdown"
+    ],
+    "templates": {
+        "default": {
+            "outputSourceFiles": true
+        },
+        "applicationName": "pixi-cull",
+        "footer"        : "by YOPEY YOPEY LLC (yopeyopey.com)",
+        "copyright"     : "Copyright © 2018 YOPEY YOPEY LLC.",
+        "meta": {
+            "title": "pixi-cull API Documentation",
+            "description": "Documentation for pixi-cull library",
+            "keyword": "docs, documentation, html5, javascript, jsdoc, viewport, cull, bounce, 2d"
+        },
+        "matomo": {
+            "url": "https://analytics.yopeyopey.com/piwik/",
+            "id": 22
+        }
+    }
+}
