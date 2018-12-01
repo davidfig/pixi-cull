@@ -51,16 +51,16 @@ cull.cull(viewport.getVisibleBounds());
 ## API Documentation
 [https://davidfig.github.io/pixi-cull/jsdoc/](https://davidfig.github.io/pixi-cull/jsdoc/)
 
-```
 ## Installation
 
-    npm i pixi-cull
-
+```
+npm i pixi-cull
+```
 or [grab the latest release](https://github.com/davidfig/pixi-viewport/releases/) and use it:
 
 ```html
 <script src="/directory-to-file/pixi.js"></script>
-<script src="/directory-to-file/pixi-cull.js"></script>
+<script src="/directory-to-file/pixi-cull.min.js"></script>
 <script>
     var SimpleCull = new PIXI.extras.Cull.Simple();
 </script>
