@@ -111,8 +111,8 @@ function updateCull()
 
         case 'hash':
             const visible = _div.visibleBuckets.innerHTML = _hash.cull(_viewport.getVisibleBounds())
-            const buckets = _div.culledBuckets.innerHTML = _hash.getBuckets() - visible
-            _div.totalBuckets.innerHTML = buckets
+            const total = _div.totalBuckets.innerHTML = _hash.getBuckets()
+            const buckets = _div.culledBuckets.innerHTML = total - visible
             _stats = _hash.stats()
             break
 

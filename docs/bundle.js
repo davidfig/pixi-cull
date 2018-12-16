@@ -306,10 +306,7 @@ class SpatialHash
      */
     add(object, staticObject)
     {
-        if (!object[this.spatial])
-        {
-            object[this.spatial] = { hashes: [] }
-        }
+        object[this.spatial] = { hashes: [] }
         if (this.calculatePIXI && this.dirtyTest)
         {
             object[this.dirty] = true
@@ -344,10 +341,7 @@ class SpatialHash
     {
         for (let object of list)
         {
-            if (!object[this.spatial])
-            {
-                object[this.spatial] = { hashes: [] }
-            }
+            object[this.spatial] = { hashes: [] }
             if (this.calculatePIXI && this.dirtyTest)
             {
                 object[this.dirty] = true
@@ -534,6 +528,18 @@ class SpatialHash
     }
 
     /**
+     * get all neighbors that share the same hash as object
+     * @param {*} object in the spatial hash
+     * @return {Array} of objects that are in the same hash as object
+     */
+    neighbors(object)
+    {
+        let results = []
+        object[this.spatial].hashes.forEach(key => results = results.concat(this.hash[key]))
+        return results
+    }
+
+    /**
      * returns an array of objects contained within bounding box
      * @param {AABB} AABB bounding box to search
      * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
@@ -556,7 +562,7 @@ class SpatialHash
                     {
                         for (let object of entry)
                         {
-                            const box = object.AABB
+                            const box = object[this.AABB]
                             if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
                             box.y + box.height > AABB.y && box.y < AABB.y + AABB.height)
                             {

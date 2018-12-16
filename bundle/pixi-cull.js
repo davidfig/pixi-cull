@@ -551,9 +551,7 @@ var SpatialHash = function () {
     _createClass(SpatialHash, [{
         key: 'add',
         value: function add(object, staticObject) {
-            if (!object[this.spatial]) {
-                object[this.spatial] = { hashes: [] };
-            }
+            object[this.spatial] = { hashes: [] };
             if (this.calculatePIXI && this.dirtyTest) {
                 object[this.dirty] = true;
             }
@@ -596,9 +594,7 @@ var SpatialHash = function () {
                 for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var object = _step.value;
 
-                    if (!object[this.spatial]) {
-                        object[this.spatial] = { hashes: [] };
-                    }
+                    object[this.spatial] = { hashes: [] };
                     if (this.calculatePIXI && this.dirtyTest) {
                         object[this.dirty] = true;
                     }
@@ -900,6 +896,24 @@ var SpatialHash = function () {
         }
 
         /**
+         * get all neighbors that share the same hash as object
+         * @param {*} object in the spatial hash
+         * @return {Array} of objects that are in the same hash as object
+         */
+
+    }, {
+        key: 'neighbors',
+        value: function neighbors(object) {
+            var _this5 = this;
+
+            var results = [];
+            object[this.spatial].hashes.forEach(function (key) {
+                return results = results.concat(_this5.hash[key]);
+            });
+            return results;
+        }
+
+        /**
          * returns an array of objects contained within bounding box
          * @param {AABB} AABB bounding box to search
          * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
@@ -932,7 +946,7 @@ var SpatialHash = function () {
                                 for (var _iterator6 = entry[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
                                     var object = _step6.value;
 
-                                    var box = object.AABB;
+                                    var box = object[this.AABB];
                                     if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width && box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
                                         results.push(object);
                                     }
