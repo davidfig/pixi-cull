@@ -2012,6 +2012,13 @@ class Simple
         {
             array.staticObject = true
         }
+        if (this.calculatePIXI && this.dirtyTest)
+        {
+            for (let object of array)
+            {
+                this.updateObject(object)
+            }
+        }
         return array
     }
 
@@ -2037,6 +2044,10 @@ class Simple
         if (staticObject)
         {
             object.staticObject = true
+        }
+        if (this.calculatePIXI && (this.dirtyTest || staticObject))
+        {
+            this.updateObject(object)
         }
         this.lists[0].push(object)
         return object
@@ -2129,6 +2140,7 @@ class Simple
     updateObject(object)
     {
         const box = object.getLocalBounds()
+        object[this.AABB] = object[this.AABB] || {}
         object[this.AABB].x = object.x + box.x * object.scale.x
         object[this.AABB].y = object.y + box.y * object.scale.y
         object[this.AABB].width = box.width * object.scale.x
@@ -2706,7 +2718,7 @@ const Random = require('yy-random')
 const forkMe = require('fork-me-github')
 const FPS = require('yy-fps')
 
-const Cull = require('../code/')
+const Cull = require('../code')
 
 let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats, _fps //, _test
 
@@ -2835,7 +2847,7 @@ window.onload = () =>
     ui()
     updateCull()
 }
-},{"../code/":10,"fork-me-github":17,"pixi-viewport":52,"pixi.js":169,"yy-fps":221,"yy-random":222}],14:[function(require,module,exports){
+},{"../code":10,"fork-me-github":17,"pixi-viewport":52,"pixi.js":169,"yy-fps":221,"yy-random":222}],14:[function(require,module,exports){
 /**
  * Bit twiddling hacks for JavaScript.
  *

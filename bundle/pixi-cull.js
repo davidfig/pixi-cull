@@ -60,6 +60,32 @@ var Simple = function () {
             if (staticObject) {
                 array.staticObject = true;
             }
+            if (this.calculatePIXI && this.dirtyTest) {
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = array[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var object = _step.value;
+
+                        this.updateObject(object);
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+            }
             return array;
         }
 
@@ -88,6 +114,9 @@ var Simple = function () {
         value: function add(object, staticObject) {
             if (staticObject) {
                 object.staticObject = true;
+            }
+            if (this.calculatePIXI && (this.dirtyTest || staticObject)) {
+                this.updateObject(object);
             }
             this.lists[0].push(object);
             return object;
@@ -122,50 +151,50 @@ var Simple = function () {
             if (this.calculatePIXI && !skipUpdate) {
                 this.updateObjects();
             }
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator = this.lists[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var list = _step.value;
-                    var _iteratorNormalCompletion2 = true;
-                    var _didIteratorError2 = false;
-                    var _iteratorError2 = undefined;
+                for (var _iterator2 = this.lists[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var list = _step2.value;
+                    var _iteratorNormalCompletion3 = true;
+                    var _didIteratorError3 = false;
+                    var _iteratorError3 = undefined;
 
                     try {
-                        for (var _iterator2 = list[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                            var object = _step2.value;
+                        for (var _iterator3 = list[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                            var object = _step3.value;
 
                             var box = object[this.AABB];
                             object[this.visible] = box.x + box.width > bounds.x && box.x < bounds.x + bounds.width && box.y + box.height > bounds.y && box.y < bounds.y + bounds.height;
                         }
                     } catch (err) {
-                        _didIteratorError2 = true;
-                        _iteratorError2 = err;
+                        _didIteratorError3 = true;
+                        _iteratorError3 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                                _iterator2.return();
+                            if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                                _iterator3.return();
                             }
                         } finally {
-                            if (_didIteratorError2) {
-                                throw _iteratorError2;
+                            if (_didIteratorError3) {
+                                throw _iteratorError3;
                             }
                         }
                     }
                 }
             } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
                     }
                 } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
                     }
                 }
             }
@@ -180,22 +209,22 @@ var Simple = function () {
         key: 'updateObjects',
         value: function updateObjects() {
             if (this.dirtyTest) {
-                var _iteratorNormalCompletion3 = true;
-                var _didIteratorError3 = false;
-                var _iteratorError3 = undefined;
+                var _iteratorNormalCompletion4 = true;
+                var _didIteratorError4 = false;
+                var _iteratorError4 = undefined;
 
                 try {
-                    for (var _iterator3 = this.lists[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                        var list = _step3.value;
+                    for (var _iterator4 = this.lists[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                        var list = _step4.value;
 
                         if (!list.staticObject) {
-                            var _iteratorNormalCompletion4 = true;
-                            var _didIteratorError4 = false;
-                            var _iteratorError4 = undefined;
+                            var _iteratorNormalCompletion5 = true;
+                            var _didIteratorError5 = false;
+                            var _iteratorError5 = undefined;
 
                             try {
-                                for (var _iterator4 = list[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                                    var object = _step4.value;
+                                for (var _iterator5 = list[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                                    var object = _step5.value;
 
                                     if (!object.staticObject && object[this.dirty]) {
                                         this.updateObject(object);
@@ -203,84 +232,84 @@ var Simple = function () {
                                     }
                                 }
                             } catch (err) {
-                                _didIteratorError4 = true;
-                                _iteratorError4 = err;
+                                _didIteratorError5 = true;
+                                _iteratorError5 = err;
                             } finally {
                                 try {
-                                    if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                                        _iterator4.return();
+                                    if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                                        _iterator5.return();
                                     }
                                 } finally {
-                                    if (_didIteratorError4) {
-                                        throw _iteratorError4;
+                                    if (_didIteratorError5) {
+                                        throw _iteratorError5;
                                     }
                                 }
                             }
                         }
                     }
                 } catch (err) {
-                    _didIteratorError3 = true;
-                    _iteratorError3 = err;
+                    _didIteratorError4 = true;
+                    _iteratorError4 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
-                            _iterator3.return();
+                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                            _iterator4.return();
                         }
                     } finally {
-                        if (_didIteratorError3) {
-                            throw _iteratorError3;
+                        if (_didIteratorError4) {
+                            throw _iteratorError4;
                         }
                     }
                 }
             } else {
-                var _iteratorNormalCompletion5 = true;
-                var _didIteratorError5 = false;
-                var _iteratorError5 = undefined;
+                var _iteratorNormalCompletion6 = true;
+                var _didIteratorError6 = false;
+                var _iteratorError6 = undefined;
 
                 try {
-                    for (var _iterator5 = this.lists[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                        var _list = _step5.value;
+                    for (var _iterator6 = this.lists[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                        var _list = _step6.value;
 
                         if (!_list.staticObject) {
-                            var _iteratorNormalCompletion6 = true;
-                            var _didIteratorError6 = false;
-                            var _iteratorError6 = undefined;
+                            var _iteratorNormalCompletion7 = true;
+                            var _didIteratorError7 = false;
+                            var _iteratorError7 = undefined;
 
                             try {
-                                for (var _iterator6 = _list[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                                    var _object = _step6.value;
+                                for (var _iterator7 = _list[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                                    var _object = _step7.value;
 
                                     if (!_object.staticObject) {
                                         this.updateObject(_object);
                                     }
                                 }
                             } catch (err) {
-                                _didIteratorError6 = true;
-                                _iteratorError6 = err;
+                                _didIteratorError7 = true;
+                                _iteratorError7 = err;
                             } finally {
                                 try {
-                                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
-                                        _iterator6.return();
+                                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                                        _iterator7.return();
                                     }
                                 } finally {
-                                    if (_didIteratorError6) {
-                                        throw _iteratorError6;
+                                    if (_didIteratorError7) {
+                                        throw _iteratorError7;
                                     }
                                 }
                             }
                         }
                     }
                 } catch (err) {
-                    _didIteratorError5 = true;
-                    _iteratorError5 = err;
+                    _didIteratorError6 = true;
+                    _iteratorError6 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                            _iterator5.return();
+                        if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                            _iterator6.return();
                         }
                     } finally {
-                        if (_didIteratorError5) {
-                            throw _iteratorError5;
+                        if (_didIteratorError6) {
+                            throw _iteratorError6;
                         }
                     }
                 }
@@ -297,6 +326,7 @@ var Simple = function () {
         key: 'updateObject',
         value: function updateObject(object) {
             var box = object.getLocalBounds();
+            object[this.AABB] = object[this.AABB] || {};
             object[this.AABB].x = object.x + box.x * object.scale.x;
             object[this.AABB].y = object.y + box.y * object.scale.y;
             object[this.AABB].width = box.width * object.scale.x;
@@ -317,20 +347,20 @@ var Simple = function () {
         key: 'query',
         value: function query(bounds) {
             var results = [];
-            var _iteratorNormalCompletion7 = true;
-            var _didIteratorError7 = false;
-            var _iteratorError7 = undefined;
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
 
             try {
-                for (var _iterator7 = this.lists[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-                    var list = _step7.value;
-                    var _iteratorNormalCompletion8 = true;
-                    var _didIteratorError8 = false;
-                    var _iteratorError8 = undefined;
+                for (var _iterator8 = this.lists[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var list = _step8.value;
+                    var _iteratorNormalCompletion9 = true;
+                    var _didIteratorError9 = false;
+                    var _iteratorError9 = undefined;
 
                     try {
-                        for (var _iterator8 = list[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-                            var object = _step8.value;
+                        for (var _iterator9 = list[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                            var object = _step9.value;
 
                             var box = object[this.AABB];
                             if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width && box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
@@ -338,31 +368,31 @@ var Simple = function () {
                             }
                         }
                     } catch (err) {
-                        _didIteratorError8 = true;
-                        _iteratorError8 = err;
+                        _didIteratorError9 = true;
+                        _iteratorError9 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion8 && _iterator8.return) {
-                                _iterator8.return();
+                            if (!_iteratorNormalCompletion9 && _iterator9.return) {
+                                _iterator9.return();
                             }
                         } finally {
-                            if (_didIteratorError8) {
-                                throw _iteratorError8;
+                            if (_didIteratorError9) {
+                                throw _iteratorError9;
                             }
                         }
                     }
                 }
             } catch (err) {
-                _didIteratorError7 = true;
-                _iteratorError7 = err;
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
-                        _iterator7.return();
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
                     }
                 } finally {
-                    if (_didIteratorError7) {
-                        throw _iteratorError7;
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
                     }
                 }
             }
@@ -385,20 +415,20 @@ var Simple = function () {
     }, {
         key: 'queryCallback',
         value: function queryCallback(bounds, callback) {
-            var _iteratorNormalCompletion9 = true;
-            var _didIteratorError9 = false;
-            var _iteratorError9 = undefined;
+            var _iteratorNormalCompletion10 = true;
+            var _didIteratorError10 = false;
+            var _iteratorError10 = undefined;
 
             try {
-                for (var _iterator9 = this.lists[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
-                    var list = _step9.value;
-                    var _iteratorNormalCompletion10 = true;
-                    var _didIteratorError10 = false;
-                    var _iteratorError10 = undefined;
+                for (var _iterator10 = this.lists[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                    var list = _step10.value;
+                    var _iteratorNormalCompletion11 = true;
+                    var _didIteratorError11 = false;
+                    var _iteratorError11 = undefined;
 
                     try {
-                        for (var _iterator10 = list[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
-                            var object = _step10.value;
+                        for (var _iterator11 = list[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+                            var object = _step11.value;
 
                             var box = object[this.AABB];
                             if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width && box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
@@ -408,31 +438,31 @@ var Simple = function () {
                             }
                         }
                     } catch (err) {
-                        _didIteratorError10 = true;
-                        _iteratorError10 = err;
+                        _didIteratorError11 = true;
+                        _iteratorError11 = err;
                     } finally {
                         try {
-                            if (!_iteratorNormalCompletion10 && _iterator10.return) {
-                                _iterator10.return();
+                            if (!_iteratorNormalCompletion11 && _iterator11.return) {
+                                _iterator11.return();
                             }
                         } finally {
-                            if (_didIteratorError10) {
-                                throw _iteratorError10;
+                            if (_didIteratorError11) {
+                                throw _iteratorError11;
                             }
                         }
                     }
                 }
             } catch (err) {
-                _didIteratorError9 = true;
-                _iteratorError9 = err;
+                _didIteratorError10 = true;
+                _iteratorError10 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion9 && _iterator9.return) {
-                        _iterator9.return();
+                    if (!_iteratorNormalCompletion10 && _iterator10.return) {
+                        _iterator10.return();
                     }
                 } finally {
-                    if (_didIteratorError9) {
-                        throw _iteratorError9;
+                    if (_didIteratorError10) {
+                        throw _iteratorError10;
                     }
                 }
             }
@@ -450,13 +480,13 @@ var Simple = function () {
         value: function stats() {
             var visible = 0,
                 count = 0;
-            var _iteratorNormalCompletion11 = true;
-            var _didIteratorError11 = false;
-            var _iteratorError11 = undefined;
+            var _iteratorNormalCompletion12 = true;
+            var _didIteratorError12 = false;
+            var _iteratorError12 = undefined;
 
             try {
-                for (var _iterator11 = this.lists[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
-                    var list = _step11.value;
+                for (var _iterator12 = this.lists[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                    var list = _step12.value;
 
                     list.forEach(function (object) {
                         visible += object.visible ? 1 : 0;
@@ -464,16 +494,16 @@ var Simple = function () {
                     });
                 }
             } catch (err) {
-                _didIteratorError11 = true;
-                _iteratorError11 = err;
+                _didIteratorError12 = true;
+                _iteratorError12 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion11 && _iterator11.return) {
-                        _iterator11.return();
+                    if (!_iteratorNormalCompletion12 && _iterator12.return) {
+                        _iterator12.return();
                     }
                 } finally {
-                    if (_didIteratorError11) {
-                        throw _iteratorError11;
+                    if (_didIteratorError12) {
+                        throw _iteratorError12;
                     }
                 }
             }
