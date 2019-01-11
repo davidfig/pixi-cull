@@ -36,6 +36,13 @@ class Simple
         {
             array.staticObject = true
         }
+        if (this.calculatePIXI && this.dirtyTest)
+        {
+            for (let object of array)
+            {
+                this.updateObject(object)
+            }
+        }
         return array
     }
 
@@ -61,6 +68,10 @@ class Simple
         if (staticObject)
         {
             object.staticObject = true
+        }
+        if (this.calculatePIXI && (this.dirtyTest || staticObject))
+        {
+            this.updateObject(object)
         }
         this.lists[0].push(object)
         return object
@@ -153,6 +164,7 @@ class Simple
     updateObject(object)
     {
         const box = object.getLocalBounds()
+        object[this.AABB] = object[this.AABB] || {}
         object[this.AABB].x = object.x + box.x * object.scale.x
         object[this.AABB].y = object.y + box.y * object.scale.y
         object[this.AABB].width = box.width * object.scale.x

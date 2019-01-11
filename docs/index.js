@@ -4,7 +4,7 @@ const Random = require('yy-random')
 const forkMe = require('fork-me-github')
 const FPS = require('yy-fps')
 
-const Cull = require('../code/')
+const Cull = require('../code')
 
 let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats, _fps //, _test
 
