@@ -882,9 +882,7 @@ var SpatialHash = function () {
         key: 'getBounds',
         value: function getBounds(AABB) {
             var xStart = Math.floor(AABB.x / this.xSize);
-            xStart = xStart < 0 ? 0 : xStart;
             var yStart = Math.floor(AABB.y / this.ySize);
-            yStart = yStart < 0 ? 0 : yStart;
             var xEnd = Math.floor((AABB.x + AABB.width) / this.xSize);
             var yEnd = Math.floor((AABB.y + AABB.height) / this.ySize);
             return { xStart: xStart, yStart: yStart, xEnd: xEnd, yEnd: yEnd };

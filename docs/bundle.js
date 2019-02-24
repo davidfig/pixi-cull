@@ -2458,9 +2458,7 @@ class SpatialHash
     getBounds(AABB)
     {
         let xStart = Math.floor(AABB.x / this.xSize)
-        xStart = xStart < 0 ? 0 : xStart
         let yStart = Math.floor(AABB.y / this.ySize)
-        yStart = yStart < 0 ? 0 : yStart
         let xEnd = Math.floor((AABB.x + AABB.width) / this.xSize)
         let yEnd = Math.floor((AABB.y + AABB.height) / this.ySize)
         return { xStart, yStart, xEnd, yEnd }
