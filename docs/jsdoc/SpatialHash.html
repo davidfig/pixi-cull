@@ -170,6 +170,8 @@
             
                 <li class="parent  " data-name="SpatialHash#getLargest"><a href="SpatialHash.html#getLargest">getLargest</a></li>
             
+                <li class="parent  " data-name="SpatialHash#getNumberOfBuckets"><a href="SpatialHash.html#getNumberOfBuckets">getNumberOfBuckets</a></li>
+            
                 <li class="parent  " data-name="SpatialHash#getSparseness"><a href="SpatialHash.html#getSparseness">getSparseness</a></li>
             
                 <li class="parent  " data-name="SpatialHash#insert"><a href="SpatialHash.html#insert">insert</a></li>
@@ -1324,7 +1326,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line406">spatial-hash.js:406</a>
+            <a href="spatial-hash.js.html#line425">spatial-hash.js:425</a>
         </div>
         
     </div>
@@ -1420,7 +1422,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             <span class="">
                 getBuckets
             </span>
-            <span class="signature">()</span><span class="type-signature">number</span>
+            <span class="signature">(<span class="optional">minimum</span>)</span><span class="type-signature">array</span>
             
             
             
@@ -1429,7 +1431,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line397">spatial-hash.js:397</a>
+            <a href="spatial-hash.js.html#line222">spatial-hash.js:222</a>
         </div>
         
     </div>
@@ -1440,7 +1442,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
     
     <div class="description">
-        <p>helper function to evaluate hash table</p>
+        <p>returns an array of buckets with &gt;= minimum of objects in each bucket</p>
     </div>
     
 
@@ -1448,6 +1450,66 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
     
 
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>minimum</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
     
 
     
@@ -1501,11 +1563,11 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             
             <td class="type">
             
-                        number
+                        array
                         
                     
             </td>
-            <td class="description last">the number of buckets in the hash table</td>
+            <td class="description last">array of buckets</td>
         </tr>
     
     </tbody>
@@ -1534,7 +1596,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line420">spatial-hash.js:420</a>
+            <a href="spatial-hash.js.html#line439">spatial-hash.js:439</a>
         </div>
         
     </div>
@@ -1625,6 +1687,111 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="getNumberOfBuckets">
+            <a class="share-icon" href="#getNumberOfBuckets"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                getNumberOfBuckets
+            </span>
+            <span class="signature">()</span><span class="type-signature">number</span>
+            
+            
+            
+            
+        </h4>
+
+        
+        <div class="tag-source">
+            <a href="spatial-hash.js.html#line416">spatial-hash.js:416</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>helper function to evaluate hash table</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        number
+                        
+                    
+            </td>
+            <td class="description last">the number of buckets in the hash table</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="getSparseness">
             <a class="share-icon" href="#getSparseness"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
@@ -1639,7 +1806,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line437">spatial-hash.js:437</a>
+            <a href="spatial-hash.js.html#line456">spatial-hash.js:456</a>
         </div>
         
     </div>
@@ -1789,7 +1956,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line238">spatial-hash.js:238</a>
+            <a href="spatial-hash.js.html#line257">spatial-hash.js:257</a>
         </div>
         
     </div>
@@ -2010,7 +2177,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line272">spatial-hash.js:272</a>
+            <a href="spatial-hash.js.html#line291">spatial-hash.js:291</a>
         </div>
         
     </div>
@@ -2160,7 +2327,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line285">spatial-hash.js:285</a>
+            <a href="spatial-hash.js.html#line304">spatial-hash.js:304</a>
         </div>
         
     </div>
@@ -2357,7 +2524,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line330">spatial-hash.js:330</a>
+            <a href="spatial-hash.js.html#line349">spatial-hash.js:349</a>
         </div>
         
     </div>
@@ -2737,7 +2904,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line256">spatial-hash.js:256</a>
+            <a href="spatial-hash.js.html#line275">spatial-hash.js:275</a>
         </div>
         
     </div>
@@ -3010,7 +3177,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line374">spatial-hash.js:374</a>
+            <a href="spatial-hash.js.html#line393">spatial-hash.js:393</a>
         </div>
         
     </div>
@@ -3351,7 +3518,7 @@ automatically called from update() when skipUpdate=false</p>
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Feb 24 2019 08:10:40 GMT+0800 (GMT+08:00)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Feb 24 2019 09:13:56 GMT+0800 (GMT+08:00)
             </div>
         </footer>
     </div>

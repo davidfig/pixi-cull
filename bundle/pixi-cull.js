@@ -872,6 +872,27 @@ var SpatialHash = function () {
         }
 
         /**
+         * returns an array of buckets with >= minimum of objects in each bucket
+         * @param {number} [minimum=1]
+         * @return {array} array of buckets
+         */
+
+    }, {
+        key: 'getBuckets',
+        value: function getBuckets() {
+            var minimum = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+            var hashes = [];
+            for (var key in this.hash) {
+                var hash = this.hash[key];
+                if (hash.length >= minimum) {
+                    hashes.push(hash);
+                }
+            }
+            return hashes;
+        }
+
+        /**
          * gets hash bounds
          * @param {AABB} AABB
          * @return {Bounds}
@@ -1100,8 +1121,8 @@ var SpatialHash = function () {
          * */
 
     }, {
-        key: 'getBuckets',
-        value: function getBuckets() {
+        key: 'getNumberOfBuckets',
+        value: function getNumberOfBuckets() {
             return Object.keys(this.hash).length;
         }
 

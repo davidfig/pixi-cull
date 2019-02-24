@@ -215,6 +215,25 @@ class SpatialHash
     }
 
     /**
+     * returns an array of buckets with >= minimum of objects in each bucket
+     * @param {number} [minimum=1]
+     * @return {array} array of buckets
+     */
+    getBuckets(minimum=1)
+    {
+        const hashes = []
+        for (let key in this.hash)
+        {
+            const hash = this.hash[key]
+            if (hash.length >= minimum)
+            {
+                hashes.push(hash)
+            }
+        }
+        return hashes
+    }
+
+    /**
      * gets hash bounds
      * @param {AABB} AABB
      * @return {Bounds}
@@ -394,7 +413,7 @@ class SpatialHash
      * helper function to evaluate hash table
      * @return {number} the number of buckets in the hash table
      * */
-    getBuckets()
+    getNumberOfBuckets()
     {
         return Object.keys(this.hash).length
     }
