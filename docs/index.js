@@ -1,4 +1,4 @@
-const PIXI = require('pixi.js')
+const PIXI = window.PIXI = require('pixi.js')
 const Viewport = require('pixi-viewport')
 const Random = require('yy-random')
 const forkMe = require('fork-me-github')
@@ -8,10 +8,12 @@ const Cull = require('../code')
 
 let _application, _viewport, _dots, _div, _simple, _hash, _mode = 'simple', _stats, _fps //, _test
 
+const START_X = -25000
+const START_Y = -25000
 const WIDTH = 50000
 const HEIGHT = 50000
 const DOTS = 10000
-const DOTS_SIZE = 40
+const DOTS_SIZE = 100
 
 function ui()
 {
@@ -67,8 +69,9 @@ function pixi()
     _viewport = _application.stage.addChild(new Viewport())
     _viewport.drag().pinch().decelerate().wheel()
     _viewport.resize(view.offsetWidth, view.offsetHeight, WIDTH, HEIGHT)
-    _viewport.moveCenter(WIDTH / 2, HEIGHT / 2)
-    PIXI.ticker.shared.add(update)
+    _viewport.fitWidth(5000)
+    const ticker = PIXI.ticker || PIXI.Ticker
+    ticker.shared.add(update)
     // _test = _viewport.addChild(new PIXI.Graphics())
 }
 
@@ -80,7 +83,7 @@ function dots()
         const dot = _viewport.addChild(new PIXI.Sprite(PIXI.Texture.WHITE))
         dot.tint = Random.color()
         dot.width = dot.height = DOTS_SIZE
-        dot.position.set(Random.get(WIDTH), Random.get(HEIGHT))
+        dot.position.set(Random.range(START_X, WIDTH), Random.range(START_Y, HEIGHT))
         _dots.push(dot)
     }
 
