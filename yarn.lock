@@ -945,10 +945,10 @@ penner@^0.1.3:
   resolved "https://registry.yarnpkg.com/penner/-/penner-0.1.3.tgz#0b8b482d4e9b39af2f3d7c37592229b8acc29705"
   integrity sha1-C4tILU6bOa8vPXw3WSIpuKzClwU=
 
-pixi-viewport@^3.18.3:
-  version "3.18.3"
-  resolved "https://registry.yarnpkg.com/pixi-viewport/-/pixi-viewport-3.18.3.tgz#20a470ccf36c1cba4ab5b7d1f0f95be126983e65"
-  integrity sha512-VNNenqkPznaZn4Jrt4eP6Z2l55hLldysLvwx+XsYIKB9kJUJNrW+Tzg5JJT+ERTQ7k3KT9YkNa1K/yNnDVVy9Q==
+pixi-viewport@^3.20.0:
+  version "3.20.0"
+  resolved "https://registry.yarnpkg.com/pixi-viewport/-/pixi-viewport-3.20.0.tgz#b541a7a71b3569aa51e385c9baad1f5104870bbd"
+  integrity sha512-AhLimZ2QqvKvwUjtnUCvt9tQ/GXtihjq7tCYEJo3qPmIYg7/35yLjq2wnXI48EtvVK2q1xuIkm3gsBaP0xvQ2Q==
   dependencies:
     eventemitter3 "^3.1.0"
     penner "^0.1.3"

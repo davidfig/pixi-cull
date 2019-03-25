@@ -33,7 +33,8 @@ class SpatialHash
         this.dirty = options.dirty || 'dirty'
         this.width = this.height = 0
         this.hash = {}
-        this.lists = [[]]
+        this.objects = []
+        this.containers = []
     }
 
     /**
@@ -55,7 +56,7 @@ class SpatialHash
             object.staticObject = true
         }
         this.updateObject(object)
-        this.lists[0].push(object)
+        this.containers[0].push(object)
     }
 
     /**
@@ -65,45 +66,59 @@ class SpatialHash
      */
     remove(object)
     {
-        this.lists[0].splice(this.list[0].indexOf(object), 1)
+        this.containers[0].splice(this.list[0].indexOf(object), 1)
         this.removeFromHash(object)
         return object
     }
 
     /**
      * add an array of objects to be culled
-     * @param {Array} array
-     * @param {boolean} [staticObject] set to true if the objects in the list position/size does not change
-     * @return {Array} array
+     * @param {PIXI.Container} container
+     * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
      */
-    addList(list, staticObject)
+    addContainer(container, staticObject)
     {
-        for (let object of list)
+        const added = function(object)
         {
             object[this.spatial] = { hashes: [] }
-            if (this.calculatePIXI && this.dirtyTest)
-            {
-                object[this.dirty] = true
-            }
-            if (staticObject)
-            {
-                list.staticObject = true
-            }
+            this.updateObject(object)
+        }.bind(this)
+
+        const removed = function (object)
+        {
+            this.removeFromHash(object)
+        }.bind(this)
+
+        for (let object of container.children)
+        {
+            object[this.spatial] = { hashes: [] }
             this.updateObject(object)
         }
-        this.lists.push(list)
+        container.cull = {}
+        this.containers.push(container)
+        container.on('childAdded', added)
+        container.on('childRemoved', removed)
+        container.cull.added = added
+        container.cull.removed = removed
+        if (staticObject)
+        {
+            container.cull.static = true
+        }
     }
 
     /**
-     * remove an array added by addList()
-     * @param {Array} array
-     * @return {Array} array
+     * remove an array added by addContainer()
+     * @param {PIXI.Container} container
+     * @return {PIXI.Container} container
      */
-    removeList(array)
+    removeContainer(container)
     {
-        this.lists.splice(this.lists.indexOf(array), 1)
-        array.forEach(object => this.removeFromHash(object))
-        return array
+        this.containers.splice(this.containers.indexOf(container), 1)
+        container.children.forEach(object => this.removeFromHash(object))
+        container.off('added', container.cull.added)
+        container.off('removed', container.cull.removed)
+        delete container.cull
+        return container
     }
 
     /**
@@ -129,9 +144,9 @@ class SpatialHash
      */
     invisible()
     {
-        for (let list of this.lists)
+        for (let container of this.containers)
         {
-            list.forEach(object => object[this.visible] = false)
+            container.children.forEach(object => object[this.visible] = false)
         }
     }
 
@@ -143,9 +158,17 @@ class SpatialHash
     {
         if (this.dirtyTest)
         {
-            for (let list of this.lists)
+            for (let object of this.objects)
             {
-                for (let object of list)
+                if (object[this.dirty])
+                {
+                    this.updateObject(object)
+                    object[this.dirty] = false
+                }
+            }
+            for (let container of this.containers)
+            {
+                for (let object of container.children)
                 {
                     if (object[this.dirty])
                     {
@@ -157,9 +180,12 @@ class SpatialHash
         }
         else
         {
-            for (let list of this.lists)
+            for (let container of this.containers)
             {
-                list.forEach(object => this.updateObject(object))
+                if (!container.cull.static)
+                {
+                    container.children.forEach(object => this.updateObject(object))
+                }
             }
         }
     }
@@ -188,7 +214,11 @@ class SpatialHash
             AABB = object[this.AABB]
         }
 
-        const spatial = object[this.spatial]
+        let spatial = object[this.spatial]
+        if (!spatial)
+        {
+            spatial = object[this.spatial] = { hashes: [] }
+        }
         const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
 
         // only remove and insert if mapping has changed
@@ -393,7 +423,7 @@ class SpatialHash
     stats()
     {
         let visible = 0, count = 0
-        for (let list of this.lists)
+        for (let list of this.containers)
         {
             list.forEach(object =>
             {

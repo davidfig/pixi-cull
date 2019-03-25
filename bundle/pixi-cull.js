@@ -6,13 +6,6 @@ module.exports = {
     SpatialHash: require('./spatial-hash')
 };
 
-if (PIXI) {
-    PIXI.extras.Cull = {
-        Simple: require('./simple'),
-        SpatialHash: require('./spatial-hash')
-    };
-}
-
 },{"./simple":2,"./spatial-hash":3}],2:[function(require,module,exports){
 'use strict';
 
@@ -566,7 +559,8 @@ var SpatialHash = function () {
         this.dirty = options.dirty || 'dirty';
         this.width = this.height = 0;
         this.hash = {};
-        this.lists = [[]];
+        this.objects = [];
+        this.containers = [];
     }
 
     /**
@@ -589,7 +583,7 @@ var SpatialHash = function () {
                 object.staticObject = true;
             }
             this.updateObject(object);
-            this.lists[0].push(object);
+            this.containers[0].push(object);
         }
 
         /**
@@ -601,36 +595,38 @@ var SpatialHash = function () {
     }, {
         key: 'remove',
         value: function remove(object) {
-            this.lists[0].splice(this.list[0].indexOf(object), 1);
+            this.containers[0].splice(this.list[0].indexOf(object), 1);
             this.removeFromHash(object);
             return object;
         }
 
         /**
          * add an array of objects to be culled
-         * @param {Array} array
-         * @param {boolean} [staticObject] set to true if the objects in the list position/size does not change
-         * @return {Array} array
+         * @param {PIXI.Container} container
+         * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
          */
 
     }, {
-        key: 'addList',
-        value: function addList(list, staticObject) {
+        key: 'addContainer',
+        value: function addContainer(container, staticObject) {
+            var added = function (object) {
+                object[this.spatial] = { hashes: [] };
+                this.updateObject(object);
+            }.bind(this);
+
+            var removed = function (object) {
+                this.removeFromHash(object);
+            }.bind(this);
+
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (var _iterator = container.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var object = _step.value;
 
                     object[this.spatial] = { hashes: [] };
-                    if (this.calculatePIXI && this.dirtyTest) {
-                        object[this.dirty] = true;
-                    }
-                    if (staticObject) {
-                        list.staticObject = true;
-                    }
                     this.updateObject(object);
                 }
             } catch (err) {
@@ -648,25 +644,36 @@ var SpatialHash = function () {
                 }
             }
 
-            this.lists.push(list);
+            container.cull = {};
+            this.containers.push(container);
+            container.on('addedTo', added);
+            container.on('removedFrom', removed);
+            container.cull.added = added;
+            container.cull.removed = removed;
+            if (staticObject) {
+                container.cull.static = true;
+            }
         }
 
         /**
-         * remove an array added by addList()
-         * @param {Array} array
-         * @return {Array} array
+         * remove an array added by addContainer()
+         * @param {PIXI.Container} container
+         * @return {PIXI.Container} container
          */
 
     }, {
-        key: 'removeList',
-        value: function removeList(array) {
+        key: 'removeContainer',
+        value: function removeContainer(container) {
             var _this = this;
 
-            this.lists.splice(this.lists.indexOf(array), 1);
-            array.forEach(function (object) {
+            this.containers.splice(this.containers.indexOf(container), 1);
+            container.children.forEach(function (object) {
                 return _this.removeFromHash(object);
             });
-            return array;
+            container.off('added', container.cull.added);
+            container.off('removed', container.cull.removed);
+            delete container.cull;
+            return container;
         }
 
         /**
@@ -706,10 +713,10 @@ var SpatialHash = function () {
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = this.lists[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var list = _step2.value;
+                for (var _iterator2 = this.containers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var container = _step2.value;
 
-                    list.forEach(function (object) {
+                    container.children.forEach(function (object) {
                         return object[_this3.visible] = false;
                     });
                 }
@@ -745,34 +752,12 @@ var SpatialHash = function () {
                 var _iteratorError3 = undefined;
 
                 try {
-                    for (var _iterator3 = this.lists[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                        var list = _step3.value;
-                        var _iteratorNormalCompletion4 = true;
-                        var _didIteratorError4 = false;
-                        var _iteratorError4 = undefined;
+                    for (var _iterator3 = this.objects[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                        var object = _step3.value;
 
-                        try {
-                            for (var _iterator4 = list[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                                var object = _step4.value;
-
-                                if (object[this.dirty]) {
-                                    this.updateObject(object);
-                                    object[this.dirty] = false;
-                                }
-                            }
-                        } catch (err) {
-                            _didIteratorError4 = true;
-                            _iteratorError4 = err;
-                        } finally {
-                            try {
-                                if (!_iteratorNormalCompletion4 && _iterator4.return) {
-                                    _iterator4.return();
-                                }
-                            } finally {
-                                if (_didIteratorError4) {
-                                    throw _iteratorError4;
-                                }
-                            }
+                        if (object[this.dirty]) {
+                            this.updateObject(object);
+                            object[this.dirty] = false;
                         }
                     }
                 } catch (err) {
@@ -789,30 +774,82 @@ var SpatialHash = function () {
                         }
                     }
                 }
-            } else {
-                var _iteratorNormalCompletion5 = true;
-                var _didIteratorError5 = false;
-                var _iteratorError5 = undefined;
+
+                var _iteratorNormalCompletion4 = true;
+                var _didIteratorError4 = false;
+                var _iteratorError4 = undefined;
 
                 try {
-                    for (var _iterator5 = this.lists[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                        var _list = _step5.value;
+                    for (var _iterator4 = this.containers[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                        var container = _step4.value;
+                        var _iteratorNormalCompletion5 = true;
+                        var _didIteratorError5 = false;
+                        var _iteratorError5 = undefined;
 
-                        _list.forEach(function (object) {
-                            return _this4.updateObject(object);
-                        });
+                        try {
+                            for (var _iterator5 = container.children[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                                var _object = _step5.value;
+
+                                if (_object[this.dirty]) {
+                                    this.updateObject(_object);
+                                    _object[this.dirty] = false;
+                                }
+                            }
+                        } catch (err) {
+                            _didIteratorError5 = true;
+                            _iteratorError5 = err;
+                        } finally {
+                            try {
+                                if (!_iteratorNormalCompletion5 && _iterator5.return) {
+                                    _iterator5.return();
+                                }
+                            } finally {
+                                if (_didIteratorError5) {
+                                    throw _iteratorError5;
+                                }
+                            }
+                        }
                     }
                 } catch (err) {
-                    _didIteratorError5 = true;
-                    _iteratorError5 = err;
+                    _didIteratorError4 = true;
+                    _iteratorError4 = err;
                 } finally {
                     try {
-                        if (!_iteratorNormalCompletion5 && _iterator5.return) {
-                            _iterator5.return();
+                        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+                            _iterator4.return();
                         }
                     } finally {
-                        if (_didIteratorError5) {
-                            throw _iteratorError5;
+                        if (_didIteratorError4) {
+                            throw _iteratorError4;
+                        }
+                    }
+                }
+            } else {
+                var _iteratorNormalCompletion6 = true;
+                var _didIteratorError6 = false;
+                var _iteratorError6 = undefined;
+
+                try {
+                    for (var _iterator6 = this.containers[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                        var _container = _step6.value;
+
+                        if (!_container.cull.static) {
+                            _container.children.forEach(function (object) {
+                                return _this4.updateObject(object);
+                            });
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError6 = true;
+                    _iteratorError6 = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion6 && _iterator6.return) {
+                            _iterator6.return();
+                        }
+                    } finally {
+                        if (_didIteratorError6) {
+                            throw _iteratorError6;
                         }
                     }
                 }
@@ -843,6 +880,9 @@ var SpatialHash = function () {
             }
 
             var spatial = object[this.spatial];
+            if (!spatial) {
+                spatial = object[this.spatial] = { hashes: [] };
+            }
 
             var _getBounds = this.getBounds(AABB),
                 xStart = _getBounds.xStart,
@@ -987,13 +1027,13 @@ var SpatialHash = function () {
                     var entry = this.hash[x + ',' + y];
                     if (entry) {
                         if (simpleTest) {
-                            var _iteratorNormalCompletion6 = true;
-                            var _didIteratorError6 = false;
-                            var _iteratorError6 = undefined;
+                            var _iteratorNormalCompletion7 = true;
+                            var _didIteratorError7 = false;
+                            var _iteratorError7 = undefined;
 
                             try {
-                                for (var _iterator6 = entry[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                                    var object = _step6.value;
+                                for (var _iterator7 = entry[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                                    var object = _step7.value;
 
                                     var box = object[this.AABB];
                                     if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width && box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
@@ -1001,16 +1041,16 @@ var SpatialHash = function () {
                                     }
                                 }
                             } catch (err) {
-                                _didIteratorError6 = true;
-                                _iteratorError6 = err;
+                                _didIteratorError7 = true;
+                                _iteratorError7 = err;
                             } finally {
                                 try {
-                                    if (!_iteratorNormalCompletion6 && _iterator6.return) {
-                                        _iterator6.return();
+                                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                                        _iterator7.return();
                                     }
                                 } finally {
-                                    if (_didIteratorError6) {
-                                        throw _iteratorError6;
+                                    if (_didIteratorError7) {
+                                        throw _iteratorError7;
                                     }
                                 }
                             }
@@ -1080,13 +1120,13 @@ var SpatialHash = function () {
         value: function stats() {
             var visible = 0,
                 count = 0;
-            var _iteratorNormalCompletion7 = true;
-            var _didIteratorError7 = false;
-            var _iteratorError7 = undefined;
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
 
             try {
-                for (var _iterator7 = this.lists[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
-                    var list = _step7.value;
+                for (var _iterator8 = this.containers[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var list = _step8.value;
 
                     list.forEach(function (object) {
                         visible += object.visible ? 1 : 0;
@@ -1094,16 +1134,16 @@ var SpatialHash = function () {
                     });
                 }
             } catch (err) {
-                _didIteratorError7 = true;
-                _iteratorError7 = err;
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
-                        _iterator7.return();
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
                     }
                 } finally {
-                    if (_didIteratorError7) {
-                        throw _iteratorError7;
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
                     }
                 }
             }
