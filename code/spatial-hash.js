@@ -75,6 +75,7 @@ class SpatialHash
      * add an array of objects to be culled
      * @param {PIXI.Container} container
      * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
+     * note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved
      */
     addContainer(container, staticObject)
     {
@@ -425,13 +426,13 @@ class SpatialHash
         let visible = 0, count = 0
         for (let list of this.containers)
         {
-            list.forEach(object =>
+            for (let i = 0; i < list.children.length; i++)
             {
+                const object = list.children[i]
                 visible += object.visible ? 1 : 0
                 count++
-            })
+            }
         }
-
         return {
             total: count,
             visible,
@@ -459,7 +460,7 @@ class SpatialHash
         {
             total += this.hash[key].length
         }
-        return total / this.getBuckets()
+        return total / this.getBuckets().length
     }
 
     /**
@@ -479,14 +480,35 @@ class SpatialHash
         return largest
     }
 
-    /** helper function to evalute the hash table
-     * @param {AABB} AABB bounding box to search
+    /**
+     * gets quadrant bounds
+     * @return {Bounds}
+     */
+    getWorldBounds()
+    {
+        let xStart = Infinity, yStart = Infinity, xEnd = 0, yEnd = 0
+        for (let key in this.hash)
+        {
+            const split = key.split(',')
+            let x = parseInt(split[0])
+            let y = parseInt(split[1])
+            xStart = x < xStart ? x : xStart
+            yStart = y < yStart ? y : yStart
+            xEnd = x > xEnd ? x : xEnd
+            yEnd = y > yEnd ? y : yEnd
+        }
+        return { xStart, yStart, xEnd, yEnd }
+    }
+
+    /**
+     * helper function to evalute the hash table
+     * @param {AABB} [AABB] bounding box to search or entire world
      * @return {number} sparseness percentage (i.e., buckets with at least 1 element divided by total possible buckets)
      */
     getSparseness(AABB)
     {
         let count = 0, total = 0
-        const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
+        const { xStart, yStart, xEnd, yEnd } = AABB ? this.getBounds(AABB) : this.getWorldBounds()
         for (let y = yStart; y < yEnd; y++)
         {
             for (let x = xStart; x < xEnd; x++)

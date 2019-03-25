@@ -8,6 +8,9 @@ Features include:
 * also allow manual calculation for objects
 * bounds calculated from any viewport including pixi-viewport (pixi-viewport.getVisibleBounds())
 
+## pixi.js notes
+The Cull.SpatialHash.addContainer() only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved. The rest of the libraries functionality will work with older versions of pixi.js.
+
 ## Rationale
 Since I maintain pixi-viewport, I was asked a number of times for a culling library. Well here it is. Choose from two drop-in algorithms to cull your objects. 
 
