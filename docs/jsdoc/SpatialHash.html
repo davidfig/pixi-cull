@@ -160,7 +160,7 @@
             
                 <li class="parent  " data-name="SpatialHash#add"><a href="SpatialHash.html#add">add</a></li>
             
-                <li class="parent  " data-name="SpatialHash#addList"><a href="SpatialHash.html#addList">addList</a></li>
+                <li class="parent  " data-name="SpatialHash#addContainer"><a href="SpatialHash.html#addContainer">addContainer</a></li>
             
                 <li class="parent  " data-name="SpatialHash#cull"><a href="SpatialHash.html#cull">cull</a></li>
             
@@ -174,6 +174,8 @@
             
                 <li class="parent  " data-name="SpatialHash#getSparseness"><a href="SpatialHash.html#getSparseness">getSparseness</a></li>
             
+                <li class="parent  " data-name="SpatialHash#getWorldBounds"><a href="SpatialHash.html#getWorldBounds">getWorldBounds</a></li>
+            
                 <li class="parent  " data-name="SpatialHash#insert"><a href="SpatialHash.html#insert">insert</a></li>
             
                 <li class="parent  " data-name="SpatialHash#invisible"><a href="SpatialHash.html#invisible">invisible</a></li>
@@ -186,9 +188,9 @@
             
                 <li class="parent  " data-name="SpatialHash#remove"><a href="SpatialHash.html#remove">remove</a></li>
             
-                <li class="parent  " data-name="SpatialHash#removeFromHash"><a href="SpatialHash.html#removeFromHash">removeFromHash</a></li>
+                <li class="parent  " data-name="SpatialHash#removeContainer"><a href="SpatialHash.html#removeContainer">removeContainer</a></li>
             
-                <li class="parent  " data-name="SpatialHash#removeList"><a href="SpatialHash.html#removeList">removeList</a></li>
+                <li class="parent  " data-name="SpatialHash#removeFromHash"><a href="SpatialHash.html#removeFromHash">removeFromHash</a></li>
             
                 <li class="parent  " data-name="SpatialHash#stats"><a href="SpatialHash.html#stats">stats</a></li>
             
@@ -770,7 +772,7 @@
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line46">spatial-hash.js:46</a>
+            <a href="spatial-hash.js.html#line47">spatial-hash.js:47</a>
         </div>
         
     </div>
@@ -942,12 +944,12 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="addList">
-            <a class="share-icon" href="#addList"><span class="glyphicon glyphicon-link"></span></a>
+        <h4 class="name" id="addContainer">
+            <a class="share-icon" href="#addContainer"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
-                addList
+                addContainer
             </span>
-            <span class="signature">(array, <span class="optional">staticObject</span>)</span><span class="type-signature">Array</span>
+            <span class="signature">(container, <span class="optional">staticObject</span>)</span>
             
             
             
@@ -956,7 +958,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line79">spatial-hash.js:79</a>
+            <a href="spatial-hash.js.html#line80">spatial-hash.js:80</a>
         </div>
         
     </div>
@@ -998,13 +1000,13 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 	
         <tr>
             
-                <td class="name"><code>array</code></td>
+                <td class="name"><code>container</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">Array</span>
+<span class="param-type">PIXI.Container</span>
 
 
             
@@ -1049,7 +1051,8 @@ side effect: adds object.spatialHashes to track existing hashes</p>
                         
                     
                 
-                <p>set to true if the objects in the list position/size does not change</p></td>
+                <p>set to true if the objects in the container's position/size do not change
+note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved</p></td>
         </tr>
 	
 	
@@ -1090,35 +1093,6 @@ side effect: adds object.spatialHashes to track existing hashes</p>
     
 
     
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Array
-                        
-                    
-            </td>
-            <td class="description last">array</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
 
     
 </dd>
@@ -1141,7 +1115,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line115">spatial-hash.js:115</a>
+            <a href="spatial-hash.js.html#line131">spatial-hash.js:131</a>
         </div>
         
     </div>
@@ -1326,7 +1300,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line425">spatial-hash.js:425</a>
+            <a href="spatial-hash.js.html#line456">spatial-hash.js:456</a>
         </div>
         
     </div>
@@ -1431,7 +1405,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line222">spatial-hash.js:222</a>
+            <a href="spatial-hash.js.html#line253">spatial-hash.js:253</a>
         </div>
         
     </div>
@@ -1596,7 +1570,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line439">spatial-hash.js:439</a>
+            <a href="spatial-hash.js.html#line470">spatial-hash.js:470</a>
         </div>
         
     </div>
@@ -1701,7 +1675,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line416">spatial-hash.js:416</a>
+            <a href="spatial-hash.js.html#line447">spatial-hash.js:447</a>
         </div>
         
     </div>
@@ -1797,7 +1771,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             <span class="">
                 getSparseness
             </span>
-            <span class="signature">(AABB)</span><span class="type-signature">number</span>
+            <span class="signature">(<span class="optional">AABB</span>)</span><span class="type-signature">number</span>
             
             
             
@@ -1806,7 +1780,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line456">spatial-hash.js:456</a>
+            <a href="spatial-hash.js.html#line508">spatial-hash.js:508</a>
         </div>
         
     </div>
@@ -1864,7 +1838,14 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             
             <td class="description last">
                 
-                <p>bounding box to search</p></td>
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>bounding box to search or entire world</p></td>
         </tr>
 	
 	
@@ -1942,6 +1923,111 @@ side effect: adds object.spatialHashes to track existing hashes</p>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="getWorldBounds">
+            <a class="share-icon" href="#getWorldBounds"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                getWorldBounds
+            </span>
+            <span class="signature">()</span><span class="type-signature"><a href="global.html#Bounds">Bounds</a></span>
+            
+            
+            
+            
+        </h4>
+
+        
+        <div class="tag-source">
+            <a href="spatial-hash.js.html#line487">spatial-hash.js:487</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>gets quadrant bounds</p>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="global.html#Bounds">Bounds</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="insert">
             <a class="share-icon" href="#insert"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
@@ -1956,7 +2042,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line257">spatial-hash.js:257</a>
+            <a href="spatial-hash.js.html#line288">spatial-hash.js:288</a>
         </div>
         
     </div>
@@ -2101,7 +2187,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line130">spatial-hash.js:130</a>
+            <a href="spatial-hash.js.html#line146">spatial-hash.js:146</a>
         </div>
         
     </div>
@@ -2177,7 +2263,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line291">spatial-hash.js:291</a>
+            <a href="spatial-hash.js.html#line322">spatial-hash.js:322</a>
         </div>
         
     </div>
@@ -2327,7 +2413,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line304">spatial-hash.js:304</a>
+            <a href="spatial-hash.js.html#line335">spatial-hash.js:335</a>
         </div>
         
     </div>
@@ -2524,7 +2610,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line349">spatial-hash.js:349</a>
+            <a href="spatial-hash.js.html#line380">spatial-hash.js:380</a>
         </div>
         
     </div>
@@ -2754,7 +2840,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line66">spatial-hash.js:66</a>
+            <a href="spatial-hash.js.html#line67">spatial-hash.js:67</a>
         </div>
         
     </div>
@@ -2890,6 +2976,156 @@ stops iterating if the callback returns true</p>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="removeContainer">
+            <a class="share-icon" href="#removeContainer"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                removeContainer
+            </span>
+            <span class="signature">(container)</span><span class="type-signature">PIXI.Container</span>
+            
+            
+            
+            
+        </h4>
+
+        
+        <div class="tag-source">
+            <a href="spatial-hash.js.html#line115">spatial-hash.js:115</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>remove an array added by addContainer()</p>
+    </div>
+    
+
+    
+
+    
+
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>container</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">PIXI.Container</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        PIXI.Container
+                        
+                    
+            </td>
+            <td class="description last">container</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="removeFromHash">
             <a class="share-icon" href="#removeFromHash"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
@@ -2904,7 +3140,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line275">spatial-hash.js:275</a>
+            <a href="spatial-hash.js.html#line306">spatial-hash.js:306</a>
         </div>
         
     </div>
@@ -3013,156 +3249,6 @@ automatically called from updateObject()</p>
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="removeList">
-            <a class="share-icon" href="#removeList"><span class="glyphicon glyphicon-link"></span></a>
-            <span class="">
-                removeList
-            </span>
-            <span class="signature">(array)</span><span class="type-signature">Array</span>
-            
-            
-            
-            
-        </h4>
-
-        
-        <div class="tag-source">
-            <a href="spatial-hash.js.html#line102">spatial-hash.js:102</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>remove an array added by addList()</p>
-    </div>
-    
-
-    
-
-    
-
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-
-    
-<dl class="details">
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Array
-                        
-                    
-            </td>
-            <td class="description last">array</td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="stats">
             <a class="share-icon" href="#stats"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
@@ -3177,7 +3263,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line393">spatial-hash.js:393</a>
+            <a href="spatial-hash.js.html#line424">spatial-hash.js:424</a>
         </div>
         
     </div>
@@ -3282,7 +3368,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line173">spatial-hash.js:173</a>
+            <a href="spatial-hash.js.html#line200">spatial-hash.js:200</a>
         </div>
         
     </div>
@@ -3439,7 +3525,7 @@ automatically called from updateObjects()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line142">spatial-hash.js:142</a>
+            <a href="spatial-hash.js.html#line158">spatial-hash.js:158</a>
         </div>
         
     </div>
@@ -3518,7 +3604,7 @@ automatically called from update() when skipUpdate=false</p>
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Feb 24 2019 09:13:56 GMT+0800 (GMT+08:00)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Mar 25 2019 09:10:55 GMT+0800 (GMT+08:00)
             </div>
         </footer>
     </div>

@@ -604,6 +604,7 @@ var SpatialHash = function () {
          * add an array of objects to be culled
          * @param {PIXI.Container} container
          * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
+         * note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved
          */
 
     }, {
@@ -646,8 +647,8 @@ var SpatialHash = function () {
 
             container.cull = {};
             this.containers.push(container);
-            container.on('addedTo', added);
-            container.on('removedFrom', removed);
+            container.on('childAdded', added);
+            container.on('childRemoved', removed);
             container.cull.added = added;
             container.cull.removed = removed;
             if (staticObject) {
@@ -1128,10 +1129,11 @@ var SpatialHash = function () {
                 for (var _iterator8 = this.containers[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
                     var list = _step8.value;
 
-                    list.forEach(function (object) {
+                    for (var i = 0; i < list.children.length; i++) {
+                        var object = list.children[i];
                         visible += object.visible ? 1 : 0;
                         count++;
-                    });
+                    }
                 }
             } catch (err) {
                 _didIteratorError8 = true;
@@ -1178,7 +1180,7 @@ var SpatialHash = function () {
             for (var key in this.hash) {
                 total += this.hash[key].length;
             }
-            return total / this.getBuckets();
+            return total / this.getBuckets().length;
         }
 
         /**
@@ -1198,8 +1200,33 @@ var SpatialHash = function () {
             return largest;
         }
 
-        /** helper function to evalute the hash table
-         * @param {AABB} AABB bounding box to search
+        /**
+         * gets quadrant bounds
+         * @return {Bounds}
+         */
+
+    }, {
+        key: 'getWorldBounds',
+        value: function getWorldBounds() {
+            var xStart = Infinity,
+                yStart = Infinity,
+                xEnd = 0,
+                yEnd = 0;
+            for (var key in this.hash) {
+                var split = key.split(',');
+                var x = parseInt(split[0]);
+                var y = parseInt(split[1]);
+                xStart = x < xStart ? x : xStart;
+                yStart = y < yStart ? y : yStart;
+                xEnd = x > xEnd ? x : xEnd;
+                yEnd = y > yEnd ? y : yEnd;
+            }
+            return { xStart: xStart, yStart: yStart, xEnd: xEnd, yEnd: yEnd };
+        }
+
+        /**
+         * helper function to evalute the hash table
+         * @param {AABB} [AABB] bounding box to search or entire world
          * @return {number} sparseness percentage (i.e., buckets with at least 1 element divided by total possible buckets)
          */
 
@@ -1209,11 +1236,11 @@ var SpatialHash = function () {
             var count = 0,
                 total = 0;
 
-            var _getBounds4 = this.getBounds(AABB),
-                xStart = _getBounds4.xStart,
-                yStart = _getBounds4.yStart,
-                xEnd = _getBounds4.xEnd,
-                yEnd = _getBounds4.yEnd;
+            var _ref = AABB ? this.getBounds(AABB) : this.getWorldBounds(),
+                xStart = _ref.xStart,
+                yStart = _ref.yStart,
+                xEnd = _ref.xEnd,
+                yEnd = _ref.yEnd;
 
             for (var y = yStart; y < yEnd; y++) {
                 for (var x = xStart; x < xEnd; x++) {
