@@ -33,10 +33,11 @@
                 <div style="margin: 1rem 0">
                     <div>Visible dots: <span id="visible"></span></div>
                     <div>Culled dots: <span id="culled"></span></div>
-                    <div>Total dots: <span id="total"></span></div>
+                    <div>Total dots: <span title="click to change number of dots" style="border-bottom:1px dotted black" id="total"></span></div>
                 </div>
 
                 <div id="buckets">
+                    <div>Bucket Size: <span title="click to change bucket size" style="border-bottom:1px dotted black" id="bucket-size">5000</span></div>
                     <div>Visible Buckets: <span id="visible-buckets"></span></div>
                     <div>Culled Buckets: <span id="culled-buckets"></span></div>
                     <div>Total Buckets: <span id="total-buckets"></span></div>
@@ -49,7 +50,13 @@
                 </div>
 
                 <div class="checkbox"><label><input id="dirty-test" type="checkbox" checked>options.dirtyTest</label></div>
+
+                <div class="demo-options">
+                    <div class="demo-options-title">Demo Options</div>
+                    <div><label><input id="animate" type="checkbox" checked>animate boxes</label></div>
+                    <div><label><input id="hash-marks" type="checkbox" checked>hash marks</label></div>
+                </div>
         </div>
-        <div class="instructions fade">Pinch and drag to move the viewport</div>
+        <div class="instructions fade">Drag to move the viewport. Pinch or wheelscroll to zoom the viewport.</div>
     </body>
 </html>

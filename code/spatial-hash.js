@@ -38,6 +38,21 @@ class SpatialHash
     }
 
     /**
+     * remove cull and cleans up event listeners on containers
+     */
+    destroy()
+    {
+        while (this.objects.length)
+        {
+            this.removeFromHash(this.object[0])
+        }
+        while (this.containers.length)
+        {
+            this.removeContainer(this.containers[0])
+        }
+    }
+
+    /**
      * add an object to be culled
      * side effect: adds object.spatialHashes to track existing hashes
      * @param {*} object

@@ -799,6 +799,11 @@ chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
+clicked@^1.1.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/clicked/-/clicked-1.3.0.tgz#315f6fd3b05d320f0d3773d6d2de48b4bf7e8a68"
+  integrity sha512-P0q012ZGUFDE6XN4MVTgqpkiROW5DeuSo6H8wzLaNiYZYJ8SLSHSwzAe2//LkLx2BtdDBTwM0mR5aSknGoyjHw==
+
 core-js@^2.4.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.1.tgz#87416ae817de957a3f249b3b5ca475d4aaed6042"
@@ -815,6 +820,14 @@ earcut@^2.1.3:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.1.5.tgz#829280a9a3a0f5fee0529f0a47c3e4eff09b21e4"
   integrity sha512-QFWC7ywTVLtvRAJTVp8ugsuuGQ5mVqNmJ1cRYeLrSHgP3nycr2RHTJob9OtM0v8ujuoKN0NY1a93J/omeTL1PA==
+
+easyedit@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/easyedit/-/easyedit-1.5.0.tgz#03a68d2cd44bfea060f2a3c1a48340ed3bc73a9c"
+  integrity sha1-A6aNLNRL/qBg8qPBpINA7TvHOpw=
+  dependencies:
+    clicked "^1.1.0"
+    eventemitter3 "^3.0.0"
 
 electron-to-chromium@^1.3.47:
   version "1.3.95"
@@ -836,7 +849,7 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
   integrity sha1-Cr9PHKpbyx96nYrMbepPqqBLrJs=
 
-eventemitter3@^3.1.0:
+eventemitter3@^3.0.0, eventemitter3@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
   integrity sha512-ivIvhpq/Y0uSjcHDcOIccjmYjGLcP09MFGE7ysAwkAvkXfpZlC985pH2/ui64DKazbTW/4kN3yqozUxlXzI6cA==

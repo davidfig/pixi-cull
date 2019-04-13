@@ -9,9 +9,9 @@ class Simple
      * creates a simple cull
      * @param {object} [options]
      * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
-     * @param {string} [options.dirtyTest=true] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
-     * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }; not needed if options.calculatePIXI=true
+     * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses user-supplied object[options.AABB] for bounding box
+     * @param {string} [options.dirtyTest=true] only update bounding box for objects with object.dirty=true
+     * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[options.AABB] = { x: number, y: number, width: number, height: number }; not needed if options.calculatePIXI=true
      */
     constructor(options)
     {
@@ -20,6 +20,14 @@ class Simple
         this.calculatePIXI = typeof options.calculatePIXI !== 'undefined' ? options.calculatePIXI : true
         this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true
         this.AABB = options.AABB || 'AABB'
+        this.lists = [[]]
+    }
+
+    /**
+     * remove cull
+     */
+    destroy()
+    {
         this.lists = [[]]
     }
 

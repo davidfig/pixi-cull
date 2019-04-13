@@ -62,8 +62,18 @@ body
 
 .fade
 {
-    transition-delay: 2s;
+    transition-delay: 5s;
     transition-property: opacity;
     transition-duration: 2s;
     transition-timing-function: ease-in-out;
+}
+
+.demo-options-title
+{
+    margin-bottom: 0.5em;
+}
+
+.demo-options
+{
+    margin-top: 1em;
 }
