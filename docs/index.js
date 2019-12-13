@@ -1,5 +1,5 @@
 const PIXI = window.PIXI = require('pixi.js')
-const Viewport = require('pixi-viewport')
+const Viewport = require('pixi-viewport').Viewport
 const Random = require('yy-random')
 const forkMe = require('fork-me-github')
 const FPS = require('yy-fps')
@@ -88,6 +88,15 @@ function pixi()
     const ticker = PIXI.ticker || PIXI.Ticker
     ticker.shared.add(update)
     // _test = _viewport.addChild(new PIXI.Graphics())
+
+    window.addEventListener('resize', () => {
+        // weird hack needed for flexbox to work correctly; probably a better way to do this
+        _application.renderer.resize(0, 0)
+
+        _viewport.resize(view.offsetWidth, view.offsetHeight)
+        _application.renderer.resize(view.offsetWidth, view.offsetHeight)
+        _viewport.dirty = true
+    })
 }
 
 function dots()
