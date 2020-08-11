@@ -165,8 +165,8 @@ class Simple
     {
         const box = object.getLocalBounds()
         object[this.AABB] = object[this.AABB] || {}
-        object[this.AABB].x = object.x + box.x * object.scale.x
-        object[this.AABB].y = object.y + box.y * object.scale.y
+        object[this.AABB].x = object.x + (box.x - object.pivot.x) * object.scale.x
+        object[this.AABB].y = object.y + (box.y - object.pivot.y) * object.scale.y
         object[this.AABB].width = box.width * object.scale.x
         object[this.AABB].height = box.height * object.scale.y
     }
