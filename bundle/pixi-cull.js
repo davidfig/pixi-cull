@@ -320,8 +320,8 @@ var Simple = function () {
         value: function updateObject(object) {
             var box = object.getLocalBounds();
             object[this.AABB] = object[this.AABB] || {};
-            object[this.AABB].x = object.x + box.x * object.scale.x;
-            object[this.AABB].y = object.y + box.y * object.scale.y;
+            object[this.AABB].x = object.x + (box.x - object.pivot.x) * object.scale.x;
+            object[this.AABB].y = object.y + (box.y - object.pivot.y) * object.scale.y;
             object[this.AABB].width = box.width * object.scale.x;
             object[this.AABB].height = box.height * object.scale.y;
         }
@@ -871,8 +871,8 @@ var SpatialHash = function () {
             if (this.calculatePIXI) {
                 var box = object.getLocalBounds();
                 AABB = object[this.AABB] = {
-                    x: object.x + box.x * object.scale.x,
-                    y: object.y + box.y * object.scale.y,
+                    x: object.x + (box.x - object.pivot.x) * object.scale.x,
+                    y: object.y + (box.y - object.pivot.y) * object.scale.y,
                     width: box.width * object.scale.x,
                     height: box.height * object.scale.y
                 };
