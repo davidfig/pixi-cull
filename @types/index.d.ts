@@ -28,11 +28,11 @@ export declare class Simple {
     protected lists: PIXI.DisplayObject[][];
 
     constructor(options?: SimpleOptions);
-    addList(array: PIXI.DisplayObject[], staticObject: boolean): PIXI.DisplayObject[];
+    addList(array: PIXI.DisplayObject[], staticObject?: boolean): PIXI.DisplayObject[];
     removeList(array: PIXI.DisplayObject[]): PIXI.DisplayObject[];
-    add(object: PIXI.DisplayObject, staticObject: boolean): PIXI.DisplayObject;
+    add(object: PIXI.DisplayObject, staticObject?: boolean): PIXI.DisplayObject;
     remove(object: PIXI.DisplayObject): PIXI.DisplayObject;
-    cull(bounds: SimpleBounds, skipUpdate: boolean): void;
+    cull(bounds: SimpleBounds, skipUpdate?: boolean): void;
     updateObjects(): void;
     updateObject(object: PIXI.DisplayObject): void;
     query(bounds: SimpleBounds): PIXI.DisplayObject[];
@@ -86,11 +86,11 @@ export declare class SpatialHash {
     containers: PIXI.Container[];
 
     constructor(options?: SpatialHashOptions);
-    add(object: PIXI.DisplayObject, staticObject: boolean): void;
+    add(object: PIXI.DisplayObject, staticObject?: boolean): void;
     remove(object: PIXI.DisplayObject): PIXI.DisplayObject;
-    addContainer(container: PIXI.Container, staticObject: boolean): void;
+    addContainer(container: PIXI.Container, staticObject?: boolean): void;
     removeContainer(container: PIXI.Container): PIXI.Container;
-    cull(AABB: AABB, skipUpdate: boolean): number;
+    cull(AABB: AABB, skipUpdate?: boolean): number;
     invisible(): void;
     updateObjects(): void;
     updateObject(object: PIXI.DisplayObject): void;
@@ -106,5 +106,5 @@ export declare class SpatialHash {
     getAverageSize(): number;
     getLargest(): number;
     getWorldBounds(): SpatialHashBounds;
-    getSparseness(AABB: AABB): number;
+    getSparseness(AABB?: AABB): number;
 }
