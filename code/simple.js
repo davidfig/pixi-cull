@@ -10,7 +10,7 @@ class Simple
      * @param {object} [options]
      * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
      * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
-     * @param {string} [options.dirtyTest=true] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
+     * @param {string} [options.dirtyTest=true] only update the AABB boxfor objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }; not needed if options.calculatePIXI=true
      */
     constructor(options)
