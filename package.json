@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "a library to visibly cull objects designed to work with pixi.js",
   "main": "dist/index.js",
+  "types": "@types/index.d.ts",
   "scripts": {
     "test": "budo docs/index.js:bundle.js --dir docs",
     "upgrade": "yarn upgrade-interactive --latest",
