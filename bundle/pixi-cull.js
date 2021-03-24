@@ -24,7 +24,7 @@ var Simple = function () {
      * @param {object} [options]
      * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
      * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
-     * @param {string} [options.dirtyTest=true] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
+     * @param {string} [options.dirtyTest=true] only update the AABB boxfor objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }; not needed if options.calculatePIXI=true
      */
     function Simple(options) {
@@ -681,19 +681,25 @@ var SpatialHash = function () {
          * update the hashes and cull the items in the list
          * @param {AABB} AABB
          * @param {boolean} [skipUpdate] skip updating the hashes of all objects
+         * @param {Function} [callback] callback for each item that is not culled - note, this function is called before setting `object.visible=true`
          * @return {number} number of buckets in results
          */
 
     }, {
         key: 'cull',
-        value: function cull(AABB, skipUpdate) {
+        value: function cull(AABB, skipUpdate, callback) {
             var _this2 = this;
 
             if (!skipUpdate) {
                 this.updateObjects();
             }
             this.invisible();
-            var objects = this.query(AABB, this.simpleTest);
+            var objects = void 0;
+            if (callback) {
+                objects = this.queryCallbackAll(AABB, this.simpleTest, callback);
+            } else {
+                objects = this.query(AABB, this.simpleTest);
+            }
             objects.forEach(function (object) {
                 return object[_this2.visible] = true;
             });
@@ -1067,6 +1073,96 @@ var SpatialHash = function () {
         }
 
         /**
+         * returns an array of objects contained within bounding box with a callback on each non-culled object
+         * this function is different from queryCallback, which cancels the query when a callback returns true
+         * @param {AABB} AABB bounding box to search
+         * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
+         * @param {Function} callback - function to run for each non-culled object
+         * @return {object[]} search results
+         */
+
+    }, {
+        key: 'queryCallbackAll',
+        value: function queryCallbackAll(AABB, simpleTest, callback) {
+            simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true;
+            var buckets = 0;
+            var results = [];
+
+            var _getBounds3 = this.getBounds(AABB),
+                xStart = _getBounds3.xStart,
+                yStart = _getBounds3.yStart,
+                xEnd = _getBounds3.xEnd,
+                yEnd = _getBounds3.yEnd;
+
+            for (var y = yStart; y <= yEnd; y++) {
+                for (var x = xStart; x <= xEnd; x++) {
+                    var entry = this.hash[x + ',' + y];
+                    if (entry) {
+                        if (simpleTest) {
+                            var _iteratorNormalCompletion8 = true;
+                            var _didIteratorError8 = false;
+                            var _iteratorError8 = undefined;
+
+                            try {
+                                for (var _iterator8 = entry[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                                    var object = _step8.value;
+
+                                    var box = object[this.AABB];
+                                    if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width && box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
+                                        results.push(object);
+                                        callback(object);
+                                    }
+                                }
+                            } catch (err) {
+                                _didIteratorError8 = true;
+                                _iteratorError8 = err;
+                            } finally {
+                                try {
+                                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                                        _iterator8.return();
+                                    }
+                                } finally {
+                                    if (_didIteratorError8) {
+                                        throw _iteratorError8;
+                                    }
+                                }
+                            }
+                        } else {
+                            results = results.concat(entry);
+                            var _iteratorNormalCompletion9 = true;
+                            var _didIteratorError9 = false;
+                            var _iteratorError9 = undefined;
+
+                            try {
+                                for (var _iterator9 = entry[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                                    var _object2 = _step9.value;
+
+                                    callback(_object2);
+                                }
+                            } catch (err) {
+                                _didIteratorError9 = true;
+                                _iteratorError9 = err;
+                            } finally {
+                                try {
+                                    if (!_iteratorNormalCompletion9 && _iterator9.return) {
+                                        _iterator9.return();
+                                    }
+                                } finally {
+                                    if (_didIteratorError9) {
+                                        throw _iteratorError9;
+                                    }
+                                }
+                            }
+                        }
+                        buckets++;
+                    }
+                }
+            }
+            this.lastBuckets = buckets;
+            return results;
+        }
+
+        /**
          * iterates through objects contained within bounding box
          * stops iterating if the callback returns true
          * @param {AABB} AABB bounding box to search
@@ -1080,11 +1176,11 @@ var SpatialHash = function () {
         value: function queryCallback(AABB, callback, simpleTest) {
             simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true;
 
-            var _getBounds3 = this.getBounds(AABB),
-                xStart = _getBounds3.xStart,
-                yStart = _getBounds3.yStart,
-                xEnd = _getBounds3.xEnd,
-                yEnd = _getBounds3.yEnd;
+            var _getBounds4 = this.getBounds(AABB),
+                xStart = _getBounds4.xStart,
+                yStart = _getBounds4.yStart,
+                xEnd = _getBounds4.xEnd,
+                yEnd = _getBounds4.yEnd;
 
             for (var y = yStart; y <= yEnd; y++) {
                 for (var x = xStart; x <= xEnd; x++) {
@@ -1121,13 +1217,13 @@ var SpatialHash = function () {
         value: function stats() {
             var visible = 0,
                 count = 0;
-            var _iteratorNormalCompletion8 = true;
-            var _didIteratorError8 = false;
-            var _iteratorError8 = undefined;
+            var _iteratorNormalCompletion10 = true;
+            var _didIteratorError10 = false;
+            var _iteratorError10 = undefined;
 
             try {
-                for (var _iterator8 = this.containers[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
-                    var list = _step8.value;
+                for (var _iterator10 = this.containers[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                    var list = _step10.value;
 
                     for (var i = 0; i < list.children.length; i++) {
                         var object = list.children[i];
@@ -1136,16 +1232,16 @@ var SpatialHash = function () {
                     }
                 }
             } catch (err) {
-                _didIteratorError8 = true;
-                _iteratorError8 = err;
+                _didIteratorError10 = true;
+                _iteratorError10 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
-                        _iterator8.return();
+                    if (!_iteratorNormalCompletion10 && _iterator10.return) {
+                        _iterator10.return();
                     }
                 } finally {
-                    if (_didIteratorError8) {
-                        throw _iteratorError8;
+                    if (_didIteratorError10) {
+                        throw _iteratorError10;
                     }
                 }
             }
@@ -1257,6 +1353,7 @@ var SpatialHash = function () {
 
 /**
  * @typedef {object} Stats
+ * @property {number} buckets
  * @property {number} total
  * @property {number} visible
  * @property {number} culled

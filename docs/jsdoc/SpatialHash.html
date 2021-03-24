@@ -186,6 +186,8 @@
             
                 <li class="parent  " data-name="SpatialHash#queryCallback"><a href="SpatialHash.html#queryCallback">queryCallback</a></li>
             
+                <li class="parent  " data-name="SpatialHash#queryCallbackAll"><a href="SpatialHash.html#queryCallbackAll">queryCallbackAll</a></li>
+            
                 <li class="parent  " data-name="SpatialHash#remove"><a href="SpatialHash.html#remove">remove</a></li>
             
                 <li class="parent  " data-name="SpatialHash#removeContainer"><a href="SpatialHash.html#removeContainer">removeContainer</a></li>
@@ -246,7 +248,7 @@
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line21">spatial-hash.js:21</a>
+            <a href="spatial-hash.js.html#line20">spatial-hash.js:20</a>
         </div>
         
     </div>
@@ -772,7 +774,7 @@
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line47">spatial-hash.js:47</a>
+            <a href="spatial-hash.js.html#line45">spatial-hash.js:45</a>
         </div>
         
     </div>
@@ -958,7 +960,7 @@ side effect: adds object.spatialHashes to track existing hashes</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line80">spatial-hash.js:80</a>
+            <a href="spatial-hash.js.html#line74">spatial-hash.js:74</a>
         </div>
         
     </div>
@@ -1106,7 +1108,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
             <span class="">
                 cull
             </span>
-            <span class="signature">(AABB, <span class="optional">skipUpdate</span>)</span><span class="type-signature">number</span>
+            <span class="signature">(AABB, <span class="optional">skipUpdate</span>, <span class="optional">callback</span>)</span><span class="type-signature">number</span>
             
             
             
@@ -1115,7 +1117,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line131">spatial-hash.js:131</a>
+            <a href="spatial-hash.js.html#line120">spatial-hash.js:120</a>
         </div>
         
     </div>
@@ -1212,6 +1214,36 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
         </tr>
 	
 	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>callback for each item that is not culled - note, this function is called before setting <code>object.visible=true</code></p></td>
+        </tr>
+	
+	
 	</tbody>
 </table>
     
@@ -1300,7 +1332,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line456">spatial-hash.js:456</a>
+            <a href="spatial-hash.js.html#line431">spatial-hash.js:431</a>
         </div>
         
     </div>
@@ -1405,7 +1437,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line253">spatial-hash.js:253</a>
+            <a href="spatial-hash.js.html#line223">spatial-hash.js:223</a>
         </div>
         
     </div>
@@ -1570,7 +1602,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line470">spatial-hash.js:470</a>
+            <a href="spatial-hash.js.html#line443">spatial-hash.js:443</a>
         </div>
         
     </div>
@@ -1675,7 +1707,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line447">spatial-hash.js:447</a>
+            <a href="spatial-hash.js.html#line423">spatial-hash.js:423</a>
         </div>
         
     </div>
@@ -1780,7 +1812,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line508">spatial-hash.js:508</a>
+            <a href="spatial-hash.js.html#line476">spatial-hash.js:476</a>
         </div>
         
     </div>
@@ -1937,7 +1969,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line487">spatial-hash.js:487</a>
+            <a href="spatial-hash.js.html#line457">spatial-hash.js:457</a>
         </div>
         
     </div>
@@ -2042,7 +2074,7 @@ note: this only works with pixi v5.0.0rc2+ because it relies on the new containe
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line288">spatial-hash.js:288</a>
+            <a href="spatial-hash.js.html#line254">spatial-hash.js:254</a>
         </div>
         
     </div>
@@ -2187,7 +2219,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line146">spatial-hash.js:146</a>
+            <a href="spatial-hash.js.html#line138">spatial-hash.js:138</a>
         </div>
         
     </div>
@@ -2263,7 +2295,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line322">spatial-hash.js:322</a>
+            <a href="spatial-hash.js.html#line282">spatial-hash.js:282</a>
         </div>
         
     </div>
@@ -2413,7 +2445,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line335">spatial-hash.js:335</a>
+            <a href="spatial-hash.js.html#line294">spatial-hash.js:294</a>
         </div>
         
     </div>
@@ -2610,7 +2642,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line380">spatial-hash.js:380</a>
+            <a href="spatial-hash.js.html#line370">spatial-hash.js:370</a>
         </div>
         
     </div>
@@ -2826,6 +2858,236 @@ stops iterating if the callback returns true</p>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="queryCallbackAll">
+            <a class="share-icon" href="#queryCallbackAll"><span class="glyphicon glyphicon-link"></span></a>
+            <span class="">
+                queryCallbackAll
+            </span>
+            <span class="signature">(AABB, <span class="optional">simpleTest</span>, callback)</span><span class="type-signature">Array.&lt;object></span>
+            
+            
+            
+            
+        </h4>
+
+        
+        <div class="tag-source">
+            <a href="spatial-hash.js.html#line330">spatial-hash.js:330</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>returns an array of objects contained within bounding box with a callback on each non-culled object
+this function is different from queryCallback, which cancels the query when a callback returns true</p>
+    </div>
+    
+
+    
+
+    
+
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Default</th>
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>AABB</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#AABB">AABB</a></span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>bounding box to search</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>simpleTest</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>perform a simple bounds check of all items in the buckets</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+            
+            
+                <td class="default">
+                
+                </td>
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                <p>function to run for each non-culled object</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Array.&lt;object>
+                        
+                    
+            </td>
+            <td class="description last">search results</td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="remove">
             <a class="share-icon" href="#remove"><span class="glyphicon glyphicon-link"></span></a>
             <span class="">
@@ -2840,7 +3102,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line67">spatial-hash.js:67</a>
+            <a href="spatial-hash.js.html#line62">spatial-hash.js:62</a>
         </div>
         
     </div>
@@ -2990,7 +3252,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line115">spatial-hash.js:115</a>
+            <a href="spatial-hash.js.html#line104">spatial-hash.js:104</a>
         </div>
         
     </div>
@@ -3140,7 +3402,7 @@ stops iterating if the callback returns true</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line306">spatial-hash.js:306</a>
+            <a href="spatial-hash.js.html#line268">spatial-hash.js:268</a>
         </div>
         
     </div>
@@ -3263,7 +3525,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line424">spatial-hash.js:424</a>
+            <a href="spatial-hash.js.html#line403">spatial-hash.js:403</a>
         </div>
         
     </div>
@@ -3368,7 +3630,7 @@ automatically called from updateObject()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line200">spatial-hash.js:200</a>
+            <a href="spatial-hash.js.html#line179">spatial-hash.js:179</a>
         </div>
         
     </div>
@@ -3525,7 +3787,7 @@ automatically called from updateObjects()</p>
 
         
         <div class="tag-source">
-            <a href="spatial-hash.js.html#line158">spatial-hash.js:158</a>
+            <a href="spatial-hash.js.html#line148">spatial-hash.js:148</a>
         </div>
         
     </div>
@@ -3604,7 +3866,7 @@ automatically called from update() when skipUpdate=false</p>
 
         <footer class="content-size">
             <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.5</a> on Fri Jan 15 2021 08:05:29 GMT+0800 (Taipei Standard Time)
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Thu Mar 25 2021 06:22:44 GMT+0800 (Taipei Standard Time)
             </div>
         </footer>
     </div>
