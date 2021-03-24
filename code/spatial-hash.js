@@ -114,14 +114,20 @@ class SpatialHash {
      * update the hashes and cull the items in the list
      * @param {AABB} AABB
      * @param {boolean} [skipUpdate] skip updating the hashes of all objects
+     * @param {Function} [callback] callback for each item that is not culled - note, this function is called before setting `object.visible=true`
      * @return {number} number of buckets in results
      */
-    cull(AABB, skipUpdate) {
+    cull(AABB, skipUpdate, callback) {
         if (!skipUpdate) {
             this.updateObjects()
         }
         this.invisible()
-        const objects = this.query(AABB, this.simpleTest)
+        let objects
+        if (callback) {
+            objects = this.queryCallbackAll(AABB, this.simpleTest, callback)
+        } else {
+            objects = this.query(AABB, this.simpleTest)
+        }
         objects.forEach(object => object[this.visible] = true)
         return this.lastBuckets
     }
@@ -298,12 +304,52 @@ class SpatialHash {
                         for (let object of entry) {
                             const box = object[this.AABB]
                             if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
-                            box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
+                                box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
                                 results.push(object)
                             }
                         }
                     } else {
                         results = results.concat(entry)
+                    }
+                    buckets++
+                }
+            }
+        }
+        this.lastBuckets = buckets
+        return results
+    }
+
+    /**
+     * returns an array of objects contained within bounding box with a callback on each non-culled object
+     * this function is different from queryCallback, which cancels the query when a callback returns true
+     * @param {AABB} AABB bounding box to search
+     * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
+     * @param {Function} callback - function to run for each non-culled object
+     * @return {object[]} search results
+     */
+    queryCallbackAll(AABB, simpleTest, callback) {
+        simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true
+        let buckets = 0
+        let results = []
+        const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
+        for (let y = yStart; y <= yEnd; y++) {
+            for (let x = xStart; x <= xEnd; x++) {
+                const entry = this.hash[x + ',' + y]
+                if (entry) {
+                    if (simpleTest) {
+                        for (let object of entry) {
+                            const box = object[this.AABB]
+                            if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
+                            box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
+                                results.push(object)
+                                callback(object)
+                            }
+                        }
+                    } else {
+                        results = results.concat(entry)
+                        for (const object of entry) {
+                            callback(object)
+                        }
                     }
                     buckets++
                 }
@@ -442,6 +488,7 @@ class SpatialHash {
 
 /**
  * @typedef {object} Stats
+ * @property {number} buckets
  * @property {number} total
  * @property {number} visible
  * @property {number} culled

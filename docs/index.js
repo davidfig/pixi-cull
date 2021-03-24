@@ -15,8 +15,7 @@ const HEIGHT = 50000
 const DOTS = 10000
 const DOTS_SIZE = 100
 
-function ui()
-{
+function ui() {
     _fps = new FPS({ side: 'bottomleft' })
     _div = {
         choices: document.getElementById('choices'),
@@ -37,39 +36,31 @@ function ui()
 
     _div.buckets.style.display = _mode === 'hash' ? 'block' : 'none'
 
-    _div.choices.addEventListener('change', () =>
-    {
+    _div.choices.addEventListener('change', () => {
         _mode = _div.choices.querySelector('input[name=cull-types]:checked').value
-        if (_mode === 'none')
-        {
-            for (let dot of _dots.children)
-            {
+        if (_mode === 'none') {
+            for (let dot of _dots.children) {
                 dot.visible = true
             }
         }
         updateCull()
         _div.buckets.style.display = _mode === 'hash' ? 'block' : 'none'
-        if (_mode === 'hash')
-        {
+        if (_mode === 'hash') {
             _div.sparseness.innerHTML = Math.round(_hash.getSparseness() * 100) + '%'
             _div.largest.innerHTML = _hash.getLargest()
             _div.average.innerHTML = Math.round(_hash.getAverageSize() * 100) / 100
             _div.hash.style.display = 'block'
-        }
-        else
-        {
+        } else {
             _div.hash.style.display = 'none'
         }
     })
 
-    _div.simpleTest.addEventListener('change', () =>
-    {
+    _div.simpleTest.addEventListener('change', () => {
         _hash.simpleTest = _div.simpleTest.checked
         updateCull()
     })
 
-    _div.dirtyTest.addEventListener('change', () =>
-    {
+    _div.dirtyTest.addEventListener('change', () => {
         _hash.dirtyTest = _simple.dirtyTest = _div.dirtyTest.checked
     })
 
@@ -77,10 +68,9 @@ function ui()
     forkMe(null, { side: 'left' })
 }
 
-function pixi()
-{
+function pixi() {
     const view = document.querySelector('.pixi')
-    _application = new PIXI.Application({ width: view.offsetWidth, height: view.offsetHeight, view, transparent: true })
+    _application = new PIXI.Application({ width: view.offsetWidth - document.querySelector('.controls').offsetWidth, height: view.offsetHeight, view, backgroundAlpha: 0 })
     _viewport = _application.stage.addChild(new Viewport())
     _viewport.drag().pinch().decelerate().wheel()
     _viewport.resize(view.offsetWidth, view.offsetHeight, WIDTH, HEIGHT)
@@ -99,11 +89,9 @@ function pixi()
     })
 }
 
-function dots()
-{
+function dots() {
     _dots = _viewport.addChild(new PIXI.Container())
-    for (let i = 0; i < DOTS; i++)
-    {
+    for (let i = 0; i < DOTS; i++) {
         const dot = _dots.addChild(new PIXI.Sprite(PIXI.Texture.WHITE))
         dot.tint = Random.color()
         dot.width = dot.height = DOTS_SIZE
@@ -116,35 +104,31 @@ function dots()
     _hash.addContainer(_dots, true)
 }
 
-function update()
-{
-    if (_viewport.dirty)
-    {
+function update() {
+    if (_viewport.dirty) {
         updateCull()
         _viewport.dirty = false
     }
     _fps.frame()
 }
 
-function updateCull()
-{
-    switch (_mode)
-    {
-        case 'simple':
-            _simple.cull(_viewport.getVisibleBounds())
-            _stats = _simple.stats()
-            break
+function updateCull() {
+    switch (_mode) {
+    case 'simple':
+        _simple.cull(_viewport.getVisibleBounds())
+        _stats = _simple.stats()
+        break
 
-        case 'hash':
-            const visible = _div.visibleBuckets.innerHTML = _hash.cull(_viewport.getVisibleBounds())
-            const total = _div.totalBuckets.innerHTML = _hash.getBuckets().length
-            _div.culledBuckets.innerHTML = total - visible
-            _stats = _hash.stats()
-            break
+    case 'hash':
+        const visible = _div.visibleBuckets.innerHTML = _hash.cull(_viewport.getVisibleBounds())
+        const total = _div.totalBuckets.innerHTML = _hash.getBuckets().length
+        _div.culledBuckets.innerHTML = total - visible
+        _stats = _hash.stats()
+        break
 
-        case 'none':
-            _stats = { visible: _dots.children.length, culled: 0, total: _dots.children.length }
-            break
+    case 'none':
+        _stats = { visible: _dots.children.length, culled: 0, total: _dots.children.length }
+        break
     }
     _viewport.dirty = false
     _div.visible.innerHTML = _stats.visible
@@ -152,8 +136,7 @@ function updateCull()
     _div.total.innerHTML = _stats.total
 }
 
-window.onload = () =>
-{
+window.onload = () => {
     pixi()
     dots()
     ui()
