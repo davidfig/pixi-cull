@@ -32,11 +32,12 @@ export declare class Simple {
     removeList(array: PIXI.DisplayObject[]): PIXI.DisplayObject[];
     add(object: PIXI.DisplayObject, staticObject?: boolean): PIXI.DisplayObject;
     remove(object: PIXI.DisplayObject): PIXI.DisplayObject;
-    cull(bounds: SimpleBounds, skipUpdate?: boolean): void;
+    cull(bounds: SimpleBounds, skipUpdate?: boolean, callback?: Function): void;
     updateObjects(): void;
     updateObject(object: PIXI.DisplayObject): void;
     query(bounds: SimpleBounds): PIXI.DisplayObject[];
     queryCallback(bounds: SimpleBounds, callback: (object: PIXI.DisplayObject) => boolean): boolean;
+    queryCallbackAll(bounds: SimpleBounds, callback: (object: PIXI.DisplayObject) => void): PIXI.DisplayObject[];
     stats(): Stats;
 }
 
