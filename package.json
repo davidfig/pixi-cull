@@ -1,6 +1,6 @@
 {
   "name": "pixi-cull",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a library to visibly cull objects designed to work with pixi.js",
   "main": "dist/index.js",
   "types": "@types/index.d.ts",
@@ -11,7 +11,7 @@
     "docs": "jsdoc -c .jsdoc.json",
     "transpile": "babel code/ --out-dir dist --source-maps inline",
     "bundle": "browserify dist/index.js -o bundle/pixi-cull.js && uglifyjs -mc -o bundle/pixi-cull.min.js bundle/pixi-cull.js",
-    "prepublishOnly": "yarn run transpile && yarn run build-demo && yarn run bundle && yarn run docs"
+    "prepublishOnly": "yarn transpile && yarn build-demo && yarn bundle && yarn docs"
   },
   "keywords": [
     "pixi.js",
@@ -33,13 +33,13 @@
   "homepage": "https://github.com/davidfig/pixi-cull#readme",
   "author": "David S. Figatner",
   "license": "MIT",
-  "dependencies": {},
   "peerDependencies": {
     "pixi.js": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "browserify": "^17.0.0",
     "fork-me-github": "^1.2.0",
     "jsdoc": "^3.6.5",
     "pixi-viewport": "^4.13.2",

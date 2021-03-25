@@ -881,7 +881,7 @@ window.onload = () => {
     ui()
     updateCull()
 }
-},{"../code":1,"fork-me-github":42,"pixi-viewport":48,"pixi.js":49,"yy-fps":62,"yy-random":63}],5:[function(require,module,exports){
+},{"../code":1,"fork-me-github":43,"pixi-viewport":49,"pixi.js":50,"yy-fps":71,"yy-random":72}],5:[function(require,module,exports){
 /*!
  * @pixi/accessibility - v6.0.1
  * Compiled Wed, 24 Mar 2021 20:02:24 UTC
@@ -24300,7 +24300,7 @@ exports.LoaderResource = LoaderResource;
 exports.TextureLoader = TextureLoader;
 
 
-},{"@pixi/core":9,"resource-loader":51}],21:[function(require,module,exports){
+},{"@pixi/core":9,"resource-loader":57}],21:[function(require,module,exports){
 /*!
  * @pixi/math - v6.0.1
  * Compiled Wed, 24 Mar 2021 20:02:24 UTC
@@ -29059,7 +29059,7 @@ if (!self.Int32Array) {
 }
 
 
-},{"object-assign":46,"promise-polyfill":50}],29:[function(require,module,exports){
+},{"object-assign":47,"promise-polyfill":52}],29:[function(require,module,exports){
 /*!
  * @pixi/prepare - v6.0.1
  * Compiled Wed, 24 Mar 2021 20:02:24 UTC
@@ -30198,7 +30198,7 @@ exports.isMobile = isMobile;
 exports.settings = settings;
 
 
-},{"ismobilejs":43}],32:[function(require,module,exports){
+},{"ismobilejs":44}],32:[function(require,module,exports){
 /*!
  * @pixi/sprite-animated - v6.0.1
  * Compiled Wed, 24 Mar 2021 20:02:24 UTC
@@ -37933,7 +37933,9 @@ exports.uid = uid;
 exports.url = url;
 
 
-},{"@pixi/constants":8,"@pixi/settings":31,"earcut":40,"eventemitter3":41,"url":71}],40:[function(require,module,exports){
+},{"@pixi/constants":8,"@pixi/settings":31,"earcut":41,"eventemitter3":42,"url":68}],40:[function(require,module,exports){
+
+},{}],41:[function(require,module,exports){
 'use strict';
 
 module.exports = earcut;
@@ -38614,7 +38616,7 @@ earcut.flatten = function (data) {
     return result;
 };
 
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 'use strict';
 
 var has = Object.prototype.hasOwnProperty
@@ -38952,7 +38954,7 @@ if ('undefined' !== typeof module) {
   module.exports = EventEmitter;
 }
 
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 'use strict';
 
 // Programatically add fork me on github ribbon from javascript without making changes to CSS, HTML, or adding image files
@@ -39127,7 +39129,7 @@ module.exports = function forkMe(url, options) {
     sheet.insertRule('.' + a.className + '::after' + after + '}');
 };
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -39137,7 +39139,7 @@ __export(require("./isMobile"));
 var isMobile_1 = require("./isMobile");
 exports["default"] = isMobile_1["default"];
 
-},{"./isMobile":44}],44:[function(require,module,exports){
+},{"./isMobile":45}],45:[function(require,module,exports){
 "use strict";
 exports.__esModule = true;
 var appleIphone = /iPhone/i;
@@ -39266,7 +39268,7 @@ function isMobile(param) {
 }
 exports["default"] = isMobile;
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -39433,7 +39435,7 @@ MiniSignal.MiniSignalBinding = MiniSignalBinding;
 exports['default'] = MiniSignal;
 module.exports = exports['default'];
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -39525,7 +39527,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 'use strict'
 
 function parseURI (str, opts) {
@@ -39576,13 +39578,13 @@ function parseURI (str, opts) {
 
 module.exports = parseURI
 
-},{}],48:[function(require,module,exports){
-(function (global){
+},{}],49:[function(require,module,exports){
+(function (global){(function (){
 !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports,require("pixi.js")):"function"==typeof define&&define.amd?define(["exports","pixi.js"],e):e((t="undefined"!=typeof globalThis?globalThis:t||self).Viewport={},t.PIXI)}(this,(function(t,e){"use strict";function i(t){if(t&&t.__esModule)return t;var e=Object.create(null);return t&&Object.keys(t).forEach((function(i){if("default"!==i){var s=Object.getOwnPropertyDescriptor(t,i);Object.defineProperty(e,i,s.get?s:{enumerable:!0,get:function(){return t[i]}})}})),e.default=t,Object.freeze(e)}var s=i(e);function n(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function o(t,e){for(var i=0;i<e.length;i++){var s=e[i];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(t,s.key,s)}}function r(t,e,i){return e&&o(t.prototype,e),i&&o(t,i),t}function h(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&l(t,e)}function a(t){return(a=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function l(t,e){return(l=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function p(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function c(t,e){return!e||"object"!=typeof e&&"function"!=typeof e?p(t):e}function u(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}();return function(){var i,s=a(t);if(e){var n=a(this).constructor;i=Reflect.construct(s,arguments,n)}else i=s.apply(this,arguments);return c(this,i)}}function d(t,e){for(;!Object.prototype.hasOwnProperty.call(t,e)&&null!==(t=a(t)););return t}function f(t,e,i){return(f="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(t,e,i){var s=d(t,e);if(s){var n=Object.getOwnPropertyDescriptor(s,e);return n.get?n.get.call(i):n.value}})(t,e,i||t)}function v(t,e,i,s){return(v="undefined"!=typeof Reflect&&Reflect.set?Reflect.set:function(t,e,i,s){var n,o=d(t,e);if(o){if((n=Object.getOwnPropertyDescriptor(o,e)).set)return n.set.call(s,i),!0;if(!n.writable)return!1}if(n=Object.getOwnPropertyDescriptor(s,e)){if(!n.writable)return!1;n.value=i,Object.defineProperty(s,e,n)}else!function(t,e,i){e in t?Object.defineProperty(t,e,{value:i,enumerable:!0,configurable:!0,writable:!0}):t[e]=i}(s,e,i);return!0})(t,e,i,s)}function y(t,e,i,s,n){if(!v(t,e,i,s||t)&&n)throw new Error("failed to set property");return i}function g(t,e){(null==e||e>t.length)&&(e=t.length);for(var i=0,s=new Array(e);i<e;i++)s[i]=t[i];return s}function m(t,e){var i;if("undefined"==typeof Symbol||null==t[Symbol.iterator]){if(Array.isArray(t)||(i=function(t,e){if(t){if("string"==typeof t)return g(t,e);var i=Object.prototype.toString.call(t).slice(8,-1);return"Object"===i&&t.constructor&&(i=t.constructor.name),"Map"===i||"Set"===i?Array.from(t):"Arguments"===i||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)?g(t,e):void 0}}(t))||e&&t&&"number"==typeof t.length){i&&(t=i);var s=0,n=function(){};return{s:n,n:function(){return s>=t.length?{done:!0}:{done:!1,value:t[s++]}},e:function(t){throw t},f:n}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,r=!0,h=!1;return{s:function(){i=t[Symbol.iterator]()},n:function(){var t=i.next();return r=t.done,t},e:function(t){h=!0,o=t},f:function(){try{r||null==i.return||i.return()}finally{if(h)throw o}}}}var w=function(){function t(e){n(this,t),this.viewport=e,this.touches=[],this.addListeners()}return r(t,[{key:"addListeners",value:function(){var t=this;this.viewport.interactive=!0,this.viewport.forceHitArea||(this.viewport.hitArea=new e.Rectangle(0,0,this.viewport.worldWidth,this.viewport.worldHeight)),this.viewport.on("pointerdown",this.down,this),this.viewport.on("pointermove",this.move,this),this.viewport.on("pointerup",this.up,this),this.viewport.on("pointerupoutside",this.up,this),this.viewport.on("pointercancel",this.up,this),this.viewport.on("pointerout",this.up,this),this.wheelFunction=function(e){return t.handleWheel(e)},this.viewport.options.divWheel.addEventListener("wheel",this.wheelFunction,{passive:this.viewport.options.passiveWheel}),this.isMouseDown=!1}},{key:"destroy",value:function(){this.viewport.options.divWheel.removeEventListener("wheel",this.wheelFunction)}},{key:"down",value:function(t){if(!this.viewport.pause&&this.viewport.worldVisible){if("mouse"===t.data.pointerType?this.isMouseDown=!0:this.get(t.data.pointerId)||this.touches.push({id:t.data.pointerId,last:null}),1===this.count()){this.last=t.data.global.clone();var e=this.viewport.plugins.get("decelerate",!0),i=this.viewport.plugins.get("bounce",!0);e&&e.isActive()||i&&i.isActive()?this.clickedAvailable=!1:this.clickedAvailable=!0}else this.clickedAvailable=!1;this.viewport.plugins.down(t)&&this.viewport.options.stopPropagation&&t.stopPropagation()}}},{key:"clear",value:function(){this.isMouseDown=!1,this.touches=[],this.last=null}},{key:"checkThreshold",value:function(t){return Math.abs(t)>=this.viewport.threshold}},{key:"move",value:function(t){if(!this.viewport.pause&&this.viewport.worldVisible){var e=this.viewport.plugins.move(t);if(this.clickedAvailable){var i=t.data.global.x-this.last.x,s=t.data.global.y-this.last.y;(this.checkThreshold(i)||this.checkThreshold(s))&&(this.clickedAvailable=!1)}e&&this.viewport.options.stopPropagation&&t.stopPropagation()}}},{key:"up",value:function(t){if(!this.viewport.pause&&this.viewport.worldVisible){"mouse"===t.data.pointerType&&(this.isMouseDown=!1),"mouse"!==t.data.pointerType&&this.remove(t.data.pointerId);var e=this.viewport.plugins.up(t);this.clickedAvailable&&0===this.count()&&(this.viewport.emit("clicked",{event:t,screen:this.last,world:this.viewport.toWorld(this.last),viewport:this}),this.clickedAvailable=!1),e&&this.viewport.options.stopPropagation&&t.stopPropagation()}}},{key:"getPointerPosition",value:function(t){var i=new e.Point;return this.viewport.options.interaction?this.viewport.options.interaction.mapPositionToPoint(i,t.clientX,t.clientY):(i.x=t.clientX,i.y=t.clientY),i}},{key:"handleWheel",value:function(t){if(!this.viewport.pause&&this.viewport.worldVisible&&(!this.viewport.options.interaction||this.viewport.options.interaction.interactionDOMElement===t.target)){var e=this.viewport.toLocal(this.getPointerPosition(t));if(this.viewport.left<=e.x&&e.x<=this.viewport.right&&this.viewport.top<=e.y&&e.y<=this.viewport.bottom)this.viewport.plugins.wheel(t)&&!this.viewport.options.passiveWheel&&t.preventDefault()}}},{key:"pause",value:function(){this.touches=[],this.isMouseDown=!1}},{key:"get",value:function(t){var e,i=m(this.touches);try{for(i.s();!(e=i.n()).done;){var s=e.value;if(s.id===t)return s}}catch(t){i.e(t)}finally{i.f()}return null}},{key:"remove",value:function(t){for(var e=0;e<this.touches.length;e++)if(this.touches[e].id===t)return void this.touches.splice(e,1)}},{key:"count",value:function(){return(this.isMouseDown?1:0)+this.touches.length}}]),t}(),x=["drag","pinch","wheel","follow","mouse-edges","decelerate","aniamte","bounce","snap-zoom","clamp-zoom","snap","clamp"],k=function(){function t(e){n(this,t),this.viewport=e,this.list=[],this.plugins={}}return r(t,[{key:"add",value:function(t,e){var i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:x.length;this.plugins[t]=e;var s=x.indexOf(t);-1!==s&&x.splice(s,1),x.splice(i,0,t),this.sort()}},{key:"get",value:function(t,e){return e&&this.plugins[t]&&this.plugins[t].paused?null:this.plugins[t]}},{key:"update",value:function(t){var e,i=m(this.list);try{for(i.s();!(e=i.n()).done;){e.value.update(t)}}catch(t){i.e(t)}finally{i.f()}}},{key:"resize",value:function(){var t,e=m(this.list);try{for(e.s();!(t=e.n()).done;){t.value.resize()}}catch(t){e.e(t)}finally{e.f()}}},{key:"reset",value:function(){var t,e=m(this.list);try{for(e.s();!(t=e.n()).done;){t.value.reset()}}catch(t){e.e(t)}finally{e.f()}}},{key:"removeAll",value:function(){this.plugins={},this.sort()}},{key:"remove",value:function(t){this.plugins[t]&&(delete this.plugins[t],this.viewport.emit(t+"-remove"),this.sort())}},{key:"pause",value:function(t){this.plugins[t]&&this.plugins[t].pause()}},{key:"resume",value:function(t){this.plugins[t]&&this.plugins[t].resume()}},{key:"sort",value:function(){this.list=[];var t,e=m(x);try{for(e.s();!(t=e.n()).done;){var i=t.value;this.plugins[i]&&this.list.push(this.plugins[i])}}catch(t){e.e(t)}finally{e.f()}}},{key:"down",value:function(t){var e,i=!1,s=m(this.list);try{for(s.s();!(e=s.n()).done;){e.value.down(t)&&(i=!0)}}catch(t){s.e(t)}finally{s.f()}return i}},{key:"move",value:function(t){var e,i=!1,s=m(this.viewport.plugins.list);try{for(s.s();!(e=s.n()).done;){e.value.move(t)&&(i=!0)}}catch(t){s.e(t)}finally{s.f()}return i}},{key:"up",value:function(t){var e,i=!1,s=m(this.list);try{for(s.s();!(e=s.n()).done;){e.value.up(t)&&(i=!0)}}catch(t){s.e(t)}finally{s.f()}return i}},{key:"wheel",value:function(t){var e,i=!1,s=m(this.list);try{for(s.s();!(e=s.n()).done;){e.value.wheel(t)&&(i=!0)}}catch(t){s.e(t)}finally{s.f()}return i}}]),t}(),b=function(){function t(e){n(this,t),this.parent=e,this.paused=!1}return r(t,[{key:"destroy",value:function(){}},{key:"down",value:function(){return!1}},{key:"move",value:function(){return!1}},{key:"up",value:function(){return!1}},{key:"wheel",value:function(){return!1}},{key:"update",value:function(){}},{key:"resize",value:function(){}},{key:"reset",value:function(){}},{key:"pause",value:function(){this.paused=!0}},{key:"resume",value:function(){this.paused=!1}}]),t}(),W={direction:"all",pressDrag:!0,wheel:!0,wheelScroll:1,reverse:!1,clampWheel:!1,underflow:"center",factor:1,mouseButtons:"all",keyToPress:null,ignoreKeyToPressOnTouch:!1,lineHeight:20},H=function(t){h(s,t);var i=u(s);function s(t){var e,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,s),(e=i.call(this,t)).options=Object.assign({},W,o),e.moved=!1,e.reverse=e.options.reverse?1:-1,e.xDirection=!e.options.direction||"all"===e.options.direction||"x"===e.options.direction,e.yDirection=!e.options.direction||"all"===e.options.direction||"y"===e.options.direction,e.keyIsPressed=!1,e.parseUnderflow(),e.mouseButtons(e.options.mouseButtons),e.options.keyToPress&&e.handleKeyPresses(e.options.keyToPress),e}return r(s,[{key:"handleKeyPresses",value:function(t){var e=this;window.addEventListener("keydown",(function(i){t.includes(i.code)&&(e.keyIsPressed=!0)})),window.addEventListener("keyup",(function(i){t.includes(i.code)&&(e.keyIsPressed=!1)}))}},{key:"mouseButtons",value:function(t){this.mouse=t&&"all"!==t?[-1!==t.indexOf("left"),-1!==t.indexOf("middle"),-1!==t.indexOf("right")]:[!0,!0,!0]}},{key:"parseUnderflow",value:function(){var t=this.options.underflow.toLowerCase();"center"===t?(this.underflowX=0,this.underflowY=0):(this.underflowX=-1!==t.indexOf("left")?-1:-1!==t.indexOf("right")?1:0,this.underflowY=-1!==t.indexOf("top")?-1:-1!==t.indexOf("bottom")?1:0)}},{key:"checkButtons",value:function(t){var e="mouse"===t.data.pointerType,i=this.parent.input.count();return!(!(1===i||i>1&&!this.parent.plugins.get("pinch",!0))||e&&!this.mouse[t.data.button])}},{key:"checkKeyPress",value:function(t){return!!(!this.options.keyToPress||this.keyIsPressed||this.options.ignoreKeyToPressOnTouch&&"touch"===t.data.pointerType)}},{key:"down",value:function(t){if(!this.paused&&this.options.pressDrag)return this.checkButtons(t)&&this.checkKeyPress(t)?(this.last={x:t.data.global.x,y:t.data.global.y},this.current=t.data.pointerId,!0):void(this.last=null)}},{key:"active",get:function(){return this.moved}},{key:"move",value:function(t){if(!this.paused&&this.options.pressDrag&&this.last&&this.current===t.data.pointerId){var i=t.data.global.x,s=t.data.global.y,n=this.parent.input.count();if(1===n||n>1&&!this.parent.plugins.get("pinch",!0)){var o=i-this.last.x,r=s-this.last.y;if(this.moved||this.xDirection&&this.parent.input.checkThreshold(o)||this.yDirection&&this.parent.input.checkThreshold(r)){var h={x:i,y:s};return this.xDirection&&(this.parent.x+=(h.x-this.last.x)*this.options.factor),this.yDirection&&(this.parent.y+=(h.y-this.last.y)*this.options.factor),this.last=h,this.moved||this.parent.emit("drag-start",{event:t,screen:new e.Point(this.last.x,this.last.y),world:this.parent.toWorld(new e.Point(this.last.x,this.last.y)),viewport:this.parent}),this.moved=!0,this.parent.emit("moved",{viewport:this.parent,type:"drag"}),!0}}else this.moved=!1}}},{key:"up",value:function(t){if(!this.paused){var i=this.parent.input.touches;if(1===i.length){var s=i[0];return s.last&&(this.last={x:s.last.x,y:s.last.y},this.current=s.id),this.moved=!1,!0}if(this.last&&this.moved){var n=new e.Point(this.last.x,this.last.y);return this.parent.emit("drag-end",{event:t,screen:n,world:this.parent.toWorld(n),viewport:this.parent}),this.last=null,this.moved=!1,!0}}}},{key:"wheel",value:function(t){if(!this.paused&&this.options.wheel){var e=this.parent.plugins.get("wheel",!0);if(!e){var i=t.deltaMode?this.options.lineHeight:1;return this.xDirection&&(this.parent.x+=t.deltaX*i*this.options.wheelScroll*this.reverse),this.yDirection&&(this.parent.y+=t.deltaY*i*this.options.wheelScroll*this.reverse),this.options.clampWheel&&this.clamp(),this.parent.emit("wheel-scroll",this.parent),this.parent.emit("moved",{viewport:this.parent,type:"wheel"}),this.parent.options.passiveWheel||t.preventDefault(),!0}}}},{key:"resume",value:function(){this.last=null,this.paused=!1}},{key:"clamp",value:function(){var t=this.parent.plugins.get("decelerate",!0)||{};if("y"!==this.options.clampWheel)if(this.parent.screenWorldWidth<this.parent.screenWidth)switch(this.underflowX){case-1:this.parent.x=0;break;case 1:this.parent.x=this.parent.screenWidth-this.parent.screenWorldWidth;break;default:this.parent.x=(this.parent.screenWidth-this.parent.screenWorldWidth)/2}else this.parent.left<0?(this.parent.x=0,t.x=0):this.parent.right>this.parent.worldWidth&&(this.parent.x=-this.parent.worldWidth*this.parent.scale.x+this.parent.screenWidth,t.x=0);if("x"!==this.options.clampWheel)if(this.parent.screenWorldHeight<this.parent.screenHeight)switch(this.underflowY){case-1:this.parent.y=0;break;case 1:this.parent.y=this.parent.screenHeight-this.parent.screenWorldHeight;break;default:this.parent.y=(this.parent.screenHeight-this.parent.screenWorldHeight)/2}else this.parent.top<0&&(this.parent.y=0,t.y=0),this.parent.bottom>this.parent.worldHeight&&(this.parent.y=-this.parent.worldHeight*this.parent.scale.y+this.parent.screenHeight,t.y=0)}}]),s}(b),O={noDrag:!1,percent:1,center:null,factor:1},M=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},O,o),s}return r(i,[{key:"down",value:function(){if(this.parent.input.count()>=2)return this.active=!0,!0}},{key:"move",value:function(t){if(!this.paused&&this.active){var e=t.data.global.x,i=t.data.global.y,s=this.parent.input.touches;if(s.length>=2){var n=s[0],o=s[1],r=n.last&&o.last?Math.sqrt(Math.pow(o.last.x-n.last.x,2)+Math.pow(o.last.y-n.last.y,2)):null;if(n.id===t.data.pointerId?n.last={x:e,y:i,data:t.data}:o.id===t.data.pointerId&&(o.last={x:e,y:i,data:t.data}),r){var h,a={x:n.last.x+(o.last.x-n.last.x)/2,y:n.last.y+(o.last.y-n.last.y)/2};this.options.center||(h=this.parent.toLocal(a));var l=Math.sqrt(Math.pow(o.last.x-n.last.x,2)+Math.pow(o.last.y-n.last.y,2)),p=(1-r/(l=0===l?l=1e-10:l))*this.options.percent*this.parent.scale.x;this.parent.scale.x+=p,this.parent.scale.y+=p,this.parent.emit("zoomed",{viewport:this.parent,type:"pinch",center:a});var c=this.parent.plugins.get("clamp-zoom",!0);if(c&&c.clamp(),this.options.center)this.parent.moveCenter(this.options.center);else{var u=this.parent.toGlobal(h);this.parent.x+=(a.x-u.x)*this.options.factor,this.parent.y+=(a.y-u.y)*this.options.factor,this.parent.emit("moved",{viewport:this.parent,type:"pinch"})}!this.options.noDrag&&this.lastCenter&&(this.parent.x+=(a.x-this.lastCenter.x)*this.options.factor,this.parent.y+=(a.y-this.lastCenter.y)*this.options.factor,this.parent.emit("moved",{viewport:this.parent,type:"pinch"})),this.lastCenter=a,this.moved=!0}else this.pinching||(this.parent.emit("pinch-start",this.parent),this.pinching=!0);return!0}}}},{key:"up",value:function(){if(this.pinching&&this.parent.input.touches.length<=1)return this.active=!1,this.lastCenter=null,this.pinching=!1,this.moved=!1,this.parent.emit("pinch-end",this.parent),!0}}]),i}(b),S={left:!1,right:!1,top:!1,bottom:!1,direction:null,underflow:"center"},C=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},S,o),s.options.direction&&(s.options.left="x"===s.options.direction||"all"===s.options.direction||null,s.options.right="x"===s.options.direction||"all"===s.options.direction||null,s.options.top="y"===s.options.direction||"all"===s.options.direction||null,s.options.bottom="y"===s.options.direction||"all"===s.options.direction||null),s.parseUnderflow(),s.last={x:null,y:null,scaleX:null,scaleY:null},s.update(),s}return r(i,[{key:"parseUnderflow",value:function(){var t=this.options.underflow.toLowerCase();"none"===t?this.noUnderflow=!0:"center"===t?(this.underflowX=this.underflowY=0,this.noUnderflow=!1):(this.underflowX=-1!==t.indexOf("left")?-1:-1!==t.indexOf("right")?1:0,this.underflowY=-1!==t.indexOf("top")?-1:-1!==t.indexOf("bottom")?1:0,this.noUnderflow=!1)}},{key:"move",value:function(){return this.update(),!1}},{key:"update",value:function(){if(!this.paused&&(this.parent.x!==this.last.x||this.parent.y!==this.last.y||this.parent.scale.x!==this.last.scaleX||this.parent.scale.y!==this.last.scaleY)){var t={x:this.parent.x,y:this.parent.y},e=this.parent.plugins.decelerate||{};if(null!==this.options.left||null!==this.options.right){var i=!1;if(this.parent.screenWorldWidth<this.parent.screenWidth){if(!this.noUnderflow)switch(this.underflowX){case-1:0!==this.parent.x&&(this.parent.x=0,i=!0);break;case 1:this.parent.x!==this.parent.screenWidth-this.parent.screenWorldWidth&&(this.parent.x=this.parent.screenWidth-this.parent.screenWorldWidth,i=!0);break;default:this.parent.x!==(this.parent.screenWidth-this.parent.screenWorldWidth)/2&&(this.parent.x=(this.parent.screenWidth-this.parent.screenWorldWidth)/2,i=!0)}}else null!==this.options.left&&this.parent.left<(!0===this.options.left?0:this.options.left)&&(this.parent.x=-(!0===this.options.left?0:this.options.left)*this.parent.scale.x,e.x=0,i=!0),null!==this.options.right&&this.parent.right>(!0===this.options.right?this.parent.worldWidth:this.options.right)&&(this.parent.x=-(!0===this.options.right?this.parent.worldWidth:this.options.right)*this.parent.scale.x+this.parent.screenWidth,e.x=0,i=!0);i&&this.parent.emit("moved",{viewport:this.parent,original:t,type:"clamp-x"})}if(null!==this.options.top||null!==this.options.bottom){var s=!1;if(this.parent.screenWorldHeight<this.parent.screenHeight){if(!this.noUnderflow)switch(this.underflowY){case-1:0!==this.parent.y&&(this.parent.y=0,s=!0);break;case 1:this.parent.y!==this.parent.screenHeight-this.parent.screenWorldHeight&&(this.parent.y=this.parent.screenHeight-this.parent.screenWorldHeight,s=!0);break;default:this.parent.y!==(this.parent.screenHeight-this.parent.screenWorldHeight)/2&&(this.parent.y=(this.parent.screenHeight-this.parent.screenWorldHeight)/2,s=!0)}}else null!==this.options.top&&this.parent.top<(!0===this.options.top?0:this.options.top)&&(this.parent.y=-(!0===this.options.top?0:this.options.top)*this.parent.scale.y,e.y=0,s=!0),null!==this.options.bottom&&this.parent.bottom>(!0===this.options.bottom?this.parent.worldHeight:this.options.bottom)&&(this.parent.y=-(!0===this.options.bottom?this.parent.worldHeight:this.options.bottom)*this.parent.scale.y+this.parent.screenHeight,e.y=0,s=!0);s&&this.parent.emit("moved",{viewport:this.parent,original:t,type:"clamp-y"})}this.last.x=this.parent.x,this.last.y=this.parent.y,this.last.scaleX=this.parent.scale.x,this.last.scaleY=this.parent.scale.y}}},{key:"reset",value:function(){this.update()}}]),i}(b),P={minWidth:null,minHeight:null,maxWidth:null,maxHeight:null,minScale:null,maxScale:null},z=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},P,o),s.clamp(),s}return r(i,[{key:"resize",value:function(){this.clamp()}},{key:"clamp",value:function(){if(!this.paused)if(this.options.minWidth||this.options.minHeight||this.options.maxWidth||this.options.maxHeight){var t=this.parent.worldScreenWidth,e=this.parent.worldScreenHeight;if(null!==this.options.minWidth&&t<this.options.minWidth){var i=this.parent.scale.x;this.parent.fitWidth(this.options.minWidth,!1,!1,!0),this.parent.scale.y*=this.parent.scale.x/i,t=this.parent.worldScreenWidth,e=this.parent.worldScreenHeight,this.parent.emit("zoomed",{viewport:this.parent,type:"clamp-zoom"})}if(null!==this.options.maxWidth&&t>this.options.maxWidth){var s=this.parent.scale.x;this.parent.fitWidth(this.options.maxWidth,!1,!1,!0),this.parent.scale.y*=this.parent.scale.x/s,t=this.parent.worldScreenWidth,e=this.parent.worldScreenHeight,this.parent.emit("zoomed",{viewport:this.parent,type:"clamp-zoom"})}if(null!==this.options.minHeight&&e<this.options.minHeight){var n=this.parent.scale.y;this.parent.fitHeight(this.options.minHeight,!1,!1,!0),this.parent.scale.x*=this.parent.scale.y/n,t=this.parent.worldScreenWidth,e=this.parent.worldScreenHeight,this.parent.emit("zoomed",{viewport:this.parent,type:"clamp-zoom"})}if(null!==this.options.maxHeight&&e>this.options.maxHeight){var o=this.parent.scale.y;this.parent.fitHeight(this.options.maxHeight,!1,!1,!0),this.parent.scale.x*=this.parent.scale.y/o,this.parent.emit("zoomed",{viewport:this.parent,type:"clamp-zoom"})}}else{var r=this.parent.scale.x;null!==this.options.minScale&&r<this.options.minScale&&(r=this.options.minScale),null!==this.options.maxScale&&r>this.options.maxScale&&(r=this.options.maxScale),r!==this.parent.scale.x&&(this.parent.scale.set(r),this.parent.emit("zoomed",{viewport:this.parent,type:"clamp-zoom"}))}}},{key:"reset",value:function(){this.clamp()}}]),i}(b),I={friction:.98,bounce:.8,minSpeed:.01},X=16,Y=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},I,o),s.saved=[],s.timeSinceRelease=0,s.reset(),s.parent.on("moved",(function(t){return s.moved(t)})),s}return r(i,[{key:"destroy",value:function(){this.parent}},{key:"down",value:function(){this.saved=[],this.x=this.y=!1}},{key:"isActive",value:function(){return this.x||this.y}},{key:"move",value:function(){if(!this.paused){var t=this.parent.input.count();(1===t||t>1&&!this.parent.plugins.get("pinch",!0))&&(this.saved.push({x:this.parent.x,y:this.parent.y,time:performance.now()}),this.saved.length>60&&this.saved.splice(0,30))}}},{key:"moved",value:function(t){if(this.saved.length){var e=this.saved[this.saved.length-1];"clamp-x"===t.type?e.x===t.original.x&&(e.x=this.parent.x):"clamp-y"===t.type&&e.y===t.original.y&&(e.y=this.parent.y)}}},{key:"up",value:function(){if(0===this.parent.input.count()&&this.saved.length){var t,e=performance.now(),i=m(this.saved);try{for(i.s();!(t=i.n()).done;){var s=t.value;if(s.time>=e-100){var n=e-s.time;this.x=(this.parent.x-s.x)/n,this.y=(this.parent.y-s.y)/n,this.percentChangeX=this.percentChangeY=this.options.friction,this.timeSinceRelease=0;break}}}catch(t){i.e(t)}finally{i.f()}}}},{key:"activate",value:function(t){void 0!==(t=t||{}).x&&(this.x=t.x,this.percentChangeX=this.options.friction),void 0!==t.y&&(this.y=t.y,this.percentChangeY=this.options.friction)}},{key:"update",value:function(t){if(!this.paused){var e=this.x||this.y,i=this.timeSinceRelease,s=this.timeSinceRelease+t;if(this.x){var n=this.percentChangeX,o=Math.log(n);this.parent.x+=this.x*X/o*(Math.pow(n,s/X)-Math.pow(n,i/X))}if(this.y){var r=this.percentChangeY,h=Math.log(r);this.parent.y+=this.y*X/h*(Math.pow(r,s/X)-Math.pow(r,i/X))}this.timeSinceRelease+=t,this.x*=Math.pow(this.percentChangeX,t/X),this.y*=Math.pow(this.percentChangeY,t/X),Math.abs(this.x)<this.options.minSpeed&&(this.x=0),Math.abs(this.y)<this.options.minSpeed&&(this.y=0),e&&this.parent.emit("moved",{viewport:this.parent,type:"decelerate"})}}},{key:"reset",value:function(){this.x=this.y=null}}]),i}(b),j="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};var _=function(t){var e={exports:{}};return t(e,e.exports),e.exports}((function(t,e){(function(){var e;(function(e){t.exports=e})(e={linear:function(t,e,i,s){return i*t/s+e},easeInQuad:function(t,e,i,s){return i*(t/=s)*t+e},easeOutQuad:function(t,e,i,s){return-i*(t/=s)*(t-2)+e},easeInOutQuad:function(t,e,i,s){return(t/=s/2)<1?i/2*t*t+e:-i/2*(--t*(t-2)-1)+e},easeInCubic:function(t,e,i,s){return i*(t/=s)*t*t+e},easeOutCubic:function(t,e,i,s){return i*((t=t/s-1)*t*t+1)+e},easeInOutCubic:function(t,e,i,s){return(t/=s/2)<1?i/2*t*t*t+e:i/2*((t-=2)*t*t+2)+e},easeInQuart:function(t,e,i,s){return i*(t/=s)*t*t*t+e},easeOutQuart:function(t,e,i,s){return-i*((t=t/s-1)*t*t*t-1)+e},easeInOutQuart:function(t,e,i,s){return(t/=s/2)<1?i/2*t*t*t*t+e:-i/2*((t-=2)*t*t*t-2)+e},easeInQuint:function(t,e,i,s){return i*(t/=s)*t*t*t*t+e},easeOutQuint:function(t,e,i,s){return i*((t=t/s-1)*t*t*t*t+1)+e},easeInOutQuint:function(t,e,i,s){return(t/=s/2)<1?i/2*t*t*t*t*t+e:i/2*((t-=2)*t*t*t*t+2)+e},easeInSine:function(t,e,i,s){return-i*Math.cos(t/s*(Math.PI/2))+i+e},easeOutSine:function(t,e,i,s){return i*Math.sin(t/s*(Math.PI/2))+e},easeInOutSine:function(t,e,i,s){return-i/2*(Math.cos(Math.PI*t/s)-1)+e},easeInExpo:function(t,e,i,s){return 0===t?e:i*Math.pow(2,10*(t/s-1))+e},easeOutExpo:function(t,e,i,s){return t===s?e+i:i*(1-Math.pow(2,-10*t/s))+e},easeInOutExpo:function(t,e,i,s){return(t/=s/2)<1?i/2*Math.pow(2,10*(t-1))+e:i/2*(2-Math.pow(2,-10*--t))+e},easeInCirc:function(t,e,i,s){return-i*(Math.sqrt(1-(t/=s)*t)-1)+e},easeOutCirc:function(t,e,i,s){return i*Math.sqrt(1-(t=t/s-1)*t)+e},easeInOutCirc:function(t,e,i,s){return(t/=s/2)<1?-i/2*(Math.sqrt(1-t*t)-1)+e:i/2*(Math.sqrt(1-(t-=2)*t)+1)+e},easeInElastic:function(t,e,i,s){var n,o,r;return r=1.70158,0===t||(t/=s),(o=0)||(o=.3*s),(n=i)<Math.abs(i)?(n=i,r=o/4):r=o/(2*Math.PI)*Math.asin(i/n),-n*Math.pow(2,10*(t-=1))*Math.sin((t*s-r)*(2*Math.PI)/o)+e},easeOutElastic:function(t,e,i,s){var n,o,r;return r=1.70158,0===t||(t/=s),(o=0)||(o=.3*s),(n=i)<Math.abs(i)?(n=i,r=o/4):r=o/(2*Math.PI)*Math.asin(i/n),n*Math.pow(2,-10*t)*Math.sin((t*s-r)*(2*Math.PI)/o)+i+e},easeInOutElastic:function(t,e,i,s){var n,o,r;return r=1.70158,0===t||(t/=s/2),(o=0)||(o=s*(.3*1.5)),(n=i)<Math.abs(i)?(n=i,r=o/4):r=o/(2*Math.PI)*Math.asin(i/n),t<1?n*Math.pow(2,10*(t-=1))*Math.sin((t*s-r)*(2*Math.PI)/o)*-.5+e:n*Math.pow(2,-10*(t-=1))*Math.sin((t*s-r)*(2*Math.PI)/o)*.5+i+e},easeInBack:function(t,e,i,s,n){return void 0===n&&(n=1.70158),i*(t/=s)*t*((n+1)*t-n)+e},easeOutBack:function(t,e,i,s,n){return void 0===n&&(n=1.70158),i*((t=t/s-1)*t*((n+1)*t+n)+1)+e},easeInOutBack:function(t,e,i,s,n){return void 0===n&&(n=1.70158),(t/=s/2)<1?i/2*(t*t*((1+(n*=1.525))*t-n))+e:i/2*((t-=2)*t*((1+(n*=1.525))*t+n)+2)+e},easeInBounce:function(t,i,s,n){return s-e.easeOutBounce(n-t,0,s,n)+i},easeOutBounce:function(t,e,i,s){return(t/=s)<1/2.75?i*(7.5625*t*t)+e:t<2/2.75?i*(7.5625*(t-=1.5/2.75)*t+.75)+e:t<2.5/2.75?i*(7.5625*(t-=2.25/2.75)*t+.9375)+e:i*(7.5625*(t-=2.625/2.75)*t+.984375)+e},easeInOutBounce:function(t,i,s,n){return t<n/2?.5*e.easeInBounce(2*t,0,s,n)+i:.5*e.easeOutBounce(2*t-n,0,s,n)+.5*s+i}})}).call(j)}));function A(t,e){return t?"function"==typeof t?t:"string"==typeof t?_[t]:void 0:_[e]}var D={sides:"all",friction:.5,time:150,ease:"easeInOutSine",underflow:"center",bounceBox:null},T=function(t){h(s,t);var i=u(s);function s(t){var e,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,s),(e=i.call(this,t)).options=Object.assign({},D,o),e.ease=A(e.options.ease,"easeInOutSine"),e.options.sides&&("all"===e.options.sides?e.top=e.bottom=e.left=e.right=!0:"horizontal"===e.options.sides?e.right=e.left=!0:"vertical"===e.options.sides?e.top=e.bottom=!0:(e.top=-1!==e.options.sides.indexOf("top"),e.bottom=-1!==e.options.sides.indexOf("bottom"),e.left=-1!==e.options.sides.indexOf("left"),e.right=-1!==e.options.sides.indexOf("right"))),e.parseUnderflow(),e.last={},e.reset(),e}return r(s,[{key:"parseUnderflow",value:function(){var t=this.options.underflow.toLowerCase();"center"===t?(this.underflowX=0,this.underflowY=0):(this.underflowX=-1!==t.indexOf("left")?-1:-1!==t.indexOf("right")?1:0,this.underflowY=-1!==t.indexOf("top")?-1:-1!==t.indexOf("bottom")?1:0)}},{key:"isActive",value:function(){return null!==this.toX||null!==this.toY}},{key:"down",value:function(){this.toX=this.toY=null}},{key:"up",value:function(){this.bounce()}},{key:"update",value:function(t){if(!this.paused){if(this.bounce(),this.toX){var e=this.toX;e.time+=t,this.parent.emit("moved",{viewport:this.parent,type:"bounce-x"}),e.time>=this.options.time?(this.parent.x=e.end,this.toX=null,this.parent.emit("bounce-x-end",this.parent)):this.parent.x=this.ease(e.time,e.start,e.delta,this.options.time)}if(this.toY){var i=this.toY;i.time+=t,this.parent.emit("moved",{viewport:this.parent,type:"bounce-y"}),i.time>=this.options.time?(this.parent.y=i.end,this.toY=null,this.parent.emit("bounce-y-end",this.parent)):this.parent.y=this.ease(i.time,i.start,i.delta,this.options.time)}}}},{key:"calcUnderflowX",value:function(){var t;switch(this.underflowX){case-1:t=0;break;case 1:t=this.parent.screenWidth-this.parent.screenWorldWidth;break;default:t=(this.parent.screenWidth-this.parent.screenWorldWidth)/2}return t}},{key:"calcUnderflowY",value:function(){var t;switch(this.underflowY){case-1:t=0;break;case 1:t=this.parent.screenHeight-this.parent.screenWorldHeight;break;default:t=(this.parent.screenHeight-this.parent.screenWorldHeight)/2}return t}},{key:"oob",value:function(){var t=this.options.bounceBox;if(t){var i=void 0===t.x?0:t.x,s=void 0===t.y?0:t.y,n=void 0===t.width?this.parent.worldWidth:t.width,o=void 0===t.height?this.parent.worldHeight:t.height;return{left:this.parent.left<i,right:this.parent.right>n,top:this.parent.top<s,bottom:this.parent.bottom>o,topLeft:new e.Point(i*this.parent.scale.x,s*this.parent.scale.y),bottomRight:new e.Point(n*this.parent.scale.x-this.parent.screenWidth,o*this.parent.scale.y-this.parent.screenHeight)}}return{left:this.parent.left<0,right:this.parent.right>this.parent.worldWidth,top:this.parent.top<0,bottom:this.parent.bottom>this.parent.worldHeight,topLeft:new e.Point(0,0),bottomRight:new e.Point(this.parent.worldWidth*this.parent.scale.x-this.parent.screenWidth,this.parent.worldHeight*this.parent.scale.y-this.parent.screenHeight)}}},{key:"bounce",value:function(){if(!this.paused){var t,e=this.parent.plugins.get("decelerate",!0);e&&(e.x||e.y)&&(e.x&&e.percentChangeX===e.options.friction||e.y&&e.percentChangeY===e.options.friction)&&(((t=this.oob()).left&&this.left||t.right&&this.right)&&(e.percentChangeX=this.options.friction),(t.top&&this.top||t.bottom&&this.bottom)&&(e.percentChangeY=this.options.friction));var i=this.parent.plugins.get("drag",!0)||{},s=this.parent.plugins.get("pinch",!0)||{};if(e=e||{},!(i.active||s.active||this.toX&&this.toY||e.x&&e.y)){var n=(t=t||this.oob()).topLeft,o=t.bottomRight;if(!this.toX&&!e.x){var r=null;t.left&&this.left?r=this.parent.screenWorldWidth<this.parent.screenWidth?this.calcUnderflowX():-n.x:t.right&&this.right&&(r=this.parent.screenWorldWidth<this.parent.screenWidth?this.calcUnderflowX():-o.x),null!==r&&this.parent.x!==r&&(this.toX={time:0,start:this.parent.x,delta:r-this.parent.x,end:r},this.parent.emit("bounce-x-start",this.parent))}if(!this.toY&&!e.y){var h=null;t.top&&this.top?h=this.parent.screenWorldHeight<this.parent.screenHeight?this.calcUnderflowY():-n.y:t.bottom&&this.bottom&&(h=this.parent.screenWorldHeight<this.parent.screenHeight?this.calcUnderflowY():-o.y),null!==h&&this.parent.y!==h&&(this.toY={time:0,start:this.parent.y,delta:h-this.parent.y,end:h},this.parent.emit("bounce-y-start",this.parent))}}}}},{key:"reset",value:function(){this.toX=this.toY=null,this.bounce()}}]),s}(b),V={topLeft:!1,friction:.8,time:1e3,ease:"easeInOutSine",interrupt:!0,removeOnComplete:!1,removeOnInterrupt:!1,forceStart:!1},R=function(t){h(i,t);var e=u(i);function i(t,s,o){var r,h=arguments.length>3&&void 0!==arguments[3]?arguments[3]:{};return n(this,i),(r=e.call(this,t)).options=Object.assign({},V,h),r.ease=A(h.ease,"easeInOutSine"),r.x=s,r.y=o,r.options.forceStart&&r.snapStart(),r}return r(i,[{key:"snapStart",value:function(){this.percent=0,this.snapping={time:0};var t=this.options.topLeft?this.parent.corner:this.parent.center;this.deltaX=this.x-t.x,this.deltaY=this.y-t.y,this.startX=t.x,this.startY=t.y,this.parent.emit("snap-start",this.parent)}},{key:"wheel",value:function(){this.options.removeOnInterrupt&&this.parent.plugins.remove("snap")}},{key:"down",value:function(){this.options.removeOnInterrupt?this.parent.plugins.remove("snap"):this.options.interrupt&&(this.snapping=null)}},{key:"up",value:function(){if(0===this.parent.input.count()){var t=this.parent.plugins.get("decelerate",!0);t&&(t.x||t.y)&&(t.percentChangeX=t.percentChangeY=this.options.friction)}}},{key:"update",value:function(t){if(!(this.paused||this.options.interrupt&&0!==this.parent.input.count()))if(this.snapping){var e,i,s,n=this.snapping;if(n.time+=t,n.time>this.options.time)e=!0,i=this.startX+this.deltaX,s=this.startY+this.deltaY;else{var o=this.ease(n.time,0,1,this.options.time);i=this.startX+this.deltaX*o,s=this.startY+this.deltaY*o}this.options.topLeft?this.parent.moveCorner(i,s):this.parent.moveCenter(i,s),this.parent.emit("moved",{viewport:this.parent,type:"snap"}),e&&(this.options.removeOnComplete&&this.parent.plugins.remove("snap"),this.parent.emit("snap-end",this.parent),this.snapping=null)}else{var r=this.options.topLeft?this.parent.corner:this.parent.center;r.x===this.x&&r.y===this.y||this.snapStart()}}}]),i}(b),B={width:0,height:0,time:1e3,ease:"easeInOutSine",center:null,interrupt:!0,removeOnComplete:!1,removeOnInterrupts:!1,forceStart:!1,noMove:!1},L=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},B,o),s.ease=A(s.options.ease),s.options.width>0&&(s.xScale=t.screenWidth/s.options.width),s.options.height>0&&(s.yScale=t.screenHeight/s.options.height),s.xIndependent=!!s.xScale,s.yIndependent=!!s.yScale,s.xScale=s.xIndependent?s.xScale:s.yScale,s.yScale=s.yIndependent?s.yScale:s.xScale,0===s.options.time?(t.container.scale.x=s.xScale,t.container.scale.y=s.yScale,s.options.removeOnComplete&&s.parent.plugins.remove("snap-zoom")):o.forceStart&&s.createSnapping(),s}return r(i,[{key:"createSnapping",value:function(){this.parent.scale;var t=this.parent.worldScreenWidth,e=this.parent.worldScreenHeight,i=this.parent.screenWidth/this.xScale,s=this.parent.screenHeight/this.yScale;this.snapping={time:0,startX:t,startY:e,deltaX:i-t,deltaY:s-e},this.parent.emit("snap-zoom-start",this.parent)}},{key:"resize",value:function(){this.snapping=null,this.options.width>0&&(this.xScale=this.parent.screenWidth/this.options.width),this.options.height>0&&(this.yScale=this.parent.screenHeight/this.options.height),this.xScale=this.xIndependent?this.xScale:this.yScale,this.yScale=this.yIndependent?this.yScale:this.xScale}},{key:"wheel",value:function(){this.options.removeOnInterrupt&&this.parent.plugins.remove("snap-zoom")}},{key:"down",value:function(){this.options.removeOnInterrupt?this.parent.plugins.remove("snap-zoom"):this.options.interrupt&&(this.snapping=null)}},{key:"update",value:function(t){var e;if(!this.paused&&(!this.options.interrupt||0===this.parent.input.count()))if(this.options.center||this.options.noMove||(e=this.parent.center),this.snapping){if(this.snapping){var i=this.snapping;if(i.time+=t,i.time>=this.options.time)this.parent.scale.set(this.xScale,this.yScale),this.options.removeOnComplete&&this.parent.plugins.remove("snap-zoom"),this.parent.emit("snap-zoom-end",this.parent),this.snapping=null;else{var s=this.snapping,n=this.ease(s.time,s.startX,s.deltaX,this.options.time),o=this.ease(s.time,s.startY,s.deltaY,this.options.time);this.parent.scale.x=this.parent.screenWidth/n,this.parent.scale.y=this.parent.screenHeight/o}var r=this.parent.plugins.get("clamp-zoom",!0);r&&r.clamp(),this.options.noMove||(this.options.center?this.parent.moveCenter(this.options.center):this.parent.moveCenter(e))}}else this.parent.scale.x===this.xScale&&this.parent.scale.y===this.yScale||this.createSnapping()}},{key:"resume",value:function(){this.snapping=null,f(a(i.prototype),"resume",this).call(this)}}]),i}(b),E={speed:0,acceleration:null,radius:null},U=function(t){h(i,t);var e=u(i);function i(t,s){var o,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return n(this,i),(o=e.call(this,t)).target=s,o.options=Object.assign({},E,r),o.velocity={x:0,y:0},o}return r(i,[{key:"update",value:function(t){if(!this.paused){var e=this.parent.center,i=this.target.x,s=this.target.y;if(this.options.radius){if(!(Math.sqrt(Math.pow(this.target.y-e.y,2)+Math.pow(this.target.x-e.x,2))>this.options.radius))return;var n=Math.atan2(this.target.y-e.y,this.target.x-e.x);i=this.target.x-Math.cos(n)*this.options.radius,s=this.target.y-Math.sin(n)*this.options.radius}var o=i-e.x,r=s-e.y;if(o||r)if(this.options.speed)if(this.options.acceleration){var h=Math.atan2(s-e.y,i-e.x),a=Math.sqrt(Math.pow(o,2)+Math.pow(r,2));if(a){var l=(Math.pow(this.velocity.x,2)+Math.pow(this.velocity.y,2))/(2*this.options.acceleration);this.velocity=a>l?{x:Math.min(this.velocity.x+this.options.acceleration*t,this.options.speed),y:Math.min(this.velocity.y+this.options.acceleration*t,this.options.speed)}:{x:Math.max(this.velocity.x-this.options.acceleration*this.options.speed,0),y:Math.max(this.velocity.y-this.options.acceleration*this.options.speed,0)};var p=Math.cos(h)*this.velocity.x,c=Math.sin(h)*this.velocity.y,u=Math.abs(p)>Math.abs(o)?i:e.x+p,d=Math.abs(c)>Math.abs(r)?s:e.y+c;this.parent.moveCenter(u,d),this.parent.emit("moved",{viewport:this.parent,type:"follow"})}}else{var f=Math.atan2(s-e.y,i-e.x),v=Math.cos(f)*this.options.speed,y=Math.sin(f)*this.options.speed,g=Math.abs(v)>Math.abs(o)?i:e.x+v,m=Math.abs(y)>Math.abs(r)?s:e.y+y;this.parent.moveCenter(g,m),this.parent.emit("moved",{viewport:this.parent,type:"follow"})}else this.parent.moveCenter(i,s),this.parent.emit("moved",{viewport:this.parent,type:"follow"})}}}]),i}(b),q={percent:.1,smooth:!1,interrupt:!0,reverse:!1,center:null,lineHeight:20},F=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},q,o),s}return r(i,[{key:"down",value:function(){this.options.interrupt&&(this.smoothing=null)}},{key:"update",value:function(){if(this.smoothing){var t,e=this.smoothingCenter,i=this.smoothing;this.options.center||(t=this.parent.toLocal(e)),this.parent.scale.x+=i.x,this.parent.scale.y+=i.y,this.parent.emit("zoomed",{viewport:this.parent,type:"wheel"});var s=this.parent.plugins.get("clamp-zoom",!0);if(s&&s.clamp(),this.options.center)this.parent.moveCenter(this.options.center);else{var n=this.parent.toGlobal(t);this.parent.x+=e.x-n.x,this.parent.y+=e.y-n.y}this.parent.emit("moved",{viewport:this.parent,type:"wheel"}),this.smoothingCount++,this.smoothingCount>=this.options.smooth&&(this.smoothing=null)}}},{key:"wheel",value:function(t){if(!this.paused){var e=this.parent.input.getPointerPosition(t),i=(this.options.reverse?-1:1)*-t.deltaY*(t.deltaMode?this.options.lineHeight:1)/500,s=Math.pow(2,(1+this.options.percent)*i);if(this.options.smooth){var n={x:this.smoothing?this.smoothing.x*(this.options.smooth-this.smoothingCount):0,y:this.smoothing?this.smoothing.y*(this.options.smooth-this.smoothingCount):0};this.smoothing={x:((this.parent.scale.x+n.x)*s-this.parent.scale.x)/this.options.smooth,y:((this.parent.scale.y+n.y)*s-this.parent.scale.y)/this.options.smooth},this.smoothingCount=0,this.smoothingCenter=e}else{var o;this.options.center||(o=this.parent.toLocal(e)),this.parent.scale.x*=s,this.parent.scale.y*=s,this.parent.emit("zoomed",{viewport:this.parent,type:"wheel"});var r=this.parent.plugins.get("clamp-zoom",!0);if(r&&r.clamp(),this.options.center)this.parent.moveCenter(this.options.center);else{var h=this.parent.toGlobal(o);this.parent.x+=e.x-h.x,this.parent.y+=e.y-h.y}}return this.parent.emit("moved",{viewport:this.parent,type:"wheel"}),this.parent.emit("wheel",{wheel:{dx:t.deltaX,dy:t.deltaY,dz:t.deltaZ},event:t,viewport:this.parent}),!this.parent.options.passiveWheel||void 0}}}]),i}(b),Q={radius:null,distance:null,top:null,bottom:null,left:null,right:null,speed:8,reverse:!1,noDecelerate:!1,linear:!1,allowButtons:!1},Z=function(t){h(i,t);var e=u(i);function i(t){var s,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,i),(s=e.call(this,t)).options=Object.assign({},Q,o),s.reverse=s.options.reverse?1:-1,s.radiusSquared=Math.pow(s.options.radius,2),s.resize(),s}return r(i,[{key:"resize",value:function(){var t=this.options.distance;null!==t?(this.left=t,this.top=t,this.right=this.parent.worldScreenWidth-t,this.bottom=this.parent.worldScreenHeight-t):this.radius||(this.left=this.options.left,this.top=this.options.top,this.right=null===this.options.right?null:this.parent.worldScreenWidth-this.options.right,this.bottom=null===this.options.bottom?null:this.parent.worldScreenHeight-this.options.bottom)}},{key:"down",value:function(){this.paused||this.options.allowButtons||(this.horizontal=this.vertical=null)}},{key:"move",value:function(t){if(!this.paused&&!("mouse"!==t.data.pointerType&&1!==t.data.identifier||!this.options.allowButtons&&0!==t.data.buttons)){var e=t.data.global.x,i=t.data.global.y;if(this.radiusSquared){var s=this.parent.toScreen(this.parent.center);if(Math.pow(s.x-e,2)+Math.pow(s.y-i,2)>=this.radiusSquared){var n=Math.atan2(s.y-i,s.x-e);this.options.linear?(this.horizontal=Math.round(Math.cos(n))*this.options.speed*this.reverse*.06,this.vertical=Math.round(Math.sin(n))*this.options.speed*this.reverse*.06):(this.horizontal=Math.cos(n)*this.options.speed*this.reverse*.06,this.vertical=Math.sin(n)*this.options.speed*this.reverse*.06)}else this.horizontal&&this.decelerateHorizontal(),this.vertical&&this.decelerateVertical(),this.horizontal=this.vertical=0}else null!==this.left&&e<this.left?this.horizontal=1*this.reverse*this.options.speed*.06:null!==this.right&&e>this.right?this.horizontal=-1*this.reverse*this.options.speed*.06:(this.decelerateHorizontal(),this.horizontal=0),null!==this.top&&i<this.top?this.vertical=1*this.reverse*this.options.speed*.06:null!==this.bottom&&i>this.bottom?this.vertical=-1*this.reverse*this.options.speed*.06:(this.decelerateVertical(),this.vertical=0)}}},{key:"decelerateHorizontal",value:function(){var t=this.parent.plugins.get("decelerate",!0);this.horizontal&&t&&!this.options.noDecelerate&&t.activate({x:this.horizontal*this.options.speed*this.reverse/(1e3/60)})}},{key:"decelerateVertical",value:function(){var t=this.parent.plugins.get("decelerate",!0);this.vertical&&t&&!this.options.noDecelerate&&t.activate({y:this.vertical*this.options.speed*this.reverse/(1e3/60)})}},{key:"up",value:function(){this.paused||(this.horizontal&&this.decelerateHorizontal(),this.vertical&&this.decelerateVertical(),this.horizontal=this.vertical=null)}},{key:"update",value:function(){if(!this.paused&&(this.horizontal||this.vertical)){var t=this.parent.center;this.horizontal&&(t.x+=this.horizontal*this.options.speed),this.vertical&&(t.y+=this.vertical*this.options.speed),this.parent.moveCenter(t),this.parent.emit("moved",{viewport:this.parent,type:"mouse-edges"})}}}]),i}(b),K={removeOnInterrupt:!1,ease:"linear",time:1e3},G=function(t){h(s,t);var i=u(s);function s(t){var e,o=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return n(this,s),(e=i.call(this,t)).options=Object.assign({},K,o),e.options.ease=A(e.options.ease),e.setupPosition(),e.setupZoom(),e}return r(s,[{key:"setupPosition",value:function(){void 0!==this.options.position?(this.startX=this.parent.center.x,this.startY=this.parent.center.y,this.deltaX=this.options.position.x-this.parent.center.x,this.deltaY=this.options.position.y-this.parent.center.y,this.keepCenter=!1):this.keepCenter=!0}},{key:"setupZoom",value:function(){this.width=null,this.height=null,void 0!==this.options.scale?this.width=this.parent.screenWidth/this.options.scale:void 0!==this.options.scaleX||void 0!==this.options.scaleY?(void 0!==this.options.scaleX&&(this.width=this.parent.screenWidth/this.options.scaleX),void 0!==this.options.scaleY&&(this.height=this.parent.screenHeight/this.options.scaleY)):(void 0!==this.options.width&&(this.width=this.options.width),void 0!==this.options.height&&(this.height=this.options.height)),null!==typeof this.width&&(this.startWidth=this.parent.screenWidthInWorldPixels,this.deltaWidth=this.width-this.startWidth),null!==typeof this.height&&(this.startHeight=this.parent.screenHeightInWorldPixels,this.deltaHeight=this.height-this.startHeight),this.time=0}},{key:"down",value:function(){this.options.removeOnInterrupt&&this.parent.plugins.remove("animate")}},{key:"complete",value:function(){this.parent.plugins.remove("animate"),null!==this.width&&this.parent.fitWidth(this.width,this.keepCenter,null===this.height),null!==this.height&&this.parent.fitHeight(this.height,this.keepCenter,null===this.width),this.keepCenter||this.parent.moveCenter(this.options.position.x,this.options.position.y),this.parent.emit("animate-end",this.parent),this.options.callbackOnComplete&&this.options.callbackOnComplete(this.parent)}},{key:"update",value:function(t){if(!this.paused)if(this.time+=t,this.time>=this.options.time)this.complete();else{var i=new e.Point(this.parent.scale.x,this.parent.scale.y),s=this.options.ease(this.time,0,1,this.options.time);if(null!==this.width&&this.parent.fitWidth(this.startWidth+this.deltaWidth*s,this.keepCenter,null===this.height),null!==this.height&&this.parent.fitHeight(this.startHeight+this.deltaHeight*s,this.keepCenter,null===this.width),null===this.width?this.parent.scale.x=this.parent.scale.y:null===this.height&&(this.parent.scale.y=this.parent.scale.x),!this.keepCenter){var n=new e.Point(this.parent.x,this.parent.y);this.parent.moveCenter(this.startX+this.deltaX*s,this.startY+this.deltaY*s),this.parent.emit("moved",{viewport:this.parent,original:n,type:"animate"})}(this.width||this.height)&&this.parent.emit("zoomed",{viewport:this.parent,original:i,type:"animate"}),this.keepCenter}}}]),s}(b),N={screenWidth:window.innerWidth,screenHeight:window.innerHeight,worldWidth:null,worldHeight:null,threshold:5,passiveWheel:!0,stopPropagation:!1,forceHitArea:null,noTicker:!1,interaction:null,disableOnContextMenu:!1},$=function(t){h(o,t);var i=u(o);function o(){var t,r=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(n(this,o),(t=i.call(this)).options=Object.assign({},N,r),r.ticker)t.options.ticker=r.ticker;else{var h,a=s;h=parseInt(/^(\d+)\./.exec(e.VERSION)[1])<5?a.ticker.shared:a.Ticker.shared,t.options.ticker=r.ticker||h}return t.screenWidth=t.options.screenWidth,t.screenHeight=t.options.screenHeight,t._worldWidth=t.options.worldWidth,t._worldHeight=t.options.worldHeight,t.forceHitArea=t.options.forceHitArea,t.threshold=t.options.threshold,t.options.divWheel=t.options.divWheel||document.body,t.options.disableOnContextMenu&&(t.options.divWheel.oncontextmenu=function(t){return t.preventDefault()}),t.options.noTicker||(t.tickerFunction=function(){return t.update(t.options.ticker.elapsedMS)},t.options.ticker.add(t.tickerFunction)),t.input=new w(p(t)),t.plugins=new k(p(t)),t}return r(o,[{key:"destroy",value:function(t){this.options.noTicker||this.options.ticker.remove(this.tickerFunction),this.input.destroy(),f(a(o.prototype),"destroy",this).call(this,t)}},{key:"update",value:function(t){this.pause||(this.plugins.update(t),this.lastViewport&&(this.lastViewport.x!==this.x||this.lastViewport.y!==this.y?this.moving=!0:this.moving&&(this.emit("moved-end",this),this.moving=!1),this.lastViewport.scaleX!==this.scale.x||this.lastViewport.scaleY!==this.scale.y?this.zooming=!0:this.zooming&&(this.emit("zoomed-end",this),this.zooming=!1)),this.forceHitArea||(this._hitAreaDefault=new e.Rectangle(this.left,this.top,this.worldScreenWidth,this.worldScreenHeight),this.hitArea=this._hitAreaDefault),this._dirty=this._dirty||!this.lastViewport||this.lastViewport.x!==this.x||this.lastViewport.y!==this.y||this.lastViewport.scaleX!==this.scale.x||this.lastViewport.scaleY!==this.scale.y,this.lastViewport={x:this.x,y:this.y,scaleX:this.scale.x,scaleY:this.scale.y},this.emit("frame-end",this))}},{key:"resize",value:function(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:window.innerWidth,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:window.innerHeight,i=arguments.length>2?arguments[2]:void 0,s=arguments.length>3?arguments[3]:void 0;this.screenWidth=t,this.screenHeight=e,void 0!==i&&(this._worldWidth=i),void 0!==s&&(this._worldHeight=s),this.plugins.resize(),this.dirty=!0}},{key:"worldWidth",get:function(){return this._worldWidth?this._worldWidth:this.width/this.scale.x},set:function(t){this._worldWidth=t,this.plugins.resize()}},{key:"worldHeight",get:function(){return this._worldHeight?this._worldHeight:this.height/this.scale.y},set:function(t){this._worldHeight=t,this.plugins.resize()}},{key:"getVisibleBounds",value:function(){return new e.Rectangle(this.left,this.top,this.worldScreenWidth,this.worldScreenHeight)}},{key:"toWorld",value:function(t,i){return 2===arguments.length?this.toLocal(new e.Point(t,i)):this.toLocal(t)}},{key:"toScreen",value:function(t,i){return 2===arguments.length?this.toGlobal(new e.Point(t,i)):this.toGlobal(t)}},{key:"worldScreenWidth",get:function(){return this.screenWidth/this.scale.x}},{key:"worldScreenHeight",get:function(){return this.screenHeight/this.scale.y}},{key:"screenWorldWidth",get:function(){return this.worldWidth*this.scale.x}},{key:"screenWorldHeight",get:function(){return this.worldHeight*this.scale.y}},{key:"center",get:function(){return new e.Point(this.worldScreenWidth/2-this.x/this.scale.x,this.worldScreenHeight/2-this.y/this.scale.y)},set:function(t){this.moveCenter(t)}},{key:"moveCenter",value:function(){var t,e;isNaN(arguments[0])?(t=arguments[0].x,e=arguments[0].y):(t=arguments[0],e=arguments[1]);var i=(this.worldScreenWidth/2-t)*this.scale.x,s=(this.worldScreenHeight/2-e)*this.scale.y;return this.x===i&&this.y===s||(this.position.set(i,s),this.plugins.reset(),this.dirty=!0),this}},{key:"corner",get:function(){return new e.Point(-this.x/this.scale.x,-this.y/this.scale.y)},set:function(t){this.moveCorner(t)}},{key:"moveCorner",value:function(){var t,e;return 1===arguments.length?(t=-arguments[0].x*this.scale.x,e=-arguments[0].y*this.scale.y):(t=-arguments[0]*this.scale.x,e=-arguments[1]*this.scale.y),t===this.x&&e===this.y||(this.position.set(t,e),this.plugins.reset(),this.dirty=!0),this}},{key:"screenWidthInWorldPixels",get:function(){return this.screenWidth/this.scale.x}},{key:"screenHeightInWorldPixels",get:function(){return this.screenHeight/this.scale.y}},{key:"findFitWidth",value:function(t){return this.screenWidth/t}},{key:"findFitHeight",value:function(t){return this.screenHeight/t}},{key:"findFit",value:function(t,e){var i=this.screenWidth/t,s=this.screenHeight/e;return Math.min(i,s)}},{key:"findCover",value:function(t,e){var i=this.screenWidth/t,s=this.screenHeight/e;return Math.max(i,s)}},{key:"fitWidth",value:function(t,e){var i,s=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],n=arguments.length>3?arguments[3]:void 0;e&&(i=this.center),this.scale.x=this.screenWidth/t,s&&(this.scale.y=this.scale.x);var o=this.plugins.get("clamp-zoom",!0);return!n&&o&&o.clamp(),e&&this.moveCenter(i),this}},{key:"fitHeight",value:function(t,e){var i,s=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],n=arguments.length>3?arguments[3]:void 0;e&&(i=this.center),this.scale.y=this.screenHeight/t,s&&(this.scale.x=this.scale.y);var o=this.plugins.get("clamp-zoom",!0);return!n&&o&&o.clamp(),e&&this.moveCenter(i),this}},{key:"fitWorld",value:function(t){var e;t&&(e=this.center),this.scale.x=this.screenWidth/this.worldWidth,this.scale.y=this.screenHeight/this.worldHeight,this.scale.x<this.scale.y?this.scale.y=this.scale.x:this.scale.x=this.scale.y;var i=this.plugins.get("clamp-zoom",!0);return i&&i.clamp(),t&&this.moveCenter(e),this}},{key:"fit",value:function(t){var e,i=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this.worldWidth,s=arguments.length>2&&void 0!==arguments[2]?arguments[2]:this.worldHeight;t&&(e=this.center),this.scale.x=this.screenWidth/i,this.scale.y=this.screenHeight/s,this.scale.x<this.scale.y?this.scale.y=this.scale.x:this.scale.x=this.scale.y;var n=this.plugins.get("clamp-zoom",!0);return n&&n.clamp(),t&&this.moveCenter(e),this}},{key:"visible",set:function(t){t||this.input.clear(),y(a(o.prototype),"visible",t,this,!0)}},{key:"setZoom",value:function(t,e){var i;e&&(i=this.center),this.scale.set(t);var s=this.plugins.get("clamp-zoom",!0);return s&&s.clamp(),e&&this.moveCenter(i),this}},{key:"zoomPercent",value:function(t,e){return this.setZoom(this.scale.x+this.scale.x*t,e)}},{key:"zoom",value:function(t,e){return this.fitWidth(t+this.worldScreenWidth,e),this}},{key:"scaled",get:function(){return this.scale.x},set:function(t){this.setZoom(t,!0)}},{key:"snapZoom",value:function(t){return this.plugins.add("snap-zoom",new L(this,t)),this}},{key:"OOB",value:function(){return{left:this.left<0,right:this.right>this.worldWidth,top:this.top<0,bottom:this.bottom>this._worldHeight,cornerPoint:new e.Point(this.worldWidth*this.scale.x-this.screenWidth,this.worldHeight*this.scale.y-this.screenHeight)}}},{key:"right",get:function(){return-this.x/this.scale.x+this.worldScreenWidth},set:function(t){this.x=-t*this.scale.x+this.screenWidth,this.plugins.reset()}},{key:"left",get:function(){return-this.x/this.scale.x},set:function(t){this.x=-t*this.scale.x,this.plugins.reset()}},{key:"top",get:function(){return-this.y/this.scale.y},set:function(t){this.y=-t*this.scale.y,this.plugins.reset()}},{key:"bottom",get:function(){return-this.y/this.scale.y+this.worldScreenHeight},set:function(t){this.y=-t*this.scale.y+this.screenHeight,this.plugins.reset()}},{key:"dirty",get:function(){return this._dirty},set:function(t){this._dirty=t}},{key:"forceHitArea",get:function(){return this._forceHitArea},set:function(t){t?(this._forceHitArea=t,this.hitArea=t):(this._forceHitArea=null,this.hitArea=new e.Rectangle(0,0,this.worldWidth,this.worldHeight))}},{key:"drag",value:function(t){return this.plugins.add("drag",new H(this,t)),this}},{key:"clamp",value:function(t){return this.plugins.add("clamp",new C(this,t)),this}},{key:"decelerate",value:function(t){return this.plugins.add("decelerate",new Y(this,t)),this}},{key:"bounce",value:function(t){return this.plugins.add("bounce",new T(this,t)),this}},{key:"pinch",value:function(t){return this.plugins.add("pinch",new M(this,t)),this}},{key:"snap",value:function(t,e,i){return this.plugins.add("snap",new R(this,t,e,i)),this}},{key:"follow",value:function(t,e){return this.plugins.add("follow",new U(this,t,e)),this}},{key:"wheel",value:function(t){return this.plugins.add("wheel",new F(this,t)),this}},{key:"animate",value:function(t){return this.plugins.add("animate",new G(this,t)),this}},{key:"clampZoom",value:function(t){return this.plugins.add("clamp-zoom",new z(this,t)),this}},{key:"mouseEdges",value:function(t){return this.plugins.add("mouse-edges",new Z(this,t)),this}},{key:"pause",get:function(){return this._pause},set:function(t){this._pause=t,this.lastViewport=null,this.moving=!1,this.zooming=!1,t&&this.input.pause()}},{key:"ensureVisible",value:function(t,e,i,s,n){n&&(i>this.worldScreenWidth||s>this.worldScreenHeight)&&(this.fit(!0,i,s),this.emit("zoomed",{viewport:this,type:"ensureVisible"}));var o=!1;t<this.left?(this.left=t,o=!0):t+i>this.right&&(this.right=t+i,o=!0),e<this.top?(this.top=e,o=!0):e+s>this.bottom&&(this.bottom=e+s,o=!0),o&&this.emit("moved",{viewport:this,type:"ensureVisible"})}}]),o}(e.Container);t.Plugin=b,t.Viewport=$,Object.defineProperty(t,"__esModule",{value:!0})}));
 
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"pixi.js":49}],49:[function(require,module,exports){
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"pixi.js":50}],50:[function(require,module,exports){
 /*!
  * pixi.js - v6.0.1
  * Compiled Wed, 24 Mar 2021 20:02:24 UTC
@@ -39894,8 +39896,194 @@ exports.VERSION = VERSION;
 exports.filters = filters;
 
 
-},{"@pixi/accessibility":5,"@pixi/app":6,"@pixi/compressed-textures":7,"@pixi/constants":8,"@pixi/core":9,"@pixi/display":10,"@pixi/extract":11,"@pixi/filter-alpha":12,"@pixi/filter-blur":13,"@pixi/filter-color-matrix":14,"@pixi/filter-displacement":15,"@pixi/filter-fxaa":16,"@pixi/filter-noise":17,"@pixi/graphics":18,"@pixi/interaction":19,"@pixi/loaders":20,"@pixi/math":21,"@pixi/mesh":23,"@pixi/mesh-extras":22,"@pixi/mixin-cache-as-bitmap":24,"@pixi/mixin-get-child-by-name":25,"@pixi/mixin-get-global-position":26,"@pixi/particles":27,"@pixi/polyfill":28,"@pixi/prepare":29,"@pixi/runner":30,"@pixi/settings":31,"@pixi/sprite":34,"@pixi/sprite-animated":32,"@pixi/sprite-tiling":33,"@pixi/spritesheet":35,"@pixi/text":37,"@pixi/text-bitmap":36,"@pixi/ticker":38,"@pixi/utils":39}],50:[function(require,module,exports){
-(function (setImmediate){
+},{"@pixi/accessibility":5,"@pixi/app":6,"@pixi/compressed-textures":7,"@pixi/constants":8,"@pixi/core":9,"@pixi/display":10,"@pixi/extract":11,"@pixi/filter-alpha":12,"@pixi/filter-blur":13,"@pixi/filter-color-matrix":14,"@pixi/filter-displacement":15,"@pixi/filter-fxaa":16,"@pixi/filter-noise":17,"@pixi/graphics":18,"@pixi/interaction":19,"@pixi/loaders":20,"@pixi/math":21,"@pixi/mesh":23,"@pixi/mesh-extras":22,"@pixi/mixin-cache-as-bitmap":24,"@pixi/mixin-get-child-by-name":25,"@pixi/mixin-get-global-position":26,"@pixi/particles":27,"@pixi/polyfill":28,"@pixi/prepare":29,"@pixi/runner":30,"@pixi/settings":31,"@pixi/sprite":34,"@pixi/sprite-animated":32,"@pixi/sprite-tiling":33,"@pixi/spritesheet":35,"@pixi/text":37,"@pixi/text-bitmap":36,"@pixi/ticker":38,"@pixi/utils":39}],51:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],52:[function(require,module,exports){
+(function (setImmediate){(function (){
 'use strict';
 
 /**
@@ -40221,8 +40409,724 @@ Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
 
 module.exports = Promise;
 
-}).call(this,require("timers").setImmediate)
-},{"timers":70}],51:[function(require,module,exports){
+}).call(this)}).call(this,require("timers").setImmediate)
+},{"timers":66}],53:[function(require,module,exports){
+(function (global){(function (){
+/*! https://mths.be/punycode v1.4.1 by @mathias */
+;(function(root) {
+
+	/** Detect free variables */
+	var freeExports = typeof exports == 'object' && exports &&
+		!exports.nodeType && exports;
+	var freeModule = typeof module == 'object' && module &&
+		!module.nodeType && module;
+	var freeGlobal = typeof global == 'object' && global;
+	if (
+		freeGlobal.global === freeGlobal ||
+		freeGlobal.window === freeGlobal ||
+		freeGlobal.self === freeGlobal
+	) {
+		root = freeGlobal;
+	}
+
+	/**
+	 * The `punycode` object.
+	 * @name punycode
+	 * @type Object
+	 */
+	var punycode,
+
+	/** Highest positive signed 32-bit float value */
+	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
+
+	/** Bootstring parameters */
+	base = 36,
+	tMin = 1,
+	tMax = 26,
+	skew = 38,
+	damp = 700,
+	initialBias = 72,
+	initialN = 128, // 0x80
+	delimiter = '-', // '\x2D'
+
+	/** Regular expressions */
+	regexPunycode = /^xn--/,
+	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
+	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
+
+	/** Error messages */
+	errors = {
+		'overflow': 'Overflow: input needs wider integers to process',
+		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
+		'invalid-input': 'Invalid input'
+	},
+
+	/** Convenience shortcuts */
+	baseMinusTMin = base - tMin,
+	floor = Math.floor,
+	stringFromCharCode = String.fromCharCode,
+
+	/** Temporary variable */
+	key;
+
+	/*--------------------------------------------------------------------------*/
+
+	/**
+	 * A generic error utility function.
+	 * @private
+	 * @param {String} type The error type.
+	 * @returns {Error} Throws a `RangeError` with the applicable error message.
+	 */
+	function error(type) {
+		throw new RangeError(errors[type]);
+	}
+
+	/**
+	 * A generic `Array#map` utility function.
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} callback The function that gets called for every array
+	 * item.
+	 * @returns {Array} A new array of values returned by the callback function.
+	 */
+	function map(array, fn) {
+		var length = array.length;
+		var result = [];
+		while (length--) {
+			result[length] = fn(array[length]);
+		}
+		return result;
+	}
+
+	/**
+	 * A simple `Array#map`-like wrapper to work with domain name strings or email
+	 * addresses.
+	 * @private
+	 * @param {String} domain The domain name or email address.
+	 * @param {Function} callback The function that gets called for every
+	 * character.
+	 * @returns {Array} A new string of characters returned by the callback
+	 * function.
+	 */
+	function mapDomain(string, fn) {
+		var parts = string.split('@');
+		var result = '';
+		if (parts.length > 1) {
+			// In email addresses, only the domain name should be punycoded. Leave
+			// the local part (i.e. everything up to `@`) intact.
+			result = parts[0] + '@';
+			string = parts[1];
+		}
+		// Avoid `split(regex)` for IE8 compatibility. See #17.
+		string = string.replace(regexSeparators, '\x2E');
+		var labels = string.split('.');
+		var encoded = map(labels, fn).join('.');
+		return result + encoded;
+	}
+
+	/**
+	 * Creates an array containing the numeric code points of each Unicode
+	 * character in the string. While JavaScript uses UCS-2 internally,
+	 * this function will convert a pair of surrogate halves (each of which
+	 * UCS-2 exposes as separate characters) into a single code point,
+	 * matching UTF-16.
+	 * @see `punycode.ucs2.encode`
+	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+	 * @memberOf punycode.ucs2
+	 * @name decode
+	 * @param {String} string The Unicode input string (UCS-2).
+	 * @returns {Array} The new array of code points.
+	 */
+	function ucs2decode(string) {
+		var output = [],
+		    counter = 0,
+		    length = string.length,
+		    value,
+		    extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * Creates a string based on an array of numeric code points.
+	 * @see `punycode.ucs2.decode`
+	 * @memberOf punycode.ucs2
+	 * @name encode
+	 * @param {Array} codePoints The array of numeric code points.
+	 * @returns {String} The new Unicode string (UCS-2).
+	 */
+	function ucs2encode(array) {
+		return map(array, function(value) {
+			var output = '';
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+			return output;
+		}).join('');
+	}
+
+	/**
+	 * Converts a basic code point into a digit/integer.
+	 * @see `digitToBasic()`
+	 * @private
+	 * @param {Number} codePoint The basic numeric code point value.
+	 * @returns {Number} The numeric value of a basic code point (for use in
+	 * representing integers) in the range `0` to `base - 1`, or `base` if
+	 * the code point does not represent a value.
+	 */
+	function basicToDigit(codePoint) {
+		if (codePoint - 48 < 10) {
+			return codePoint - 22;
+		}
+		if (codePoint - 65 < 26) {
+			return codePoint - 65;
+		}
+		if (codePoint - 97 < 26) {
+			return codePoint - 97;
+		}
+		return base;
+	}
+
+	/**
+	 * Converts a digit/integer into a basic code point.
+	 * @see `basicToDigit()`
+	 * @private
+	 * @param {Number} digit The numeric value of a basic code point.
+	 * @returns {Number} The basic code point whose value (when used for
+	 * representing integers) is `digit`, which needs to be in the range
+	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
+	 * used; else, the lowercase form is used. The behavior is undefined
+	 * if `flag` is non-zero and `digit` has no uppercase form.
+	 */
+	function digitToBasic(digit, flag) {
+		//  0..25 map to ASCII a..z or A..Z
+		// 26..35 map to ASCII 0..9
+		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
+	}
+
+	/**
+	 * Bias adaptation function as per section 3.4 of RFC 3492.
+	 * https://tools.ietf.org/html/rfc3492#section-3.4
+	 * @private
+	 */
+	function adapt(delta, numPoints, firstTime) {
+		var k = 0;
+		delta = firstTime ? floor(delta / damp) : delta >> 1;
+		delta += floor(delta / numPoints);
+		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
+			delta = floor(delta / baseMinusTMin);
+		}
+		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
+	}
+
+	/**
+	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
+	 * symbols.
+	 * @memberOf punycode
+	 * @param {String} input The Punycode string of ASCII-only symbols.
+	 * @returns {String} The resulting string of Unicode symbols.
+	 */
+	function decode(input) {
+		// Don't use UCS-2
+		var output = [],
+		    inputLength = input.length,
+		    out,
+		    i = 0,
+		    n = initialN,
+		    bias = initialBias,
+		    basic,
+		    j,
+		    index,
+		    oldi,
+		    w,
+		    k,
+		    digit,
+		    t,
+		    /** Cached calculation results */
+		    baseMinusT;
+
+		// Handle the basic code points: let `basic` be the number of input code
+		// points before the last delimiter, or `0` if there is none, then copy
+		// the first basic code points to the output.
+
+		basic = input.lastIndexOf(delimiter);
+		if (basic < 0) {
+			basic = 0;
+		}
+
+		for (j = 0; j < basic; ++j) {
+			// if it's not a basic code point
+			if (input.charCodeAt(j) >= 0x80) {
+				error('not-basic');
+			}
+			output.push(input.charCodeAt(j));
+		}
+
+		// Main decoding loop: start just after the last delimiter if any basic code
+		// points were copied; start at the beginning otherwise.
+
+		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
+
+			// `index` is the index of the next character to be consumed.
+			// Decode a generalized variable-length integer into `delta`,
+			// which gets added to `i`. The overflow checking is easier
+			// if we increase `i` as we go, then subtract off its starting
+			// value at the end to obtain `delta`.
+			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
+
+				if (index >= inputLength) {
+					error('invalid-input');
+				}
+
+				digit = basicToDigit(input.charCodeAt(index++));
+
+				if (digit >= base || digit > floor((maxInt - i) / w)) {
+					error('overflow');
+				}
+
+				i += digit * w;
+				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+
+				if (digit < t) {
+					break;
+				}
+
+				baseMinusT = base - t;
+				if (w > floor(maxInt / baseMinusT)) {
+					error('overflow');
+				}
+
+				w *= baseMinusT;
+
+			}
+
+			out = output.length + 1;
+			bias = adapt(i - oldi, out, oldi == 0);
+
+			// `i` was supposed to wrap around from `out` to `0`,
+			// incrementing `n` each time, so we'll fix that now:
+			if (floor(i / out) > maxInt - n) {
+				error('overflow');
+			}
+
+			n += floor(i / out);
+			i %= out;
+
+			// Insert `n` at position `i` of the output
+			output.splice(i++, 0, n);
+
+		}
+
+		return ucs2encode(output);
+	}
+
+	/**
+	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
+	 * Punycode string of ASCII-only symbols.
+	 * @memberOf punycode
+	 * @param {String} input The string of Unicode symbols.
+	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
+	 */
+	function encode(input) {
+		var n,
+		    delta,
+		    handledCPCount,
+		    basicLength,
+		    bias,
+		    j,
+		    m,
+		    q,
+		    k,
+		    t,
+		    currentValue,
+		    output = [],
+		    /** `inputLength` will hold the number of code points in `input`. */
+		    inputLength,
+		    /** Cached calculation results */
+		    handledCPCountPlusOne,
+		    baseMinusT,
+		    qMinusT;
+
+		// Convert the input in UCS-2 to Unicode
+		input = ucs2decode(input);
+
+		// Cache the length
+		inputLength = input.length;
+
+		// Initialize the state
+		n = initialN;
+		delta = 0;
+		bias = initialBias;
+
+		// Handle the basic code points
+		for (j = 0; j < inputLength; ++j) {
+			currentValue = input[j];
+			if (currentValue < 0x80) {
+				output.push(stringFromCharCode(currentValue));
+			}
+		}
+
+		handledCPCount = basicLength = output.length;
+
+		// `handledCPCount` is the number of code points that have been handled;
+		// `basicLength` is the number of basic code points.
+
+		// Finish the basic string - if it is not empty - with a delimiter
+		if (basicLength) {
+			output.push(delimiter);
+		}
+
+		// Main encoding loop:
+		while (handledCPCount < inputLength) {
+
+			// All non-basic code points < n have been handled already. Find the next
+			// larger one:
+			for (m = maxInt, j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+				if (currentValue >= n && currentValue < m) {
+					m = currentValue;
+				}
+			}
+
+			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
+			// but guard against overflow
+			handledCPCountPlusOne = handledCPCount + 1;
+			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
+				error('overflow');
+			}
+
+			delta += (m - n) * handledCPCountPlusOne;
+			n = m;
+
+			for (j = 0; j < inputLength; ++j) {
+				currentValue = input[j];
+
+				if (currentValue < n && ++delta > maxInt) {
+					error('overflow');
+				}
+
+				if (currentValue == n) {
+					// Represent delta as a generalized variable-length integer
+					for (q = delta, k = base; /* no condition */; k += base) {
+						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+						if (q < t) {
+							break;
+						}
+						qMinusT = q - t;
+						baseMinusT = base - t;
+						output.push(
+							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
+						);
+						q = floor(qMinusT / baseMinusT);
+					}
+
+					output.push(stringFromCharCode(digitToBasic(q, 0)));
+					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
+					delta = 0;
+					++handledCPCount;
+				}
+			}
+
+			++delta;
+			++n;
+
+		}
+		return output.join('');
+	}
+
+	/**
+	 * Converts a Punycode string representing a domain name or an email address
+	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
+	 * it doesn't matter if you call it on a string that has already been
+	 * converted to Unicode.
+	 * @memberOf punycode
+	 * @param {String} input The Punycoded domain name or email address to
+	 * convert to Unicode.
+	 * @returns {String} The Unicode representation of the given Punycode
+	 * string.
+	 */
+	function toUnicode(input) {
+		return mapDomain(input, function(string) {
+			return regexPunycode.test(string)
+				? decode(string.slice(4).toLowerCase())
+				: string;
+		});
+	}
+
+	/**
+	 * Converts a Unicode string representing a domain name or an email address to
+	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
+	 * i.e. it doesn't matter if you call it with a domain that's already in
+	 * ASCII.
+	 * @memberOf punycode
+	 * @param {String} input The domain name or email address to convert, as a
+	 * Unicode string.
+	 * @returns {String} The Punycode representation of the given domain name or
+	 * email address.
+	 */
+	function toASCII(input) {
+		return mapDomain(input, function(string) {
+			return regexNonASCII.test(string)
+				? 'xn--' + encode(string)
+				: string;
+		});
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	/** Define the public API */
+	punycode = {
+		/**
+		 * A string representing the current Punycode.js version number.
+		 * @memberOf punycode
+		 * @type String
+		 */
+		'version': '1.4.1',
+		/**
+		 * An object of methods to convert from JavaScript's internal character
+		 * representation (UCS-2) to Unicode code points, and back.
+		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
+		 * @memberOf punycode
+		 * @type Object
+		 */
+		'ucs2': {
+			'decode': ucs2decode,
+			'encode': ucs2encode
+		},
+		'decode': decode,
+		'encode': encode,
+		'toASCII': toASCII,
+		'toUnicode': toUnicode
+	};
+
+	/** Expose `punycode` */
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		typeof define == 'function' &&
+		typeof define.amd == 'object' &&
+		define.amd
+	) {
+		define('punycode', function() {
+			return punycode;
+		});
+	} else if (freeExports && freeModule) {
+		if (module.exports == freeExports) {
+			// in Node.js, io.js, or RingoJS v0.8.0+
+			freeModule.exports = punycode;
+		} else {
+			// in Narwhal or RingoJS v0.7.0-
+			for (key in punycode) {
+				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
+			}
+		}
+	} else {
+		// in Rhino or a web browser
+		root.punycode = punycode;
+	}
+
+}(this));
+
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],54:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+'use strict';
+
+// If obj.hasOwnProperty has been overridden, then calling
+// obj.hasOwnProperty(prop) will break.
+// See: https://github.com/joyent/node/issues/1707
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+module.exports = function(qs, sep, eq, options) {
+  sep = sep || '&';
+  eq = eq || '=';
+  var obj = {};
+
+  if (typeof qs !== 'string' || qs.length === 0) {
+    return obj;
+  }
+
+  var regexp = /\+/g;
+  qs = qs.split(sep);
+
+  var maxKeys = 1000;
+  if (options && typeof options.maxKeys === 'number') {
+    maxKeys = options.maxKeys;
+  }
+
+  var len = qs.length;
+  // maxKeys <= 0 means that we should not limit keys count
+  if (maxKeys > 0 && len > maxKeys) {
+    len = maxKeys;
+  }
+
+  for (var i = 0; i < len; ++i) {
+    var x = qs[i].replace(regexp, '%20'),
+        idx = x.indexOf(eq),
+        kstr, vstr, k, v;
+
+    if (idx >= 0) {
+      kstr = x.substr(0, idx);
+      vstr = x.substr(idx + 1);
+    } else {
+      kstr = x;
+      vstr = '';
+    }
+
+    k = decodeURIComponent(kstr);
+    v = decodeURIComponent(vstr);
+
+    if (!hasOwnProperty(obj, k)) {
+      obj[k] = v;
+    } else if (isArray(obj[k])) {
+      obj[k].push(v);
+    } else {
+      obj[k] = [obj[k], v];
+    }
+  }
+
+  return obj;
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+},{}],55:[function(require,module,exports){
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+'use strict';
+
+var stringifyPrimitive = function(v) {
+  switch (typeof v) {
+    case 'string':
+      return v;
+
+    case 'boolean':
+      return v ? 'true' : 'false';
+
+    case 'number':
+      return isFinite(v) ? v : '';
+
+    default:
+      return '';
+  }
+};
+
+module.exports = function(obj, sep, eq, name) {
+  sep = sep || '&';
+  eq = eq || '=';
+  if (obj === null) {
+    obj = undefined;
+  }
+
+  if (typeof obj === 'object') {
+    return map(objectKeys(obj), function(k) {
+      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
+      if (isArray(obj[k])) {
+        return map(obj[k], function(v) {
+          return ks + encodeURIComponent(stringifyPrimitive(v));
+        }).join(sep);
+      } else {
+        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
+      }
+    }).join(sep);
+
+  }
+
+  if (!name) return '';
+  return encodeURIComponent(stringifyPrimitive(name)) + eq +
+         encodeURIComponent(stringifyPrimitive(obj));
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+function map (xs, f) {
+  if (xs.map) return xs.map(f);
+  var res = [];
+  for (var i = 0; i < xs.length; i++) {
+    res.push(f(xs[i], i));
+  }
+  return res;
+}
+
+var objectKeys = Object.keys || function (obj) {
+  var res = [];
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
+  }
+  return res;
+};
+
+},{}],56:[function(require,module,exports){
+'use strict';
+
+exports.decode = exports.parse = require('./decode');
+exports.encode = exports.stringify = require('./encode');
+
+},{"./decode":54,"./encode":55}],57:[function(require,module,exports){
 /*!
  * resource-loader - v3.0.1
  * https://github.com/pixijs/pixi-sound
@@ -42573,7 +43477,7 @@ exports.encodeBinary = encodeBinary;
 exports.middleware = index;
 
 
-},{"mini-signals":45,"parse-uri":47}],52:[function(require,module,exports){
+},{"mini-signals":46,"parse-uri":48}],58:[function(require,module,exports){
 // A library of seedable RNGs implemented in Javascript.
 //
 // Usage:
@@ -42635,7 +43539,7 @@ sr.tychei = tychei;
 
 module.exports = sr;
 
-},{"./lib/alea":53,"./lib/tychei":54,"./lib/xor128":55,"./lib/xor4096":56,"./lib/xorshift7":57,"./lib/xorwow":58,"./seedrandom":59}],53:[function(require,module,exports){
+},{"./lib/alea":59,"./lib/tychei":60,"./lib/xor128":61,"./lib/xor4096":62,"./lib/xorshift7":63,"./lib/xorwow":64,"./seedrandom":65}],59:[function(require,module,exports){
 // A port of an algorithm by Johannes Baagøe <baagoe@baagoe.com>, 2010
 // http://baagoe.com/en/RandomMusings/javascript/
 // https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
@@ -42751,7 +43655,7 @@ if (module && module.exports) {
 
 
 
-},{}],54:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // A Javascript implementaion of the "Tyche-i" prng algorithm by
 // Samuel Neves and Filipe Araujo.
 // See https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
@@ -42856,7 +43760,7 @@ if (module && module.exports) {
 
 
 
-},{}],55:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 // A Javascript implementaion of the "xor128" prng algorithm by
 // George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
 
@@ -42939,7 +43843,7 @@ if (module && module.exports) {
 
 
 
-},{}],56:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 // A Javascript implementaion of Richard Brent's Xorgens xor4096 algorithm.
 //
 // This fast non-cryptographic random number generator is designed for
@@ -43087,7 +43991,7 @@ if (module && module.exports) {
   (typeof define) == 'function' && define   // present with an AMD loader
 );
 
-},{}],57:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 // A Javascript implementaion of the "xorshift7" algorithm by
 // François Panneton and Pierre L'ecuyer:
 // "On the Xorgshift Random Number Generators"
@@ -43186,7 +44090,7 @@ if (module && module.exports) {
 );
 
 
-},{}],58:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 // A Javascript implementaion of the "xorwow" prng algorithm by
 // George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
 
@@ -43274,7 +44178,7 @@ if (module && module.exports) {
 
 
 
-},{}],59:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 /*
 Copyright 2019 David Bau.
 
@@ -43529,7 +44433,86 @@ if ((typeof module) == 'object' && module.exports) {
   Math    // math: package containing random, pow, and seedrandom
 );
 
-},{"crypto":64}],60:[function(require,module,exports){
+},{"crypto":40}],66:[function(require,module,exports){
+(function (setImmediate,clearImmediate){(function (){
+var nextTick = require('process/browser.js').nextTick;
+var apply = Function.prototype.apply;
+var slice = Array.prototype.slice;
+var immediateIds = {};
+var nextImmediateId = 0;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) { timeout.close(); };
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// That's not how node.js implements it but the exposed api is the same.
+exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
+  var id = nextImmediateId++;
+  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
+
+  immediateIds[id] = true;
+
+  nextTick(function onNextTick() {
+    if (immediateIds[id]) {
+      // fn.call() is faster so we optimize for the common use-case
+      // @see http://jsperf.com/call-apply-segu
+      if (args) {
+        fn.apply(null, args);
+      } else {
+        fn.call(null);
+      }
+      // Prevent ids from leaking
+      exports.clearImmediate(id);
+    }
+  });
+
+  return id;
+};
+
+exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
+  delete immediateIds[id];
+};
+}).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
+},{"process/browser.js":51,"timers":66}],67:[function(require,module,exports){
 // TinyColor v1.4.2
 // https://github.com/bgrins/TinyColor
 // Brian Grinstead, MIT License
@@ -44726,1825 +45709,7 @@ else {
 
 })(Math);
 
-},{}],61:[function(require,module,exports){
-// yy-counter
-// In-browser counter to watch changeable values like counters or FPS
-// David Figatner
-// (c) YOPEY YOPEY LLC 2017
-// MIT License
-// https://github.com/davidfig/counter
-
-module.exports = class Counter
-{
-    /**
-     * @param {object} [options]
-     * @param {string} [options.side=rightbottom] side to place the panel (combination of right/left and bottom/top)
-     * @param {number} [options.padding=7px]
-     * @param {string} [options.color=white]
-     * @param {string} [options.background=rgba(0,0,0,0.5)]
-     * @param {*} {options.xxx} where xxx is a CSS style for the div
-     */
-    constructor(options)
-    {
-        options = options || {}
-        options.side = options.side || 'rightbottom'
-        options.side.toLowerCase()
-        options.padding = options.padding || '7px'
-        options.color = options.color || 'white'
-        options.background = options.background || 'rgba(0,0,0,0.5)'
-        this.div = document.createElement('div')
-        Counter.findParent(options.side).appendChild(this.div)
-        for (let style in options)
-        {
-            if (style !== 'parent' && style !== 'side')
-            {
-                this.div.style[style] = options[style]
-            }
-        }
-    }
-
-    /**
-     * find the parent div for one of the corners
-     * @param {string} [options.side] side to place the panel (combination of right/left and bottom/top)
-     * @return {HTMLElement}
-     */
-    static findParent(side)
-    {
-        const styles = []
-        let name = 'yy-counter-'
-        if (side.indexOf('left') !== -1)
-        {
-            name += 'left-'
-            styles['left'] = 0
-        }
-        else
-        {
-            name += 'right-'
-            styles['right'] = 0
-        }
-        if (side.indexOf('top') !== -1)
-        {
-            name += 'top'
-            styles['top'] = 0
-        }
-        else
-        {
-            name += 'bottom'
-            styles['bottom'] = 0
-        }
-        const test = document.getElementById(name)
-        if (test)
-        {
-            return test
-        }
-        const container = document.createElement('div')
-        container.id = name
-        container.style.overflow = 'hidden'
-        container.style.position = 'fixed'
-        container.style.zIndex = 10000
-        container.style.pointerEvents = 'none'
-        container.style.userSelect = 'none'
-        for (let style in styles)
-        {
-            container.style[style] = styles[style]
-        }
-        document.body.appendChild(container)
-        return container
-    }
-
-    /**
-     * replaces the innerHTML of the console
-     * @param {string|number} text1
-     * @param {string|number} [text2]
-     * @param {string|number} [...textn] any number of arguments
-     */
-    log()
-    {
-        let s = ''
-        for (let arg of arguments)
-        {
-            s += '<div>' + arg + '</div>'
-        }
-        this.div.innerHTML =  s
-    }
-
-    /**
-     * appends to the innerHTML of the console
-     * @param {string|number} text1
-     * @param {string|number} [text2]
-     * @param {string|number} [...textn] any number of arguments
-     */
-    append()
-    {
-        let s = this.div.innerHTML
-        for (let arg of arguments)
-        {
-            s += '<div>' + arg + '</div>'
-        }
-        this.div.innerHTML = s
-    }
-}
-},{}],62:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Color = require('tinycolor2');
-var Counter = require('yy-counter');
-
-var STYLES = {
-    'background': 'rgba(0, 0, 0, 0.5)',
-    'color': 'white'
-};
-
-var STYLES_FPS = {
-    'padding': '0.1em 0.5em'
-};
-
-var STYLES_METER = {};
-
-module.exports = function () {
-    /**
-     * @param {object} [options]
-     * @param {boolean} [options.meter=true] include a meter with the FPS
-     * @param {string} [options.side=bottom-right] include any combination of left/right and top/bottom
-     * @param {number} [options.FPS=60] desired FPS
-     * @param {number} [options.tolerance=1] minimum tolerance for fluctuations in FPS number
-     * @param {number} [options.meterWidth=100] width of meter div
-     * @param {number} [options.meterHeight=25] height of meter div
-     * @param {number} [options.meterLineHeight=4] height of meter line
-     * @param {styles[]} [options.styles] CSS styles to apply to the div (in javascript format)
-     * @param {styles[]} [options.stylesFPS] CSS styles to apply to the FPS text (in javascript format)
-     * @param {styles[]} [options.stylesMeter] CSS styles to apply to the FPS meter (in javascript format)
-     * @param {string} [options.text=" FPS"] change the text to the right of the FPS
-     */
-    function FPS(options) {
-        _classCallCheck(this, FPS);
-
-        this.options = options || {};
-        this.tolerance = this.options.tolerance || 1;
-        this.FPS = this.options.FPS || 60;
-        this.meterWidth = this.options.meterWidth || 100;
-        this.meterHeight = this.options.meterHeight || 25;
-        this.meterLineHeight = this.options.meterLineHeight || 4;
-        this.div = document.createElement('div');
-        Counter.findParent(this.options.side || 'bottom-right').appendChild(this.div);
-        this.style(this.div, STYLES, this.options.styles);
-        this.divFPS();
-        this.meter = typeof this.options.meter === 'undefined' || this.options.meter;
-        this.lastTime = 0;
-        this.frameNumber = 0;
-        this.lastUpdate = 0;
-        this.lastFPS = '--';
-    }
-
-    /**
-     * change desired FPS
-     * @type {number}
-     */
-
-
-    _createClass(FPS, [{
-        key: 'remove',
-
-
-        /**
-         * remove meter from DOM
-         */
-        value: function remove() {
-            this.div.remove();
-        }
-
-        /**
-         * @type {boolean} meter (the FPS graph) is on or off
-         */
-
-    }, {
-        key: 'style',
-        value: function style(div, style1, style2) {
-            for (var style in style1) {
-                div.style[style] = style1[style];
-            }
-            if (style2) {
-                for (var _style in style2) {
-                    div.style[_style] = style2[_style];
-                }
-            }
-        }
-
-        /**
-         * create div for text FPS
-         * @private
-         * @param {HTMLElement} div
-         * @param {object} options (see contructor)
-         */
-
-    }, {
-        key: 'divFPS',
-        value: function divFPS() {
-            var div = this.div;
-            var options = this.options;
-            var divFPS = document.createElement('div');
-            div.appendChild(divFPS);
-            this.fpsSpan = document.createElement('span');
-            divFPS.appendChild(this.fpsSpan);
-            var span = document.createElement('span');
-            divFPS.appendChild(span);
-            span.innerText = typeof options.text !== 'undefined' ? options.text : ' FPS';
-            this.style(div, STYLES_FPS, options.stylesFPS);
-        }
-
-        /**
-         * create div for FPS meter
-         * @private
-         * @param {HTMLElement} div
-         * @param {object} options (see contructor)
-         */
-
-    }, {
-        key: 'divMeter',
-        value: function divMeter() {
-            var div = this.div;
-            var options = this.options;
-            if (!this.meterCanvas) {
-                this.meterCanvas = document.createElement('canvas');
-                div.appendChild(this.meterCanvas);
-                this.meterCanvas.width = this.meterWidth;
-                this.meterCanvas.height = this.meterHeight;
-                this.meterCanvas.style.width = div.width + 'px';
-                this.meterCanvas.style.height = div.height + 'px';
-                this.style(this.meterCanvas, STYLES_METER, options.stylesMeter);
-            } else {
-                this.meterCanvas.style.display = 'block';
-            }
-        }
-
-        /**
-         * call this at the start of the frame to calculate FPS
-         */
-
-    }, {
-        key: 'frame',
-        value: function frame() {
-            this.frameNumber++;
-            var currentTime = performance.now() - this.lastTime;
-
-            // skip large differences to remove garbage
-            if (currentTime > 500) {
-                if (this.lastTime !== 0) {
-                    this.lastFPS = Math.floor(this.frameNumber / (currentTime / 1000));
-                    if (this.lastFPS >= this.FPS - this.tolerance && this.lastFPS <= this.FPS + this.tolerance) {
-                        this.lastFPS = this.FPS;
-                    }
-                }
-                this.lastTime = performance.now();
-                this.frameNumber = 0;
-            }
-            this.fpsSpan.innerText = this.lastFPS;
-            if (this.meterCanvas && this.lastFPS !== '--') {
-                this.meterUpdate(this.lastFPS / this.FPS);
-            }
-        }
-    }, {
-        key: 'meterUpdate',
-        value: function meterUpdate(percent) {
-            var c = this.meterCanvas.getContext('2d');
-            var data = c.getImageData(0, 0, this.meterCanvas.width, this.meterCanvas.height);
-            c.putImageData(data, -1, 0);
-            c.clearRect(this.meterCanvas.width - 1, 0, 1, this.meterCanvas.height);
-            if (percent < 0.5) {
-                c.fillStyle = Color.mix('#ff0000', '0xffa500', percent * 200).toHexString();
-            } else {
-                c.fillStyle = Color.mix('#ffa500', '#00ff00', (percent - 0.5) * 200).toHexString();
-            }
-            var height = (this.meterCanvas.height - this.meterLineHeight) * (1 - percent);
-            c.fillRect(this.meterCanvas.width - 1, height, 1, this.meterLineHeight);
-        }
-    }, {
-        key: 'side',
-        value: function side(options) {
-            if (options.side) {
-                options.side = options.side.toLowerCase();
-                if (options.side.indexOf('left') !== -1) {
-                    STYLES['left'] = 0;
-                    delete STYLES['right'];
-                } else {
-                    STYLES['right'] = 0;
-                    delete STYLES['left'];
-                }
-                if (options.side.indexOf('top') !== -1) {
-                    STYLES['top'] = 0;
-                    delete STYLES['bottom'];
-                } else {
-                    STYLES['bottom'] = 0;
-                    delete STYLES['top'];
-                }
-            } else {
-                STYLES['right'] = 0;
-                STYLES['bottom'] = 0;
-            }
-        }
-    }, {
-        key: 'fps',
-        get: function get() {
-            return this.FPS;
-        },
-        set: function set(value) {
-            this.FPS = value;
-        }
-    }, {
-        key: 'meter',
-        get: function get() {
-            return this._meter;
-        },
-        set: function set(value) {
-            if (value) {
-                this.divMeter();
-            } else if (this.meterCanvas) {
-                this.meterCanvas.style.display = 'none';
-            }
-        }
-    }]);
-
-    return FPS;
-}();
-
-},{"tinycolor2":60,"yy-counter":61}],63:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-// yy-random
-// by David Figatner
-// MIT license
-// copyright YOPEY YOPEY LLC 2016-17
-// https://github.com/davidfig/random
-
-var seedrandom = require('seedrandom');
-
-var Random = function () {
-    function Random() {
-        _classCallCheck(this, Random);
-
-        this.generator = Math.random;
-    }
-
-    /**
-     * generates a seeded number
-     * @param {number} seed
-     * @param {object} [options]
-     * @param {string} [PRNG="alea"] - name of algorithm, see https://github.com/davidbau/seedrandom
-     * @param {(boolean|string)} [state] - can include the state returned from save()
-     */
-
-
-    _createClass(Random, [{
-        key: 'seed',
-        value: function seed(_seed, options) {
-            options = options || {};
-            this.generator = seedrandom[options.PRNG || 'alea'](_seed, { state: options.state });
-            this.options = options;
-        }
-
-        /**
-         * saves the state of the random generator
-         * can only be used after Random.seed() is called with options.state = true
-         * @returns {number} state
-         */
-
-    }, {
-        key: 'save',
-        value: function save() {
-            if (this.generator !== Math.random) {
-                return this.generator.state();
-            }
-        }
-
-        /**
-         * restores the state of the random generator
-         * @param {number} state
-         */
-
-    }, {
-        key: 'restore',
-        value: function restore(state) {
-            this.generator = seedrandom[this.options.PRNG || 'alea']('', { state: state });
-        }
-
-        /**
-         * changes the generator to use the old Math.sin-based random function
-         * based on : http://stackoverflow.com/questions/521295/javascript-random-seeds
-         * (deprecated) Use only for compatibility purposes
-         * @param {number} seed
-         */
-
-    }, {
-        key: 'seedOld',
-        value: function seedOld(seed) {
-            this.generator = function () {
-                var x = Math.sin(seed++) * 10000;
-                return x - Math.floor(x);
-            };
-        }
-
-        /**
-         * create a separate random generator using the seed
-         * @param {number} seed
-         * @return {object}
-         */
-
-    }, {
-        key: 'separateSeed',
-        value: function separateSeed(seed) {
-            var random = new Random();
-            random.seed(seed);
-            return random;
-        }
-
-        /**
-         * resets the random number this.generator to Math.random()
-         */
-
-    }, {
-        key: 'reset',
-        value: function reset() {
-            this.generator = Math.random;
-        }
-
-        /**
-         * returns a random number using the this.generator between [0, ceiling - 1]
-         * @param {number} ceiling
-         * @param {boolean} [useFloat=false]
-         * @return {number}
-         */
-
-    }, {
-        key: 'get',
-        value: function get(ceiling, useFloat) {
-            var negative = ceiling < 0 ? -1 : 1;
-            ceiling *= negative;
-            var result = void 0;
-            if (useFloat) {
-                result = this.generator() * ceiling;
-            } else {
-                result = Math.floor(this.generator() * ceiling);
-            }
-            return result * negative;
-        }
-
-        /**
-         * returns a random integer between 0 - Number.MAX_SAFE_INTEGER
-         * @return {number}
-         */
-
-    }, {
-        key: 'getHuge',
-        value: function getHuge() {
-            return this.get(Number.MAX_SAFE_INTEGER);
-        }
-
-        /**
-         * random number [middle - range, middle + range]
-         * @param {number} middle
-         * @param {number} delta
-         * @param {boolean} [useFloat=false]
-         * @return {number}
-         */
-
-    }, {
-        key: 'middle',
-        value: function middle(_middle, delta, useFloat) {
-            var half = delta / 2;
-            return this.range(_middle - half, _middle + half, useFloat);
-        }
-
-        /**
-         * random number [start, end]
-         * @param {number} start
-         * @param {number} end
-         * @param {boolean} [useFloat=false] if true, then range is (start, end)--i.e., not inclusive to start and end
-         * @return {number}
-         */
-
-    }, {
-        key: 'range',
-        value: function range(start, end, useFloat) {
-            // case where there is no range
-            if (end === start) {
-                return end;
-            }
-
-            if (useFloat) {
-                return this.get(end - start, true) + start;
-            } else {
-                var range = void 0;
-                if (start < 0 && end > 0) {
-                    range = -start + end + 1;
-                } else if (start === 0 && end > 0) {
-                    range = end + 1;
-                } else if (start < 0 && end === 0) {
-                    range = start - 1;
-                    start = 1;
-                } else if (start < 0 && end < 0) {
-                    range = end - start - 1;
-                } else {
-                    range = end - start + 1;
-                }
-                return Math.floor(this.generator() * range) + start;
-            }
-        }
-
-        /**
-         * an array of random numbers between [start, end]
-         * @param {number} start
-         * @param {number} end
-         * @param {number} count
-         * @param {boolean} [useFloat=false]
-         * @return {number[]}
-         */
-
-    }, {
-        key: 'rangeMultiple',
-        value: function rangeMultiple(start, end, count, useFloat) {
-            var array = [];
-            for (var i = 0; i < count; i++) {
-                array.push(this.range(start, end, useFloat));
-            }
-            return array;
-        }
-
-        /**
-         * an array of random numbers between [middle - range, middle + range]
-         * @param {number} middle
-         * @param {number} range
-         * @param {number} count
-         * @param {boolean} [useFloat=false]
-         * @return {number[]}
-         */
-
-    }, {
-        key: 'middleMultiple',
-        value: function middleMultiple(middle, range, count, useFloat) {
-            var array = [];
-            for (var i = 0; i < count; i++) {
-                array.push(middle(middle, range, useFloat));
-            }
-            return array;
-        }
-
-        /**
-         * @param {number} [chance=0.5]
-         * returns random sign (either +1 or -1)
-         * @return {number}
-         */
-
-    }, {
-        key: 'sign',
-        value: function sign(chance) {
-            chance = chance || 0.5;
-            return this.generator() < chance ? 1 : -1;
-        }
-
-        /**
-         * tells you whether a random chance was achieved
-         * @param {number} [percent=0.5]
-         * @return {boolean}
-         */
-
-    }, {
-        key: 'chance',
-        value: function chance(percent) {
-            return this.generator() < (percent || 0.5);
-        }
-
-        /**
-         * returns a random angle in radians [0 - 2 * Math.PI)
-         */
-
-    }, {
-        key: 'angle',
-        value: function angle() {
-            return this.get(Math.PI * 2, true);
-        }
-
-        /**
-         * Shuffle array (either in place or copied)
-         * from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-         * @param {Array} array
-         * @param {boolean} [copy=false] whether to shuffle in place (default) or return a new shuffled array
-         * @return {Array} a shuffled array
-         */
-
-    }, {
-        key: 'shuffle',
-        value: function shuffle(array, copy) {
-            if (copy) {
-                array = array.slice();
-            }
-            if (array.length === 0) {
-                return array;
-            }
-
-            var currentIndex = array.length,
-                temporaryValue = void 0,
-                randomIndex = void 0;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-                // Pick a remaining element...
-                randomIndex = this.get(currentIndex);
-                currentIndex -= 1;
-
-                // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
-            }
-            return array;
-        }
-
-        /**
-         * picks a random element from an array
-         * @param {Array} array
-         * @return {*}
-         */
-
-    }, {
-        key: 'pick',
-        value: function pick(array, remove) {
-            if (!remove) {
-                return array[this.get(array.length)];
-            } else {
-                var pick = this.get(array.length);
-                var temp = array[pick];
-                array.splice(pick, 1);
-                return temp;
-            }
-        }
-
-        /**
-         * select a random collection of elements from an array
-         * @param {Array} array
-         * @param {number} count
-         * @param {Array} array of selected items
-         */
-
-    }, {
-        key: 'select',
-        value: function select(array, count) {
-            var select = [].concat(_toConsumableArray(array));
-            var selected = [];
-            for (var i = 0; i < count; i++) {
-                var index = this.get(select.length);
-                selected.push.apply(selected, _toConsumableArray(select.splice(index, 1)));
-            }
-            return selected;
-        }
-
-        /**
-         * returns a random property from an object
-         * from http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
-         * @param {object} obj
-         * @return {*}
-         */
-
-    }, {
-        key: 'property',
-        value: function property(obj) {
-            var result;
-            var count = 0;
-            for (var prop in obj) {
-                if (this.chance(1 / ++count)) {
-                    result = prop;
-                }
-            }
-            return result;
-        }
-
-        /**
-         * creates a random set where each entry is a value between [min, max]
-         * @param {number} min
-         * @param {number} max
-         * @param {number} amount of numbers in set
-         * @param {number[]}
-         */
-
-    }, {
-        key: 'set',
-        value: function set(min, max, amount) {
-            var set = [],
-                all = [],
-                i;
-            for (i = min; i < max; i++) {
-                all.push(i);
-            }
-
-            for (i = 0; i < amount; i++) {
-                var found = this.get(all.length);
-                set.push(all[found]);
-                all.splice(found, 1);
-            }
-            return set;
-        }
-
-        /**
-         * returns a set of numbers with a randomly even distribution (i.e., no overlapping and filling the space)
-         * @param {number} start position
-         * @param {number} end position
-         * @param {number} count of non-start/end points
-         * @param {boolean} [includeStart=false] includes start point (count++)
-         * @param {boolean} [includeEnd=false] includes end point (count++)
-         * @param {boolean} [useFloat=false]
-         * @param {number[]}
-         */
-
-    }, {
-        key: 'distribution',
-        value: function distribution(start, end, count, includeStart, includeEnd, useFloat) {
-            var interval = Math.floor((end - start) / count);
-            var halfInterval = interval / 2;
-            var quarterInterval = interval / 4;
-            var set = [];
-            if (includeStart) {
-                set.push(start);
-            }
-            for (var i = 0; i < count; i++) {
-                set.push(start + i * interval + halfInterval + this.range(-quarterInterval, quarterInterval, useFloat));
-            }
-            if (includeEnd) {
-                set.push(end);
-            }
-            return set;
-        }
-
-        /**
-         * returns a random number based on weighted probability between [min, max]
-         * from http://stackoverflow.com/questions/22656126/javascript-random-number-with-weighted-probability
-         * @param {number} min value
-         * @param {number} max value
-         * @param {number} target for average value
-         * @param {number} stddev - standard deviation
-         */
-
-    }, {
-        key: 'weightedProbabilityInt',
-        value: function weightedProbabilityInt(min, max, target, stddev) {
-            function normRand() {
-                var x1 = void 0,
-                    x2 = void 0,
-                    rad = void 0;
-                do {
-                    x1 = 2 * this.get(1, true) - 1;
-                    x2 = 2 * this.get(1, true) - 1;
-                    rad = x1 * x1 + x2 * x2;
-                } while (rad >= 1 || rad === 0);
-                var c = Math.sqrt(-2 * Math.log(rad) / rad);
-                return x1 * c;
-            }
-
-            stddev = stddev || 1;
-            if (Math.random() < 0.81546) {
-                while (true) {
-                    var sample = normRand() * stddev + target;
-                    if (sample >= min && sample <= max) {
-                        return sample;
-                    }
-                }
-            } else {
-                return this.range(min, max);
-            }
-        }
-
-        /**
-         * returns a random number within a circle with a normal distribution
-         * from https://stackoverflow.com/a/5838055/1955997
-         * @param {number} x
-         * @param {number} y
-         * @param {number} radius
-         * @param {bool} [float]
-         * @returns {number[]} [x, y]
-         */
-
-    }, {
-        key: 'circle',
-        value: function circle(x, y, radius, float) {
-            var t = this.angle();
-            var u = this.get(1, true) + this.get(1, true);
-            var r = u > 1 ? 2 - u : u;
-            if (float) {
-                return [x + r * Math.cos(t) * radius, y + r * Math.sin(t) * radius];
-            } else {
-                return [Math.round(x + r * Math.cos(t) * radius), Math.round(y + r * Math.sin(t) * radius)];
-            }
-        }
-
-        /*
-         * returns a random hex color (0 - 0xffffff)
-         * @return {number}
-         */
-
-    }, {
-        key: 'color',
-        value: function color() {
-            return this.get(0xffffff);
-        }
-    }]);
-
-    return Random;
-}();
-
-module.exports = new Random();
-
-},{"seedrandom":52}],64:[function(require,module,exports){
-
-},{}],65:[function(require,module,exports){
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-},{}],66:[function(require,module,exports){
-(function (global){
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-;(function(root) {
-
-	/** Detect free variables */
-	var freeExports = typeof exports == 'object' && exports &&
-		!exports.nodeType && exports;
-	var freeModule = typeof module == 'object' && module &&
-		!module.nodeType && module;
-	var freeGlobal = typeof global == 'object' && global;
-	if (
-		freeGlobal.global === freeGlobal ||
-		freeGlobal.window === freeGlobal ||
-		freeGlobal.self === freeGlobal
-	) {
-		root = freeGlobal;
-	}
-
-	/**
-	 * The `punycode` object.
-	 * @name punycode
-	 * @type Object
-	 */
-	var punycode,
-
-	/** Highest positive signed 32-bit float value */
-	maxInt = 2147483647, // aka. 0x7FFFFFFF or 2^31-1
-
-	/** Bootstring parameters */
-	base = 36,
-	tMin = 1,
-	tMax = 26,
-	skew = 38,
-	damp = 700,
-	initialBias = 72,
-	initialN = 128, // 0x80
-	delimiter = '-', // '\x2D'
-
-	/** Regular expressions */
-	regexPunycode = /^xn--/,
-	regexNonASCII = /[^\x20-\x7E]/, // unprintable ASCII chars + non-ASCII chars
-	regexSeparators = /[\x2E\u3002\uFF0E\uFF61]/g, // RFC 3490 separators
-
-	/** Error messages */
-	errors = {
-		'overflow': 'Overflow: input needs wider integers to process',
-		'not-basic': 'Illegal input >= 0x80 (not a basic code point)',
-		'invalid-input': 'Invalid input'
-	},
-
-	/** Convenience shortcuts */
-	baseMinusTMin = base - tMin,
-	floor = Math.floor,
-	stringFromCharCode = String.fromCharCode,
-
-	/** Temporary variable */
-	key;
-
-	/*--------------------------------------------------------------------------*/
-
-	/**
-	 * A generic error utility function.
-	 * @private
-	 * @param {String} type The error type.
-	 * @returns {Error} Throws a `RangeError` with the applicable error message.
-	 */
-	function error(type) {
-		throw new RangeError(errors[type]);
-	}
-
-	/**
-	 * A generic `Array#map` utility function.
-	 * @private
-	 * @param {Array} array The array to iterate over.
-	 * @param {Function} callback The function that gets called for every array
-	 * item.
-	 * @returns {Array} A new array of values returned by the callback function.
-	 */
-	function map(array, fn) {
-		var length = array.length;
-		var result = [];
-		while (length--) {
-			result[length] = fn(array[length]);
-		}
-		return result;
-	}
-
-	/**
-	 * A simple `Array#map`-like wrapper to work with domain name strings or email
-	 * addresses.
-	 * @private
-	 * @param {String} domain The domain name or email address.
-	 * @param {Function} callback The function that gets called for every
-	 * character.
-	 * @returns {Array} A new string of characters returned by the callback
-	 * function.
-	 */
-	function mapDomain(string, fn) {
-		var parts = string.split('@');
-		var result = '';
-		if (parts.length > 1) {
-			// In email addresses, only the domain name should be punycoded. Leave
-			// the local part (i.e. everything up to `@`) intact.
-			result = parts[0] + '@';
-			string = parts[1];
-		}
-		// Avoid `split(regex)` for IE8 compatibility. See #17.
-		string = string.replace(regexSeparators, '\x2E');
-		var labels = string.split('.');
-		var encoded = map(labels, fn).join('.');
-		return result + encoded;
-	}
-
-	/**
-	 * Creates an array containing the numeric code points of each Unicode
-	 * character in the string. While JavaScript uses UCS-2 internally,
-	 * this function will convert a pair of surrogate halves (each of which
-	 * UCS-2 exposes as separate characters) into a single code point,
-	 * matching UTF-16.
-	 * @see `punycode.ucs2.encode`
-	 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-	 * @memberOf punycode.ucs2
-	 * @name decode
-	 * @param {String} string The Unicode input string (UCS-2).
-	 * @returns {Array} The new array of code points.
-	 */
-	function ucs2decode(string) {
-		var output = [],
-		    counter = 0,
-		    length = string.length,
-		    value,
-		    extra;
-		while (counter < length) {
-			value = string.charCodeAt(counter++);
-			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
-				// high surrogate, and there is a next character
-				extra = string.charCodeAt(counter++);
-				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
-					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
-				} else {
-					// unmatched surrogate; only append this code unit, in case the next
-					// code unit is the high surrogate of a surrogate pair
-					output.push(value);
-					counter--;
-				}
-			} else {
-				output.push(value);
-			}
-		}
-		return output;
-	}
-
-	/**
-	 * Creates a string based on an array of numeric code points.
-	 * @see `punycode.ucs2.decode`
-	 * @memberOf punycode.ucs2
-	 * @name encode
-	 * @param {Array} codePoints The array of numeric code points.
-	 * @returns {String} The new Unicode string (UCS-2).
-	 */
-	function ucs2encode(array) {
-		return map(array, function(value) {
-			var output = '';
-			if (value > 0xFFFF) {
-				value -= 0x10000;
-				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
-				value = 0xDC00 | value & 0x3FF;
-			}
-			output += stringFromCharCode(value);
-			return output;
-		}).join('');
-	}
-
-	/**
-	 * Converts a basic code point into a digit/integer.
-	 * @see `digitToBasic()`
-	 * @private
-	 * @param {Number} codePoint The basic numeric code point value.
-	 * @returns {Number} The numeric value of a basic code point (for use in
-	 * representing integers) in the range `0` to `base - 1`, or `base` if
-	 * the code point does not represent a value.
-	 */
-	function basicToDigit(codePoint) {
-		if (codePoint - 48 < 10) {
-			return codePoint - 22;
-		}
-		if (codePoint - 65 < 26) {
-			return codePoint - 65;
-		}
-		if (codePoint - 97 < 26) {
-			return codePoint - 97;
-		}
-		return base;
-	}
-
-	/**
-	 * Converts a digit/integer into a basic code point.
-	 * @see `basicToDigit()`
-	 * @private
-	 * @param {Number} digit The numeric value of a basic code point.
-	 * @returns {Number} The basic code point whose value (when used for
-	 * representing integers) is `digit`, which needs to be in the range
-	 * `0` to `base - 1`. If `flag` is non-zero, the uppercase form is
-	 * used; else, the lowercase form is used. The behavior is undefined
-	 * if `flag` is non-zero and `digit` has no uppercase form.
-	 */
-	function digitToBasic(digit, flag) {
-		//  0..25 map to ASCII a..z or A..Z
-		// 26..35 map to ASCII 0..9
-		return digit + 22 + 75 * (digit < 26) - ((flag != 0) << 5);
-	}
-
-	/**
-	 * Bias adaptation function as per section 3.4 of RFC 3492.
-	 * https://tools.ietf.org/html/rfc3492#section-3.4
-	 * @private
-	 */
-	function adapt(delta, numPoints, firstTime) {
-		var k = 0;
-		delta = firstTime ? floor(delta / damp) : delta >> 1;
-		delta += floor(delta / numPoints);
-		for (/* no initialization */; delta > baseMinusTMin * tMax >> 1; k += base) {
-			delta = floor(delta / baseMinusTMin);
-		}
-		return floor(k + (baseMinusTMin + 1) * delta / (delta + skew));
-	}
-
-	/**
-	 * Converts a Punycode string of ASCII-only symbols to a string of Unicode
-	 * symbols.
-	 * @memberOf punycode
-	 * @param {String} input The Punycode string of ASCII-only symbols.
-	 * @returns {String} The resulting string of Unicode symbols.
-	 */
-	function decode(input) {
-		// Don't use UCS-2
-		var output = [],
-		    inputLength = input.length,
-		    out,
-		    i = 0,
-		    n = initialN,
-		    bias = initialBias,
-		    basic,
-		    j,
-		    index,
-		    oldi,
-		    w,
-		    k,
-		    digit,
-		    t,
-		    /** Cached calculation results */
-		    baseMinusT;
-
-		// Handle the basic code points: let `basic` be the number of input code
-		// points before the last delimiter, or `0` if there is none, then copy
-		// the first basic code points to the output.
-
-		basic = input.lastIndexOf(delimiter);
-		if (basic < 0) {
-			basic = 0;
-		}
-
-		for (j = 0; j < basic; ++j) {
-			// if it's not a basic code point
-			if (input.charCodeAt(j) >= 0x80) {
-				error('not-basic');
-			}
-			output.push(input.charCodeAt(j));
-		}
-
-		// Main decoding loop: start just after the last delimiter if any basic code
-		// points were copied; start at the beginning otherwise.
-
-		for (index = basic > 0 ? basic + 1 : 0; index < inputLength; /* no final expression */) {
-
-			// `index` is the index of the next character to be consumed.
-			// Decode a generalized variable-length integer into `delta`,
-			// which gets added to `i`. The overflow checking is easier
-			// if we increase `i` as we go, then subtract off its starting
-			// value at the end to obtain `delta`.
-			for (oldi = i, w = 1, k = base; /* no condition */; k += base) {
-
-				if (index >= inputLength) {
-					error('invalid-input');
-				}
-
-				digit = basicToDigit(input.charCodeAt(index++));
-
-				if (digit >= base || digit > floor((maxInt - i) / w)) {
-					error('overflow');
-				}
-
-				i += digit * w;
-				t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-
-				if (digit < t) {
-					break;
-				}
-
-				baseMinusT = base - t;
-				if (w > floor(maxInt / baseMinusT)) {
-					error('overflow');
-				}
-
-				w *= baseMinusT;
-
-			}
-
-			out = output.length + 1;
-			bias = adapt(i - oldi, out, oldi == 0);
-
-			// `i` was supposed to wrap around from `out` to `0`,
-			// incrementing `n` each time, so we'll fix that now:
-			if (floor(i / out) > maxInt - n) {
-				error('overflow');
-			}
-
-			n += floor(i / out);
-			i %= out;
-
-			// Insert `n` at position `i` of the output
-			output.splice(i++, 0, n);
-
-		}
-
-		return ucs2encode(output);
-	}
-
-	/**
-	 * Converts a string of Unicode symbols (e.g. a domain name label) to a
-	 * Punycode string of ASCII-only symbols.
-	 * @memberOf punycode
-	 * @param {String} input The string of Unicode symbols.
-	 * @returns {String} The resulting Punycode string of ASCII-only symbols.
-	 */
-	function encode(input) {
-		var n,
-		    delta,
-		    handledCPCount,
-		    basicLength,
-		    bias,
-		    j,
-		    m,
-		    q,
-		    k,
-		    t,
-		    currentValue,
-		    output = [],
-		    /** `inputLength` will hold the number of code points in `input`. */
-		    inputLength,
-		    /** Cached calculation results */
-		    handledCPCountPlusOne,
-		    baseMinusT,
-		    qMinusT;
-
-		// Convert the input in UCS-2 to Unicode
-		input = ucs2decode(input);
-
-		// Cache the length
-		inputLength = input.length;
-
-		// Initialize the state
-		n = initialN;
-		delta = 0;
-		bias = initialBias;
-
-		// Handle the basic code points
-		for (j = 0; j < inputLength; ++j) {
-			currentValue = input[j];
-			if (currentValue < 0x80) {
-				output.push(stringFromCharCode(currentValue));
-			}
-		}
-
-		handledCPCount = basicLength = output.length;
-
-		// `handledCPCount` is the number of code points that have been handled;
-		// `basicLength` is the number of basic code points.
-
-		// Finish the basic string - if it is not empty - with a delimiter
-		if (basicLength) {
-			output.push(delimiter);
-		}
-
-		// Main encoding loop:
-		while (handledCPCount < inputLength) {
-
-			// All non-basic code points < n have been handled already. Find the next
-			// larger one:
-			for (m = maxInt, j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-				if (currentValue >= n && currentValue < m) {
-					m = currentValue;
-				}
-			}
-
-			// Increase `delta` enough to advance the decoder's <n,i> state to <m,0>,
-			// but guard against overflow
-			handledCPCountPlusOne = handledCPCount + 1;
-			if (m - n > floor((maxInt - delta) / handledCPCountPlusOne)) {
-				error('overflow');
-			}
-
-			delta += (m - n) * handledCPCountPlusOne;
-			n = m;
-
-			for (j = 0; j < inputLength; ++j) {
-				currentValue = input[j];
-
-				if (currentValue < n && ++delta > maxInt) {
-					error('overflow');
-				}
-
-				if (currentValue == n) {
-					// Represent delta as a generalized variable-length integer
-					for (q = delta, k = base; /* no condition */; k += base) {
-						t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
-						if (q < t) {
-							break;
-						}
-						qMinusT = q - t;
-						baseMinusT = base - t;
-						output.push(
-							stringFromCharCode(digitToBasic(t + qMinusT % baseMinusT, 0))
-						);
-						q = floor(qMinusT / baseMinusT);
-					}
-
-					output.push(stringFromCharCode(digitToBasic(q, 0)));
-					bias = adapt(delta, handledCPCountPlusOne, handledCPCount == basicLength);
-					delta = 0;
-					++handledCPCount;
-				}
-			}
-
-			++delta;
-			++n;
-
-		}
-		return output.join('');
-	}
-
-	/**
-	 * Converts a Punycode string representing a domain name or an email address
-	 * to Unicode. Only the Punycoded parts of the input will be converted, i.e.
-	 * it doesn't matter if you call it on a string that has already been
-	 * converted to Unicode.
-	 * @memberOf punycode
-	 * @param {String} input The Punycoded domain name or email address to
-	 * convert to Unicode.
-	 * @returns {String} The Unicode representation of the given Punycode
-	 * string.
-	 */
-	function toUnicode(input) {
-		return mapDomain(input, function(string) {
-			return regexPunycode.test(string)
-				? decode(string.slice(4).toLowerCase())
-				: string;
-		});
-	}
-
-	/**
-	 * Converts a Unicode string representing a domain name or an email address to
-	 * Punycode. Only the non-ASCII parts of the domain name will be converted,
-	 * i.e. it doesn't matter if you call it with a domain that's already in
-	 * ASCII.
-	 * @memberOf punycode
-	 * @param {String} input The domain name or email address to convert, as a
-	 * Unicode string.
-	 * @returns {String} The Punycode representation of the given domain name or
-	 * email address.
-	 */
-	function toASCII(input) {
-		return mapDomain(input, function(string) {
-			return regexNonASCII.test(string)
-				? 'xn--' + encode(string)
-				: string;
-		});
-	}
-
-	/*--------------------------------------------------------------------------*/
-
-	/** Define the public API */
-	punycode = {
-		/**
-		 * A string representing the current Punycode.js version number.
-		 * @memberOf punycode
-		 * @type String
-		 */
-		'version': '1.4.1',
-		/**
-		 * An object of methods to convert from JavaScript's internal character
-		 * representation (UCS-2) to Unicode code points, and back.
-		 * @see <https://mathiasbynens.be/notes/javascript-encoding>
-		 * @memberOf punycode
-		 * @type Object
-		 */
-		'ucs2': {
-			'decode': ucs2decode,
-			'encode': ucs2encode
-		},
-		'decode': decode,
-		'encode': encode,
-		'toASCII': toASCII,
-		'toUnicode': toUnicode
-	};
-
-	/** Expose `punycode` */
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (
-		typeof define == 'function' &&
-		typeof define.amd == 'object' &&
-		define.amd
-	) {
-		define('punycode', function() {
-			return punycode;
-		});
-	} else if (freeExports && freeModule) {
-		if (module.exports == freeExports) {
-			// in Node.js, io.js, or RingoJS v0.8.0+
-			freeModule.exports = punycode;
-		} else {
-			// in Narwhal or RingoJS v0.7.0-
-			for (key in punycode) {
-				punycode.hasOwnProperty(key) && (freeExports[key] = punycode[key]);
-			}
-		}
-	} else {
-		// in Rhino or a web browser
-		root.punycode = punycode;
-	}
-
-}(this));
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],67:[function(require,module,exports){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-'use strict';
-
-// If obj.hasOwnProperty has been overridden, then calling
-// obj.hasOwnProperty(prop) will break.
-// See: https://github.com/joyent/node/issues/1707
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-module.exports = function(qs, sep, eq, options) {
-  sep = sep || '&';
-  eq = eq || '=';
-  var obj = {};
-
-  if (typeof qs !== 'string' || qs.length === 0) {
-    return obj;
-  }
-
-  var regexp = /\+/g;
-  qs = qs.split(sep);
-
-  var maxKeys = 1000;
-  if (options && typeof options.maxKeys === 'number') {
-    maxKeys = options.maxKeys;
-  }
-
-  var len = qs.length;
-  // maxKeys <= 0 means that we should not limit keys count
-  if (maxKeys > 0 && len > maxKeys) {
-    len = maxKeys;
-  }
-
-  for (var i = 0; i < len; ++i) {
-    var x = qs[i].replace(regexp, '%20'),
-        idx = x.indexOf(eq),
-        kstr, vstr, k, v;
-
-    if (idx >= 0) {
-      kstr = x.substr(0, idx);
-      vstr = x.substr(idx + 1);
-    } else {
-      kstr = x;
-      vstr = '';
-    }
-
-    k = decodeURIComponent(kstr);
-    v = decodeURIComponent(vstr);
-
-    if (!hasOwnProperty(obj, k)) {
-      obj[k] = v;
-    } else if (isArray(obj[k])) {
-      obj[k].push(v);
-    } else {
-      obj[k] = [obj[k], v];
-    }
-  }
-
-  return obj;
-};
-
-var isArray = Array.isArray || function (xs) {
-  return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
 },{}],68:[function(require,module,exports){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-'use strict';
-
-var stringifyPrimitive = function(v) {
-  switch (typeof v) {
-    case 'string':
-      return v;
-
-    case 'boolean':
-      return v ? 'true' : 'false';
-
-    case 'number':
-      return isFinite(v) ? v : '';
-
-    default:
-      return '';
-  }
-};
-
-module.exports = function(obj, sep, eq, name) {
-  sep = sep || '&';
-  eq = eq || '=';
-  if (obj === null) {
-    obj = undefined;
-  }
-
-  if (typeof obj === 'object') {
-    return map(objectKeys(obj), function(k) {
-      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
-      if (isArray(obj[k])) {
-        return map(obj[k], function(v) {
-          return ks + encodeURIComponent(stringifyPrimitive(v));
-        }).join(sep);
-      } else {
-        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
-      }
-    }).join(sep);
-
-  }
-
-  if (!name) return '';
-  return encodeURIComponent(stringifyPrimitive(name)) + eq +
-         encodeURIComponent(stringifyPrimitive(obj));
-};
-
-var isArray = Array.isArray || function (xs) {
-  return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-function map (xs, f) {
-  if (xs.map) return xs.map(f);
-  var res = [];
-  for (var i = 0; i < xs.length; i++) {
-    res.push(f(xs[i], i));
-  }
-  return res;
-}
-
-var objectKeys = Object.keys || function (obj) {
-  var res = [];
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
-  }
-  return res;
-};
-
-},{}],69:[function(require,module,exports){
-'use strict';
-
-exports.decode = exports.parse = require('./decode');
-exports.encode = exports.stringify = require('./encode');
-
-},{"./decode":67,"./encode":68}],70:[function(require,module,exports){
-(function (setImmediate,clearImmediate){
-var nextTick = require('process/browser.js').nextTick;
-var apply = Function.prototype.apply;
-var slice = Array.prototype.slice;
-var immediateIds = {};
-var nextImmediateId = 0;
-
-// DOM APIs, for completeness
-
-exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-};
-exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-};
-exports.clearTimeout =
-exports.clearInterval = function(timeout) { timeout.close(); };
-
-function Timeout(id, clearFn) {
-  this._id = id;
-  this._clearFn = clearFn;
-}
-Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-Timeout.prototype.close = function() {
-  this._clearFn.call(window, this._id);
-};
-
-// Does not start the time, just sets up the members needed.
-exports.enroll = function(item, msecs) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = msecs;
-};
-
-exports.unenroll = function(item) {
-  clearTimeout(item._idleTimeoutId);
-  item._idleTimeout = -1;
-};
-
-exports._unrefActive = exports.active = function(item) {
-  clearTimeout(item._idleTimeoutId);
-
-  var msecs = item._idleTimeout;
-  if (msecs >= 0) {
-    item._idleTimeoutId = setTimeout(function onTimeout() {
-      if (item._onTimeout)
-        item._onTimeout();
-    }, msecs);
-  }
-};
-
-// That's not how node.js implements it but the exposed api is the same.
-exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
-  var id = nextImmediateId++;
-  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
-
-  immediateIds[id] = true;
-
-  nextTick(function onNextTick() {
-    if (immediateIds[id]) {
-      // fn.call() is faster so we optimize for the common use-case
-      // @see http://jsperf.com/call-apply-segu
-      if (args) {
-        fn.apply(null, args);
-      } else {
-        fn.call(null);
-      }
-      // Prevent ids from leaking
-      exports.clearImmediate(id);
-    }
-  });
-
-  return id;
-};
-
-exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
-  delete immediateIds[id];
-};
-}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":65,"timers":70}],71:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -47278,7 +46443,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":72,"punycode":66,"querystring":69}],72:[function(require,module,exports){
+},{"./util":69,"punycode":53,"querystring":56}],69:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -47296,4 +46461,839 @@ module.exports = {
   }
 };
 
-},{}]},{},[4]);
+},{}],70:[function(require,module,exports){
+// yy-counter
+// In-browser counter to watch changeable values like counters or FPS
+// David Figatner
+// (c) YOPEY YOPEY LLC 2017
+// MIT License
+// https://github.com/davidfig/counter
+
+module.exports = class Counter
+{
+    /**
+     * @param {object} [options]
+     * @param {string} [options.side=rightbottom] side to place the panel (combination of right/left and bottom/top)
+     * @param {number} [options.padding=7px]
+     * @param {string} [options.color=white]
+     * @param {string} [options.background=rgba(0,0,0,0.5)]
+     * @param {*} {options.xxx} where xxx is a CSS style for the div
+     */
+    constructor(options)
+    {
+        options = options || {}
+        options.side = options.side || 'rightbottom'
+        options.side.toLowerCase()
+        options.padding = options.padding || '7px'
+        options.color = options.color || 'white'
+        options.background = options.background || 'rgba(0,0,0,0.5)'
+        this.div = document.createElement('div')
+        Counter.findParent(options.side).appendChild(this.div)
+        for (let style in options)
+        {
+            if (style !== 'parent' && style !== 'side')
+            {
+                this.div.style[style] = options[style]
+            }
+        }
+    }
+
+    /**
+     * find the parent div for one of the corners
+     * @param {string} [options.side] side to place the panel (combination of right/left and bottom/top)
+     * @return {HTMLElement}
+     */
+    static findParent(side)
+    {
+        const styles = []
+        let name = 'yy-counter-'
+        if (side.indexOf('left') !== -1)
+        {
+            name += 'left-'
+            styles['left'] = 0
+        }
+        else
+        {
+            name += 'right-'
+            styles['right'] = 0
+        }
+        if (side.indexOf('top') !== -1)
+        {
+            name += 'top'
+            styles['top'] = 0
+        }
+        else
+        {
+            name += 'bottom'
+            styles['bottom'] = 0
+        }
+        const test = document.getElementById(name)
+        if (test)
+        {
+            return test
+        }
+        const container = document.createElement('div')
+        container.id = name
+        container.style.overflow = 'hidden'
+        container.style.position = 'fixed'
+        container.style.zIndex = 10000
+        container.style.pointerEvents = 'none'
+        container.style.userSelect = 'none'
+        for (let style in styles)
+        {
+            container.style[style] = styles[style]
+        }
+        document.body.appendChild(container)
+        return container
+    }
+
+    /**
+     * replaces the innerHTML of the console
+     * @param {string|number} text1
+     * @param {string|number} [text2]
+     * @param {string|number} [...textn] any number of arguments
+     */
+    log()
+    {
+        let s = ''
+        for (let arg of arguments)
+        {
+            s += '<div>' + arg + '</div>'
+        }
+        this.div.innerHTML =  s
+    }
+
+    /**
+     * appends to the innerHTML of the console
+     * @param {string|number} text1
+     * @param {string|number} [text2]
+     * @param {string|number} [...textn] any number of arguments
+     */
+    append()
+    {
+        let s = this.div.innerHTML
+        for (let arg of arguments)
+        {
+            s += '<div>' + arg + '</div>'
+        }
+        this.div.innerHTML = s
+    }
+}
+},{}],71:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Color = require('tinycolor2');
+var Counter = require('yy-counter');
+
+var STYLES = {
+    'background': 'rgba(0, 0, 0, 0.5)',
+    'color': 'white'
+};
+
+var STYLES_FPS = {
+    'padding': '0.1em 0.5em'
+};
+
+var STYLES_METER = {};
+
+module.exports = function () {
+    /**
+     * @param {object} [options]
+     * @param {boolean} [options.meter=true] include a meter with the FPS
+     * @param {string} [options.side=bottom-right] include any combination of left/right and top/bottom
+     * @param {number} [options.FPS=60] desired FPS
+     * @param {number} [options.tolerance=1] minimum tolerance for fluctuations in FPS number
+     * @param {number} [options.meterWidth=100] width of meter div
+     * @param {number} [options.meterHeight=25] height of meter div
+     * @param {number} [options.meterLineHeight=4] height of meter line
+     * @param {styles[]} [options.styles] CSS styles to apply to the div (in javascript format)
+     * @param {styles[]} [options.stylesFPS] CSS styles to apply to the FPS text (in javascript format)
+     * @param {styles[]} [options.stylesMeter] CSS styles to apply to the FPS meter (in javascript format)
+     * @param {string} [options.text=" FPS"] change the text to the right of the FPS
+     */
+    function FPS(options) {
+        _classCallCheck(this, FPS);
+
+        this.options = options || {};
+        this.tolerance = this.options.tolerance || 1;
+        this.FPS = this.options.FPS || 60;
+        this.meterWidth = this.options.meterWidth || 100;
+        this.meterHeight = this.options.meterHeight || 25;
+        this.meterLineHeight = this.options.meterLineHeight || 4;
+        this.div = document.createElement('div');
+        Counter.findParent(this.options.side || 'bottom-right').appendChild(this.div);
+        this.style(this.div, STYLES, this.options.styles);
+        this.divFPS();
+        this.meter = typeof this.options.meter === 'undefined' || this.options.meter;
+        this.lastTime = 0;
+        this.frameNumber = 0;
+        this.lastUpdate = 0;
+        this.lastFPS = '--';
+    }
+
+    /**
+     * change desired FPS
+     * @type {number}
+     */
+
+
+    _createClass(FPS, [{
+        key: 'remove',
+
+
+        /**
+         * remove meter from DOM
+         */
+        value: function remove() {
+            this.div.remove();
+        }
+
+        /**
+         * @type {boolean} meter (the FPS graph) is on or off
+         */
+
+    }, {
+        key: 'style',
+        value: function style(div, style1, style2) {
+            for (var style in style1) {
+                div.style[style] = style1[style];
+            }
+            if (style2) {
+                for (var _style in style2) {
+                    div.style[_style] = style2[_style];
+                }
+            }
+        }
+
+        /**
+         * create div for text FPS
+         * @private
+         * @param {HTMLElement} div
+         * @param {object} options (see contructor)
+         */
+
+    }, {
+        key: 'divFPS',
+        value: function divFPS() {
+            var div = this.div;
+            var options = this.options;
+            var divFPS = document.createElement('div');
+            div.appendChild(divFPS);
+            this.fpsSpan = document.createElement('span');
+            divFPS.appendChild(this.fpsSpan);
+            var span = document.createElement('span');
+            divFPS.appendChild(span);
+            span.innerText = typeof options.text !== 'undefined' ? options.text : ' FPS';
+            this.style(div, STYLES_FPS, options.stylesFPS);
+        }
+
+        /**
+         * create div for FPS meter
+         * @private
+         * @param {HTMLElement} div
+         * @param {object} options (see contructor)
+         */
+
+    }, {
+        key: 'divMeter',
+        value: function divMeter() {
+            var div = this.div;
+            var options = this.options;
+            if (!this.meterCanvas) {
+                this.meterCanvas = document.createElement('canvas');
+                div.appendChild(this.meterCanvas);
+                this.meterCanvas.width = this.meterWidth;
+                this.meterCanvas.height = this.meterHeight;
+                this.meterCanvas.style.width = div.width + 'px';
+                this.meterCanvas.style.height = div.height + 'px';
+                this.style(this.meterCanvas, STYLES_METER, options.stylesMeter);
+            } else {
+                this.meterCanvas.style.display = 'block';
+            }
+        }
+
+        /**
+         * call this at the start of the frame to calculate FPS
+         */
+
+    }, {
+        key: 'frame',
+        value: function frame() {
+            this.frameNumber++;
+            var currentTime = performance.now() - this.lastTime;
+
+            // skip large differences to remove garbage
+            if (currentTime > 500) {
+                if (this.lastTime !== 0) {
+                    this.lastFPS = Math.floor(this.frameNumber / (currentTime / 1000));
+                    if (this.lastFPS >= this.FPS - this.tolerance && this.lastFPS <= this.FPS + this.tolerance) {
+                        this.lastFPS = this.FPS;
+                    }
+                }
+                this.lastTime = performance.now();
+                this.frameNumber = 0;
+            }
+            this.fpsSpan.innerText = this.lastFPS;
+            if (this.meterCanvas && this.lastFPS !== '--') {
+                this.meterUpdate(this.lastFPS / this.FPS);
+            }
+        }
+    }, {
+        key: 'meterUpdate',
+        value: function meterUpdate(percent) {
+            var c = this.meterCanvas.getContext('2d');
+            var data = c.getImageData(0, 0, this.meterCanvas.width, this.meterCanvas.height);
+            c.putImageData(data, -1, 0);
+            c.clearRect(this.meterCanvas.width - 1, 0, 1, this.meterCanvas.height);
+            if (percent < 0.5) {
+                c.fillStyle = Color.mix('#ff0000', '0xffa500', percent * 200).toHexString();
+            } else {
+                c.fillStyle = Color.mix('#ffa500', '#00ff00', (percent - 0.5) * 200).toHexString();
+            }
+            var height = (this.meterCanvas.height - this.meterLineHeight) * (1 - percent);
+            c.fillRect(this.meterCanvas.width - 1, height, 1, this.meterLineHeight);
+        }
+    }, {
+        key: 'side',
+        value: function side(options) {
+            if (options.side) {
+                options.side = options.side.toLowerCase();
+                if (options.side.indexOf('left') !== -1) {
+                    STYLES['left'] = 0;
+                    delete STYLES['right'];
+                } else {
+                    STYLES['right'] = 0;
+                    delete STYLES['left'];
+                }
+                if (options.side.indexOf('top') !== -1) {
+                    STYLES['top'] = 0;
+                    delete STYLES['bottom'];
+                } else {
+                    STYLES['bottom'] = 0;
+                    delete STYLES['top'];
+                }
+            } else {
+                STYLES['right'] = 0;
+                STYLES['bottom'] = 0;
+            }
+        }
+    }, {
+        key: 'fps',
+        get: function get() {
+            return this.FPS;
+        },
+        set: function set(value) {
+            this.FPS = value;
+        }
+    }, {
+        key: 'meter',
+        get: function get() {
+            return this._meter;
+        },
+        set: function set(value) {
+            if (value) {
+                this.divMeter();
+            } else if (this.meterCanvas) {
+                this.meterCanvas.style.display = 'none';
+            }
+        }
+    }]);
+
+    return FPS;
+}();
+
+},{"tinycolor2":67,"yy-counter":70}],72:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// yy-random
+// by David Figatner
+// MIT license
+// copyright YOPEY YOPEY LLC 2016-17
+// https://github.com/davidfig/random
+
+var seedrandom = require('seedrandom');
+
+var Random = function () {
+    function Random() {
+        _classCallCheck(this, Random);
+
+        this.generator = Math.random;
+    }
+
+    /**
+     * generates a seeded number
+     * @param {number} seed
+     * @param {object} [options]
+     * @param {string} [PRNG="alea"] - name of algorithm, see https://github.com/davidbau/seedrandom
+     * @param {(boolean|string)} [state] - can include the state returned from save()
+     */
+
+
+    _createClass(Random, [{
+        key: 'seed',
+        value: function seed(_seed, options) {
+            options = options || {};
+            this.generator = seedrandom[options.PRNG || 'alea'](_seed, { state: options.state });
+            this.options = options;
+        }
+
+        /**
+         * saves the state of the random generator
+         * can only be used after Random.seed() is called with options.state = true
+         * @returns {number} state
+         */
+
+    }, {
+        key: 'save',
+        value: function save() {
+            if (this.generator !== Math.random) {
+                return this.generator.state();
+            }
+        }
+
+        /**
+         * restores the state of the random generator
+         * @param {number} state
+         */
+
+    }, {
+        key: 'restore',
+        value: function restore(state) {
+            this.generator = seedrandom[this.options.PRNG || 'alea']('', { state: state });
+        }
+
+        /**
+         * changes the generator to use the old Math.sin-based random function
+         * based on : http://stackoverflow.com/questions/521295/javascript-random-seeds
+         * (deprecated) Use only for compatibility purposes
+         * @param {number} seed
+         */
+
+    }, {
+        key: 'seedOld',
+        value: function seedOld(seed) {
+            this.generator = function () {
+                var x = Math.sin(seed++) * 10000;
+                return x - Math.floor(x);
+            };
+        }
+
+        /**
+         * create a separate random generator using the seed
+         * @param {number} seed
+         * @return {object}
+         */
+
+    }, {
+        key: 'separateSeed',
+        value: function separateSeed(seed) {
+            var random = new Random();
+            random.seed(seed);
+            return random;
+        }
+
+        /**
+         * resets the random number this.generator to Math.random()
+         */
+
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.generator = Math.random;
+        }
+
+        /**
+         * returns a random number using the this.generator between [0, ceiling - 1]
+         * @param {number} ceiling
+         * @param {boolean} [useFloat=false]
+         * @return {number}
+         */
+
+    }, {
+        key: 'get',
+        value: function get(ceiling, useFloat) {
+            var negative = ceiling < 0 ? -1 : 1;
+            ceiling *= negative;
+            var result = void 0;
+            if (useFloat) {
+                result = this.generator() * ceiling;
+            } else {
+                result = Math.floor(this.generator() * ceiling);
+            }
+            return result * negative;
+        }
+
+        /**
+         * returns a random integer between 0 - Number.MAX_SAFE_INTEGER
+         * @return {number}
+         */
+
+    }, {
+        key: 'getHuge',
+        value: function getHuge() {
+            return this.get(Number.MAX_SAFE_INTEGER);
+        }
+
+        /**
+         * random number [middle - range, middle + range]
+         * @param {number} middle
+         * @param {number} delta
+         * @param {boolean} [useFloat=false]
+         * @return {number}
+         */
+
+    }, {
+        key: 'middle',
+        value: function middle(_middle, delta, useFloat) {
+            var half = delta / 2;
+            return this.range(_middle - half, _middle + half, useFloat);
+        }
+
+        /**
+         * random number [start, end]
+         * @param {number} start
+         * @param {number} end
+         * @param {boolean} [useFloat=false] if true, then range is (start, end)--i.e., not inclusive to start and end
+         * @return {number}
+         */
+
+    }, {
+        key: 'range',
+        value: function range(start, end, useFloat) {
+            // case where there is no range
+            if (end === start) {
+                return end;
+            }
+
+            if (useFloat) {
+                return this.get(end - start, true) + start;
+            } else {
+                var range = void 0;
+                if (start < 0 && end > 0) {
+                    range = -start + end + 1;
+                } else if (start === 0 && end > 0) {
+                    range = end + 1;
+                } else if (start < 0 && end === 0) {
+                    range = start - 1;
+                    start = 1;
+                } else if (start < 0 && end < 0) {
+                    range = end - start - 1;
+                } else {
+                    range = end - start + 1;
+                }
+                return Math.floor(this.generator() * range) + start;
+            }
+        }
+
+        /**
+         * an array of random numbers between [start, end]
+         * @param {number} start
+         * @param {number} end
+         * @param {number} count
+         * @param {boolean} [useFloat=false]
+         * @return {number[]}
+         */
+
+    }, {
+        key: 'rangeMultiple',
+        value: function rangeMultiple(start, end, count, useFloat) {
+            var array = [];
+            for (var i = 0; i < count; i++) {
+                array.push(this.range(start, end, useFloat));
+            }
+            return array;
+        }
+
+        /**
+         * an array of random numbers between [middle - range, middle + range]
+         * @param {number} middle
+         * @param {number} range
+         * @param {number} count
+         * @param {boolean} [useFloat=false]
+         * @return {number[]}
+         */
+
+    }, {
+        key: 'middleMultiple',
+        value: function middleMultiple(middle, range, count, useFloat) {
+            var array = [];
+            for (var i = 0; i < count; i++) {
+                array.push(middle(middle, range, useFloat));
+            }
+            return array;
+        }
+
+        /**
+         * @param {number} [chance=0.5]
+         * returns random sign (either +1 or -1)
+         * @return {number}
+         */
+
+    }, {
+        key: 'sign',
+        value: function sign(chance) {
+            chance = chance || 0.5;
+            return this.generator() < chance ? 1 : -1;
+        }
+
+        /**
+         * tells you whether a random chance was achieved
+         * @param {number} [percent=0.5]
+         * @return {boolean}
+         */
+
+    }, {
+        key: 'chance',
+        value: function chance(percent) {
+            return this.generator() < (percent || 0.5);
+        }
+
+        /**
+         * returns a random angle in radians [0 - 2 * Math.PI)
+         */
+
+    }, {
+        key: 'angle',
+        value: function angle() {
+            return this.get(Math.PI * 2, true);
+        }
+
+        /**
+         * Shuffle array (either in place or copied)
+         * from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+         * @param {Array} array
+         * @param {boolean} [copy=false] whether to shuffle in place (default) or return a new shuffled array
+         * @return {Array} a shuffled array
+         */
+
+    }, {
+        key: 'shuffle',
+        value: function shuffle(array, copy) {
+            if (copy) {
+                array = array.slice();
+            }
+            if (array.length === 0) {
+                return array;
+            }
+
+            var currentIndex = array.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+                // Pick a remaining element...
+                randomIndex = this.get(currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+            return array;
+        }
+
+        /**
+         * picks a random element from an array
+         * @param {Array} array
+         * @return {*}
+         */
+
+    }, {
+        key: 'pick',
+        value: function pick(array, remove) {
+            if (!remove) {
+                return array[this.get(array.length)];
+            } else {
+                var pick = this.get(array.length);
+                var temp = array[pick];
+                array.splice(pick, 1);
+                return temp;
+            }
+        }
+
+        /**
+         * select a random collection of elements from an array
+         * @param {Array} array
+         * @param {number} count
+         * @param {Array} array of selected items
+         */
+
+    }, {
+        key: 'select',
+        value: function select(array, count) {
+            var select = [].concat(_toConsumableArray(array));
+            var selected = [];
+            for (var i = 0; i < count; i++) {
+                var index = this.get(select.length);
+                selected.push.apply(selected, _toConsumableArray(select.splice(index, 1)));
+            }
+            return selected;
+        }
+
+        /**
+         * returns a random property from an object
+         * from http://stackoverflow.com/questions/2532218/pick-random-property-from-a-javascript-object
+         * @param {object} obj
+         * @return {*}
+         */
+
+    }, {
+        key: 'property',
+        value: function property(obj) {
+            var result;
+            var count = 0;
+            for (var prop in obj) {
+                if (this.chance(1 / ++count)) {
+                    result = prop;
+                }
+            }
+            return result;
+        }
+
+        /**
+         * creates a random set where each entry is a value between [min, max]
+         * @param {number} min
+         * @param {number} max
+         * @param {number} amount of numbers in set
+         * @param {number[]}
+         */
+
+    }, {
+        key: 'set',
+        value: function set(min, max, amount) {
+            var set = [],
+                all = [],
+                i;
+            for (i = min; i < max; i++) {
+                all.push(i);
+            }
+
+            for (i = 0; i < amount; i++) {
+                var found = this.get(all.length);
+                set.push(all[found]);
+                all.splice(found, 1);
+            }
+            return set;
+        }
+
+        /**
+         * returns a set of numbers with a randomly even distribution (i.e., no overlapping and filling the space)
+         * @param {number} start position
+         * @param {number} end position
+         * @param {number} count of non-start/end points
+         * @param {boolean} [includeStart=false] includes start point (count++)
+         * @param {boolean} [includeEnd=false] includes end point (count++)
+         * @param {boolean} [useFloat=false]
+         * @param {number[]}
+         */
+
+    }, {
+        key: 'distribution',
+        value: function distribution(start, end, count, includeStart, includeEnd, useFloat) {
+            var interval = Math.floor((end - start) / count);
+            var halfInterval = interval / 2;
+            var quarterInterval = interval / 4;
+            var set = [];
+            if (includeStart) {
+                set.push(start);
+            }
+            for (var i = 0; i < count; i++) {
+                set.push(start + i * interval + halfInterval + this.range(-quarterInterval, quarterInterval, useFloat));
+            }
+            if (includeEnd) {
+                set.push(end);
+            }
+            return set;
+        }
+
+        /**
+         * returns a random number based on weighted probability between [min, max]
+         * from http://stackoverflow.com/questions/22656126/javascript-random-number-with-weighted-probability
+         * @param {number} min value
+         * @param {number} max value
+         * @param {number} target for average value
+         * @param {number} stddev - standard deviation
+         */
+
+    }, {
+        key: 'weightedProbabilityInt',
+        value: function weightedProbabilityInt(min, max, target, stddev) {
+            function normRand() {
+                var x1 = void 0,
+                    x2 = void 0,
+                    rad = void 0;
+                do {
+                    x1 = 2 * this.get(1, true) - 1;
+                    x2 = 2 * this.get(1, true) - 1;
+                    rad = x1 * x1 + x2 * x2;
+                } while (rad >= 1 || rad === 0);
+                var c = Math.sqrt(-2 * Math.log(rad) / rad);
+                return x1 * c;
+            }
+
+            stddev = stddev || 1;
+            if (Math.random() < 0.81546) {
+                while (true) {
+                    var sample = normRand() * stddev + target;
+                    if (sample >= min && sample <= max) {
+                        return sample;
+                    }
+                }
+            } else {
+                return this.range(min, max);
+            }
+        }
+
+        /**
+         * returns a random number within a circle with a normal distribution
+         * from https://stackoverflow.com/a/5838055/1955997
+         * @param {number} x
+         * @param {number} y
+         * @param {number} radius
+         * @param {bool} [float]
+         * @returns {number[]} [x, y]
+         */
+
+    }, {
+        key: 'circle',
+        value: function circle(x, y, radius, float) {
+            var t = this.angle();
+            var u = this.get(1, true) + this.get(1, true);
+            var r = u > 1 ? 2 - u : u;
+            if (float) {
+                return [x + r * Math.cos(t) * radius, y + r * Math.sin(t) * radius];
+            } else {
+                return [Math.round(x + r * Math.cos(t) * radius), Math.round(y + r * Math.sin(t) * radius)];
+            }
+        }
+
+        /*
+         * returns a random hex color (0 - 0xffffff)
+         * @return {number}
+         */
+
+    }, {
+        key: 'color',
+        value: function color() {
+            return this.get(0xffffff);
+        }
+    }]);
+
+    return Random;
+}();
+
+module.exports = new Random();
+
+},{"seedrandom":58}]},{},[4]);
