@@ -32,7 +32,7 @@ export declare class Simple {
     removeList(array: PIXI.DisplayObject[]): PIXI.DisplayObject[];
     add(object: PIXI.DisplayObject, staticObject?: boolean): PIXI.DisplayObject;
     remove(object: PIXI.DisplayObject): PIXI.DisplayObject;
-    cull(bounds: SimpleBounds, skipUpdate?: boolean, callback?: Function): void;
+    cull(bounds: SimpleBounds, skipUpdate?: boolean, callback?: (object: PIXI.DisplayObject) => boolean): void;
     updateObjects(): void;
     updateObject(object: PIXI.DisplayObject): void;
     query(bounds: SimpleBounds): PIXI.DisplayObject[];
@@ -91,7 +91,7 @@ export declare class SpatialHash {
     remove(object: PIXI.DisplayObject): PIXI.DisplayObject;
     addContainer(container: PIXI.Container, staticObject?: boolean): void;
     removeContainer(container: PIXI.Container): PIXI.Container;
-    cull(AABB: AABB, skipUpdate?: boolean): number;
+    cull(AABB: AABB, skipUpdate?: boolean, callback?: (object: PIXI.DisplayObject) => boolean): number;
     invisible(): void;
     updateObjects(): void;
     updateObject(object: PIXI.DisplayObject): void;
