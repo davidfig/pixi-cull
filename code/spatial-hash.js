@@ -1,7 +1,3 @@
-// Copyright 2018 YOPEY YOPEY LLC
-// David Figatner
-// MIT License
-
 class SpatialHash {
     /**
      * creates a spatial-hash cull
