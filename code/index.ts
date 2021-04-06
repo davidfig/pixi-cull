@@ -1,3 +1,3 @@
-export { AABB, }
-export { Simple } from './simple'
-// export { SpatialHash } from './spatial-hash'
+export { AABB } from './types'
+export { Simple, SimpleStats } from './simple'
+export { SpatialHash, SpatialHashStats } from './spatial-hash'

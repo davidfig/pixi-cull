@@ -4,7 +4,7 @@ import random from 'yy-random'
 import forkMe from 'fork-me-github'
 import FPS from 'yy-fps'
 
-import { Simple } from '../code'
+import { Simple, SpatialHash, SpatialHashStats } from '../code'
 
 function el(query: string, parentQuery?: string): HTMLElement {
     if (parentQuery) {
@@ -21,34 +21,34 @@ const HEIGHT = 50000
 const DOTS = 10000
 const DOTS_SIZE = 100
 
-let application,
-    viewport,
+let application: PIXI.Application,
+    viewport: Viewport,
     dots: PIXI.Container,
-    div,
-    simple,
-    hash,
-    mode: 'simple' | 'hash' | 'none' = 'simple',
-    stats,
+    simple: Simple,
+    hash: SpatialHash,
+    stats: SpatialHashStats,
     fps: FPS
-//, _test
+
+function getMode(): string {
+    return (el('input[name=cull-types]:checked') as HTMLInputElement).value
+}
 
 function ui() {
     fps = new FPS({ side: 'bottomLeft' })
 
-    el('.buckets').style.display = mode === 'hash' ? 'block' : 'none'
-
+    el('.buckets').style.display = getMode() === 'hash' ? 'block' : 'none'
+    const mode = getMode()
     el('.choices').addEventListener('change', () => {
-        mode = (el('input[name=cull-types]:checked', '.choices') as HTMLInputElement).value as 'simple' | 'hash' | 'none'
         if (mode === 'none') {
             for (const dot of dots.children) {
                 dot.visible = true
             }
         }
         updateCull()
-        div.buckets.style.display = mode === 'hash' ? 'block' : 'none'
+        el('.buckets').style.display = mode === 'hash' ? 'block' : 'none'
         if (mode === 'hash') {
             el('.sparseness').innerHTML = Math.round(hash.getSparseness() * 100) + '%'
-            el('.largest').innerHTML = hash.getLargest()
+            el('.largest').innerHTML = hash.getLargest() + ''
             el('.average').innerHTML = Math.round(hash.getAverageSize() * 100) / 100 + ''
             el('hash').style.display = 'block'
         } else {
@@ -108,8 +108,8 @@ function createDots() {
 
     simple = new Simple()
     simple.addList(dots.children, true)
-    // _hash = new Cull.SpatialHash()
-    // _hash.addContainer(_dots, true)
+    hash = new SpatialHash()
+    hash.addContainer(dots, true)
 }
 
 function update() {
@@ -121,27 +121,29 @@ function update() {
 }
 
 function updateCull() {
-    switch (mode) {
+    switch (getMode()) {
         case 'simple':
             simple.cull(viewport.getVisibleBounds())
-            stats = simple.stats()
+            stats = simple.stats() as SpatialHashStats
             break
 
-        // case 'hash':
-        //     const visible = _div.visibleBuckets.innerHTML = _hash.cull(_viewport.getVisibleBounds())
-        //     const total = _div.totalBuckets.innerHTML = _hash.getBuckets().length
-        //     _div.culledBuckets.innerHTML = total - visible
-        //     _stats = _hash.stats()
-        //     break
+        case 'hash':
+            const visible = hash.cull(viewport.getVisibleBounds())
+            const total = hash.getBuckets().length
+            el('.visible-buckets').innerHTML = visible + ''
+            el('.total-buckets').innerHTML = total + ''
+            el('.culled-buckets').innerHTML = total - visible + ''
+            stats = hash.stats()
+            break
 
         case 'none':
-            stats = { visible: dots.children.length, culled: 0, total: dots.children.length }
+            stats = { visible: dots.children.length, culled: 0, total: dots.children.length } as SpatialHashStats
             break
     }
     viewport.dirty = false
-    el('.visible').innerHTML = stats.visible
-    el('.culled').innerHTML = stats.culled
-    el('.total').innerHTML = stats.total
+    el('.visible').innerHTML = stats.visible + ''
+    el('.culled').innerHTML = stats.culled + ''
+    el('.total').innerHTML = stats.total + ''
 }
 
 window.onload = () => {

@@ -6,8 +6,8 @@
     "module": "code/index.js",
     "types": "@types/index.d.ts",
     "scripts": {
-        "start": "esbuild docs/index.ts --bundle --servedir=docs --outfile=docs/index.js",
-        "upgrade": "yarn upgrade-interactive --latest",
+        "start": "esbuild docs/index.ts --bundle --servedir=docs --outfile=docs/index.js --sourcemap",
+
         "build-demo": "browserify docs/index.js -o docs/bundle.js",
         "docs": "jsdoc -c .jsdoc.json",
         "transpile": "babel code/ --out-dir dist --source-maps inline",

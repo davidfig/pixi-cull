@@ -11,6 +11,22 @@ export interface SpatialHashOptions {
 
 export interface ContainerCullObject {
     static?: boolean
+    added?: (object: DisplayObjectWithCulling) => void
+    removed?: (object: DisplayObjectWithCulling) => void
+}
+
+export interface SpatialHashStats {
+    buckets: number
+    total: number
+    visible: number
+    culled: number
+}
+
+interface SpatialHashBounds {
+    xStart: number
+    yStart: number
+    xEnd: number
+    yEnd: number
 }
 
 export interface ContainerWithCulling extends PIXI.Container {
@@ -24,18 +40,30 @@ const SpatialHashDefaultOptions: SpatialHashOptions = {
     dirtyTest: true,
 }
 
-class SpatialHash {
+export class SpatialHash {
     protected xSize: number
     protected ySize: number
-    protected simpleTest: boolean
-    protected dirtyTest: boolean
+
+    /** simpleTest toggle */
+    public simpleTest: boolean
+
+    /** dirtyTest toggle */
+    public dirtyTest: boolean
+
     protected width: number
     protected height: number
     protected hash: object
-    protected containers: (ContainerWithCulling | DisplayObjectWithCulling[])[]
+
+    /** array of PIXI.Containers added using addContainer()  */
+    protected containers: ContainerWithCulling[]
+
+    /** array of DisplayObjects added using add() */
     protected elements: DisplayObjectWithCulling[]
+
+
     protected objects: DisplayObjectWithCulling[]
     // protected hash: <string,
+    protected lastBuckets: number
 
     /**
      * creates a spatial-hash cull
@@ -47,7 +75,7 @@ class SpatialHash {
      * @param {number} [options.xSize] horizontal cell size (leave undefined if size is set)
      * @param {number} [options.ySize] vertical cell size (leave undefined if size is set)
      * @param {boolean} [options.simpleTest=true] after finding visible buckets, iterates through items and tests individual bounds
-     * @param {string} [options.dirtyTest=false] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
+     * @param {string} [options.dirtyTest=false] only update spatial hash for objects with object.dirty=true; this has a HUGE impact on performance
      */
     constructor(options?: SpatialHashOptions) {
         options = { ...SpatialHashDefaultOptions, ...options }
@@ -58,9 +86,8 @@ class SpatialHash {
         this.dirtyTest = options.dirtyTest
         this.width = this.height = 0
         this.hash = {}
-        this.objects = []
-        this.containers = [[]]
-        this.elements = this.containers[0] as DisplayObjectWithCulling[]
+        this.containers = []
+        this.elements = []
     }
 
     /**
@@ -100,7 +127,7 @@ class SpatialHash {
      * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
      * note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved
      */
-    addContainer(container: PIXI.Container, staticObject?: boolean) {
+    addContainer(container: ContainerWithCulling, staticObject?: boolean) {
         const added = (object: DisplayObjectWithCulling) => {
             object.spatial = { hashes: [] }
             this.updateObject(object)
@@ -130,7 +157,7 @@ class SpatialHash {
      * @param {PIXI.Container} container
      * @return {PIXI.Container} container
      */
-    removeContainer(container) {
+    removeContainer(container: ContainerWithCulling): ContainerWithCulling {
         this.containers.splice(this.containers.indexOf(container), 1)
         container.children.forEach(object => this.removeFromHash(object))
         container.off('added', container.cull.added)
@@ -146,18 +173,18 @@ class SpatialHash {
      * @param {Function} [callback] callback for each item that is not culled - note, this function is called before setting `object.visible=true`
      * @return {number} number of buckets in results
      */
-    cull(AABB, skipUpdate, callback) {
+    cull(AABB: AABB, skipUpdate?: boolean, callback?: (object: DisplayObjectWithCulling) => boolean): number {
         if (!skipUpdate) {
             this.updateObjects()
         }
         this.invisible()
-        let objects
+        let objects: DisplayObjectWithCulling[]
         if (callback) {
             objects = this.queryCallbackAll(AABB, this.simpleTest, callback)
         } else {
             objects = this.query(AABB, this.simpleTest)
         }
-        objects.forEach(object => object[this.visible] = true)
+        objects.forEach(object => object.visible = true)
         return this.lastBuckets
     }
 
@@ -165,8 +192,15 @@ class SpatialHash {
      * set all objects in hash to visible=false
      */
     invisible() {
-        for (let container of this.containers) {
-            container.children.forEach(object => object[this.visible] = false)
+        const length = this.elements.length
+        for (let i = 0; i < length; i++) {
+            this.elements[i].visible = false
+        }
+        for (const container of this.containers) {
+            const length = container.children.length
+            for (let i = 0; i < length; i++) {
+                container.children[i].visible = false
+            }
         }
     }
 
@@ -176,21 +210,34 @@ class SpatialHash {
      */
     updateObjects() {
         if (this.dirtyTest) {
-            for (let object of this.objects) {
-                if (object[this.dirty]) {
+            const length = this.elements.length
+            for (let i = 0; i < length; i++) {
+                const object = this.elements[i]
+                if (object.dirty) {
                     this.updateObject(object)
-                    object[this.dirty] = false
+                    object.dirty = false
                 }
             }
-            for (let container of this.containers) {
-                for (let object of container.children) {
-                    if (object[this.dirty]) {
-                        this.updateObject(object)
-                        object[this.dirty] = false
+            for (const container of this.containers) {
+                if (!container.cull.static) {
+                    const length = container.children.length
+                    for (let i = 0; i < length; i++) {
+                        const object = container.children[i] as DisplayObjectWithCulling
+                        if (object.dirty) {
+                            this.updateObject(object)
+                            object.dirty = false
+                        }
                     }
                 }
             }
         } else {
+            const length = this.elements.length
+            for (let i = 0; i < length; i++) {
+                const object = this.elements[i]
+                if (!object.staticObject) {
+                    this.updateObject(object)
+                }
+            }
             for (let container of this.containers) {
                 if (!container.cull.static) {
                     container.children.forEach(object => this.updateObject(object))
@@ -245,9 +292,9 @@ class SpatialHash {
      * @param {number} [minimum=1]
      * @return {array} array of buckets
      */
-    getBuckets(minimum = 1) {
+    getBuckets(minimum: number = 1): string[] {
         const hashes = []
-        for (let key in this.hash) {
+        for (const key in this.hash) {
             const hash = this.hash[key]
             if (hash.length >= minimum) {
                 hashes.push(hash)
@@ -259,24 +306,23 @@ class SpatialHash {
     /**
      * gets hash bounds
      * @param {AABB} AABB
-     * @return {Bounds}
-     * @private
+     * @return {SpatialHashBounds}
      */
-    getBounds(AABB) {
-        let xStart = Math.floor(AABB.x / this.xSize)
-        let yStart = Math.floor(AABB.y / this.ySize)
-        let xEnd = Math.floor((AABB.x + AABB.width) / this.xSize)
-        let yEnd = Math.floor((AABB.y + AABB.height) / this.ySize)
+    protected getBounds(AABB: AABB): SpatialHashBounds {
+        const xStart = Math.floor(AABB.x / this.xSize)
+        const yStart = Math.floor(AABB.y / this.ySize)
+        const xEnd = Math.floor((AABB.x + AABB.width) / this.xSize)
+        const yEnd = Math.floor((AABB.y + AABB.height) / this.ySize)
         return { xStart, yStart, xEnd, yEnd }
     }
 
     /**
      * insert object into the spatial hash
      * automatically called from updateObject()
-     * @param {*} object
+     * @param {DisplayObjectWithCulling} object
      * @param {string} key
      */
-    insert(object, key) {
+    insert(object: DisplayObjectWithCulling, key: string) {
         if (!this.hash[key]) {
             this.hash[key] = [object]
         } else {
@@ -290,8 +336,8 @@ class SpatialHash {
      * automatically called from updateObject()
      * @param {object} object
      */
-    removeFromHash(object) {
-        const spatial = object[this.spatial]
+    removeFromHash(object: DisplayObjectWithCulling) {
+        const spatial = object.spatial
         while (spatial.hashes.length) {
             const key = spatial.hashes.pop()
             const list = this.hash[key]
@@ -304,9 +350,9 @@ class SpatialHash {
      * @param {*} object in the spatial hash
      * @return {Array} of objects that are in the same hash as object
      */
-    neighbors(object) {
+    neighbors(object: DisplayObjectWithCulling): DisplayObjectWithCulling[] {
         let results = []
-        object[this.spatial].hashes.forEach(key => results = results.concat(this.hash[key]))
+        object.spatial.hashes.forEach(key => results = results.concat(this.hash[key]))
         return results
     }
 
@@ -316,8 +362,7 @@ class SpatialHash {
      * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
      * @return {object[]} search results
      */
-    query(AABB, simpleTest) {
-        simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true
+    query(AABB: AABB, simpleTest: boolean = true): DisplayObjectWithCulling[] {
         let buckets = 0
         let results = []
         const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
@@ -326,8 +371,10 @@ class SpatialHash {
                 const entry = this.hash[x + ',' + y]
                 if (entry) {
                     if (simpleTest) {
-                        for (let object of entry) {
-                            const box = object[this.AABB]
+                        const length = entry.length
+                        for (let i = 0; i < length; i++) {
+                            const object = entry[i]
+                            const box = object.AABB
                             if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
                                 box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
                                 results.push(object)
@@ -347,13 +394,13 @@ class SpatialHash {
     /**
      * returns an array of objects contained within bounding box with a callback on each non-culled object
      * this function is different from queryCallback, which cancels the query when a callback returns true
+     *
      * @param {AABB} AABB bounding box to search
      * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
      * @param {Function} callback - function to run for each non-culled object
      * @return {object[]} search results
      */
-    queryCallbackAll(AABB, simpleTest, callback) {
-        simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true
+    queryCallbackAll(AABB: AABB, simpleTest: boolean = true, callback: (object: DisplayObjectWithCulling) => boolean): DisplayObjectWithCulling[] {
         let buckets = 0
         let results = []
         const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
@@ -362,8 +409,10 @@ class SpatialHash {
                 const entry = this.hash[x + ',' + y]
                 if (entry) {
                     if (simpleTest) {
-                        for (let object of entry) {
-                            const box = object[this.AABB]
+                        const length = entry.length
+                        for (let i = 0; i < length; i++) {
+                            const object = entry[i]
+                            const box = object.AABB
                             if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
                                 box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
                                 results.push(object)
@@ -392,8 +441,7 @@ class SpatialHash {
      * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
      * @return {boolean} true if callback returned early
      */
-    queryCallback(AABB, callback, simpleTest) {
-        simpleTest = typeof simpleTest !== 'undefined' ? simpleTest : true
+    queryCallback(AABB: AABB, callback: (object: DisplayObjectWithCulling) => boolean, simpleTest: boolean = true): boolean {
         const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
         for (let y = yStart; y <= yEnd; y++) {
             for (let x = xStart; x <= xEnd; x++) {
@@ -422,19 +470,27 @@ class SpatialHash {
     }
 
     /**
-     * get stats
-     * @return {Stats}
+     * Get stats
+     * @return {SpatialHashStats}
      */
-    stats() {
+    stats(): SpatialHashStats {
         let visible = 0, count = 0
-        for (let list of this.containers) {
-            for (let i = 0; i < list.children.length; i++) {
+        const length = this.elements.length
+        for (let i = 0; i < length; i++) {
+            const object = this.elements[i]
+            visible += object.visible ? 1 : 0
+            count++
+        }
+        for (const list of this.containers) {
+            const length = list.children.length
+            for (let i = 0; i < length; i++) {
                 const object = list.children[i]
                 visible += object.visible ? 1 : 0
                 count++
             }
         }
         return {
+            buckets: this.lastBuckets,
             total: count,
             visible,
             culled: count - visible
@@ -445,7 +501,7 @@ class SpatialHash {
      * helper function to evaluate hash table
      * @return {number} the number of buckets in the hash table
      * */
-    getNumberOfBuckets() {
+    getNumberOfBuckets(): number {
         return Object.keys(this.hash).length
     }
 
@@ -453,7 +509,7 @@ class SpatialHash {
      * helper function to evaluate hash table
      * @return {number} the average number of entries in each bucket
      */
-    getAverageSize() {
+    getAverageSize(): number {
         let total = 0
         for (let key in this.hash) {
             total += this.hash[key].length
@@ -465,7 +521,7 @@ class SpatialHash {
      * helper function to evaluate the hash table
      * @return {number} the largest sized bucket
      */
-    getLargest() {
+    getLargest(): number {
         let largest = 0
         for (let key in this.hash) {
             if (this.hash[key].length > largest) {
@@ -477,9 +533,9 @@ class SpatialHash {
 
     /**
      * gets quadrant bounds
-     * @return {Bounds}
+     * @return {SpatialHashBounds}
      */
-    getWorldBounds() {
+    getWorldBounds(): SpatialHashBounds {
         let xStart = Infinity, yStart = Infinity, xEnd = 0, yEnd = 0
         for (let key in this.hash) {
             const split = key.split(',')
@@ -494,11 +550,11 @@ class SpatialHash {
     }
 
     /**
-     * helper function to evalute the hash table
+     * helper function to evaluate the hash table
      * @param {AABB} [AABB] bounding box to search or entire world
      * @return {number} sparseness percentage (i.e., buckets with at least 1 element divided by total possible buckets)
      */
-    getSparseness(AABB) {
+    getSparseness(AABB?: AABB): number {
         let count = 0, total = 0
         const { xStart, yStart, xEnd, yEnd } = AABB ? this.getBounds(AABB) : this.getWorldBounds()
         for (let y = yStart; y < yEnd; y++) {
@@ -510,29 +566,3 @@ class SpatialHash {
         return count / total
     }
 }
-
-/**
- * @typedef {object} Stats
- * @property {number} buckets
- * @property {number} total
- * @property {number} visible
- * @property {number} culled
- */
-
-/**
- * @typedef {object} Bounds
- * @property {number} xStart
- * @property {number} yStart
- * @property {number} xEnd
- * @property {number} xEnd
- */
-
-/**
-  * @typedef {object} AABB
-  * @property {number} x
-  * @property {number} y
-  * @property {number} width
-  * @property {number} height
-  */
-
-module.exports = SpatialHash

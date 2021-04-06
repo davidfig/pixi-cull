@@ -10,7 +10,7 @@ const defaultSimpleOptions = {
     dirtyTest: false,
 }
 
-interface SimpleStats {
+export interface SimpleStats {
     total: number
     visible: number
     culled: number
