@@ -9,6 +9,14 @@ export interface SpatialHashOptions {
     dirtyTest?: boolean
 }
 
+export interface ContainerCullObject {
+    static?: boolean
+}
+
+export interface ContainerWithCulling extends PIXI.Container {
+    cull?: ContainerCullObject
+}
+
 const SpatialHashDefaultOptions: SpatialHashOptions = {
     xSize: 1000,
     ySize: 1000,
@@ -24,7 +32,8 @@ class SpatialHash {
     protected width: number
     protected height: number
     protected hash: object
-    protected containers: (PIXI.Container | DisplayObjectWithCulling[])[]
+    protected containers: (ContainerWithCulling | DisplayObjectWithCulling[])[]
+    protected elements: DisplayObjectWithCulling[]
     protected objects: DisplayObjectWithCulling[]
     // protected hash: <string,
 
@@ -51,6 +60,7 @@ class SpatialHash {
         this.hash = {}
         this.objects = []
         this.containers = [[]]
+        this.elements = this.containers[0] as DisplayObjectWithCulling[]
     }
 
     /**
@@ -69,7 +79,7 @@ class SpatialHash {
             object.staticObject = true
         }
         this.updateObject(object)
-            (this.containers[0] as DisplayObjectWithCulling[]).push(object)
+        this.elements.push(object)
         return object
     }
 
@@ -79,7 +89,7 @@ class SpatialHash {
      * @return {*} object
      */
     remove(object: DisplayObjectWithCulling): DisplayObjectWithCulling {
-        (this.containers[0] as DisplayObjectWithCulling[]).splice(this.list[0].indexOf(object), 1)
+        this.elements.splice(this.elements.indexOf(object), 1)
         this.removeFromHash(object)
         return object
     }
