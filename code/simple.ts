@@ -1,28 +1,13 @@
-import * as PIXI from 'pixi.js'
+import { DisplayObjectWithCulling, AABB } from './types'
 
 export interface SimpleOptions {
     visible?: string
-    calculatePixi?: boolean
     dirtyTest?: boolean
 }
 
 const defaultSimpleOptions = {
     visible: 'visible',
-    calculatePixi: true,
     dirtyTest: false,
-}
-
-export interface AABB {
-    x: number
-    y: number
-    width: number
-    height: number
-}
-
-export interface DisplayObjectWithCulling extends PIXI.DisplayObject {
-    staticObject?: boolean
-    AABB?: AABB
-    dirty?: boolean
 }
 
 interface SimpleStats {
@@ -36,7 +21,6 @@ type DisplayObjectWithCullingArray = DisplayObjectWithCulling[] & { staticObject
 export class Simple {
     public options: SimpleOptions
     public visible: string
-    public calculatePIXI: boolean
     public dirtyTest: boolean
     protected lists: DisplayObjectWithCullingArray[]
 
@@ -47,13 +31,11 @@ export class Simple {
      *
      * @param {object} [options]
      * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {boolean} [options.calculatePIXI=true] calculate pixi.js bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
      * @param {string} [options.dirtyTest=false] only update the AABB box for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      */
     constructor(options: SimpleOptions = {}) {
         options = { ...defaultSimpleOptions, ...options }
         this.visible = options.visible
-        this.calculatePIXI = options.calculatePixi
         this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true
         this.lists = [[]]
     }
@@ -69,11 +51,9 @@ export class Simple {
         if (staticObject) {
             array.staticObject = true
         }
-        if (this.calculatePIXI && this.dirtyTest) {
-            const length = array.length
-            for (let i = 0; i < length; i++) {
-                this.updateObject(array[i])
-            }
+        const length = array.length
+        for (let i = 0; i < length; i++) {
+            this.updateObject(array[i])
         }
         return array
     }
@@ -100,7 +80,7 @@ export class Simple {
         if (staticObject) {
             object.staticObject = true
         }
-        if (this.calculatePIXI && (this.dirtyTest || staticObject)) {
+        if (this.dirtyTest || staticObject) {
             this.updateObject(object)
         }
         this.lists[0].push(object)
@@ -125,7 +105,7 @@ export class Simple {
      * @param {boolean} [skipUpdate] skip updating the AABB bounding box of all objects
      */
     cull(bounds: AABB, skipUpdate?: boolean) {
-        if (this.calculatePIXI && !skipUpdate) {
+        if (!skipUpdate) {
             this.updateObjects()
         }
         const visible = this.visible

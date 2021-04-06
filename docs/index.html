@@ -3,7 +3,7 @@
 <head>
     <title>pixi-cull example</title>
     <link rel="stylesheet" href="index.css" type="text/css">
-    <script src="bundle.js"></script>
+    <script src="index.js"></script>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
         <div class="controls">
             <div class="title">pixi-cull</div>
             <div>Cull Types</div>
-            <div id="choices">
+            <div class="choices">
                 <div>
                     <label>
                         <input value="simple" name="cull-types" type="radio" checked />
@@ -34,25 +34,27 @@
             </div>
 
             <div style="margin: 1rem 0">
-                <div>Visible dots: <span id="visible"></span></div>
-                <div>Culled dots: <span id="culled"></span></div>
-                <div>Total dots: <span id="total"></span></div>
+                <div>Visible dots: <span class="visible"></span></div>
+                <div>Culled dots: <span class="culled"></span></div>
+                <div>Total dots: <span class="total"></span></div>
             </div>
 
-            <div id="buckets">
-                <div>Visible Buckets: <span id="visible-buckets"></span></div>
-                <div>Culled Buckets: <span id="culled-buckets"></span></div>
-                <div>Total Buckets: <span id="total-buckets"></span></div>
-                <div id="hash">
-                    <div style="margin-top: 0.5rem">Sparseness: <span id="sparseness-buckets"></span></div>
-                    <div>Average Size: <span id="average-bucket"></span></div>
-                    <div>Largest Bucket: <span id="largest-bucket"></span></div>
+            <div class="buckets">
+                <div>Visible Buckets: <span class="visible-buckets"></span></div>
+                <div>Culled Buckets: <span class="culled-buckets"></span></div>
+                <div>Total Buckets: <span class="total-buckets"></span></div>
+                <div class="hash">
+                    <div style="margin-top: 0.5rem">Sparseness: <span class="sparseness-buckets"></span></div>
+                    <div>Average Size: <span class="average-bucket"></span></div>
+                    <div>Largest Bucket: <span class="largest-bucket"></span></div>
                 </div>
-                <div class="checkbox"><label><input id="simple-test" type="checkbox" checked>options.simpleTest</label>
+                <div class="checkbox"><label><input class="simple-test" type="checkbox"
+                            checked>options.simpleTest</label>
                 </div>
             </div>
 
-            <div class="checkbox"><label><input id="dirty-test" type="checkbox" checked>options.dirtyTest</label></div>
+            <div class="checkbox"><label><input class="dirty-test" type="checkbox" checked>options.dirtyTest</label>
+            </div>
         </div>
         <div class="instructions fade">Pinch and drag to move the viewport</div>
 </body>

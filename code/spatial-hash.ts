@@ -1,53 +1,76 @@
+import * as PIXI from 'pixi.js'
+import { DisplayObjectWithCulling, AABB } from './types'
+
+export interface SpatialHashOptions {
+    size?: number
+    xSize?: number
+    ySize?: number
+    simpleTest?: boolean
+    dirtyTest?: boolean
+}
+
+const SpatialHashDefaultOptions: SpatialHashOptions = {
+    xSize: 1000,
+    ySize: 1000,
+    simpleTest: true,
+    dirtyTest: true,
+}
+
 class SpatialHash {
+    protected xSize: number
+    protected ySize: number
+    protected simpleTest: boolean
+    protected dirtyTest: boolean
+    protected width: number
+    protected height: number
+    protected hash: object
+    protected containers: (PIXI.Container | DisplayObjectWithCulling[])[]
+    protected objects: DisplayObjectWithCulling[]
+    // protected hash: <string,
+
     /**
      * creates a spatial-hash cull
+     * Note, options.dirtyTest defaults to false. To greatly improve performance set to true and set
+     * displayObject.dirty=true when the displayObject changes)
+     *
      * @param {object} [options]
      * @param {number} [options.size=1000] cell size used to create hash (xSize = ySize)
-     * @param {number} [options.xSize] horizontal cell size
-     * @param {number} [options.ySize] vertical cell size
-     * @param {boolean} [options.calculatePIXI=true] calculate bounding box automatically; if this is set to false then it uses object[options.AABB] for bounding box
-     * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {boolean} [options.simpleTest=true] iterate through visible buckets to check for bounds
-     * @param {string} [options.dirtyTest=true] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
-     * @param {string} [options.AABB=AABB] object property that holds bounding box so that object[type] = { x: number, y: number, width: number, height: number }
-     * @param {string} [options.spatial=spatial] object property that holds object's hash list
-     * @param {string} [options.dirty=dirty] object property for dirtyTest
+     * @param {number} [options.xSize] horizontal cell size (leave undefined if size is set)
+     * @param {number} [options.ySize] vertical cell size (leave undefined if size is set)
+     * @param {boolean} [options.simpleTest=true] after finding visible buckets, iterates through items and tests individual bounds
+     * @param {string} [options.dirtyTest=false] only update spatial hash for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      */
-    constructor(options) {
-        options = options || {}
-        this.xSize = options.xSize || options.size || 1000
-        this.ySize = options.ySize || options.size || 1000
-        this.AABB = options.type || 'AABB'
-        this.spatial = options.spatial || 'spatial'
-        this.calculatePIXI = typeof options.calculatePIXI !== 'undefined' ? options.calculatePIXI : true
-        this.visibleText = typeof options.visibleTest !== 'undefined' ? options.visibleTest : true
-        this.simpleTest = typeof options.simpleTest !== 'undefined' ? options.simpleTest : true
-        this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true
-        this.visible = options.visible || 'visible'
-        this.dirty = options.dirty || 'dirty'
+    constructor(options?: SpatialHashOptions) {
+        options = { ...SpatialHashDefaultOptions, ...options }
+        if (options && typeof options.size !== 'undefined') {
+            this.xSize = this.ySize = options.size
+        }
+        this.simpleTest = options.simpleTest
+        this.dirtyTest = options.dirtyTest
         this.width = this.height = 0
         this.hash = {}
         this.objects = []
-        this.containers = []
+        this.containers = [[]]
     }
 
     /**
      * add an object to be culled
      * side effect: adds object.spatialHashes to track existing hashes
-     * @param {*} object
+     * @param {DisplayObjectWithCulling} object
      * @param {boolean} [staticObject] set to true if the object's position/size does not change
-     * @return {*} object
+     * @return {DisplayObjectWithCulling} object
      */
-    add(object, staticObject) {
-        object[this.spatial] = { hashes: [] }
-        if (this.calculatePIXI && this.dirtyTest) {
-            object[this.dirty] = true
+    add(object: DisplayObjectWithCulling, staticObject?: boolean): DisplayObjectWithCulling {
+        object.spatial = { hashes: [] }
+        if (this.dirtyTest) {
+            object.dirty = true
         }
         if (staticObject) {
             object.staticObject = true
         }
         this.updateObject(object)
-        this.containers[0].push(object)
+            (this.containers[0] as DisplayObjectWithCulling[]).push(object)
+        return object
     }
 
     /**
@@ -55,8 +78,8 @@ class SpatialHash {
      * @param {*} object
      * @return {*} object
      */
-    remove(object) {
-        this.containers[0].splice(this.list[0].indexOf(object), 1)
+    remove(object: DisplayObjectWithCulling): DisplayObjectWithCulling {
+        (this.containers[0] as DisplayObjectWithCulling[]).splice(this.list[0].indexOf(object), 1)
         this.removeFromHash(object)
         return object
     }
@@ -67,19 +90,19 @@ class SpatialHash {
      * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
      * note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved
      */
-    addContainer(container, staticObject) {
-        const added = function(object) {
-            object[this.spatial] = { hashes: [] }
+    addContainer(container: PIXI.Container, staticObject?: boolean) {
+        const added = (object: DisplayObjectWithCulling) => {
+            object.spatial = { hashes: [] }
             this.updateObject(object)
-        }.bind(this)
+        }
 
-        const removed = function (object) {
+        const removed = (object: DisplayObjectWithCulling) => {
             this.removeFromHash(object)
-        }.bind(this)
+        }
 
-        for (let object of container.children) {
-            object[this.spatial] = { hashes: [] }
-            this.updateObject(object)
+        for (const object of container.children) {
+            (object as DisplayObjectWithCulling).spatial = { hashes: [] }
+            this.updateObject(object as DisplayObjectWithCulling)
         }
         container.cull = {}
         this.containers.push(container)
@@ -172,23 +195,19 @@ class SpatialHash {
      * @param {*} object
      * @param {boolean} [force] force update for calculatePIXI
      */
-    updateObject(object) {
-        let AABB
-        if (this.calculatePIXI) {
-            const box = object.getLocalBounds()
-            AABB = object[this.AABB] = {
-                x: object.x + (box.x - object.pivot.x) * object.scale.x,
-                y: object.y + (box.y - object.pivot.y) * object.scale.y,
-                width: box.width * object.scale.x,
-                height: box.height * object.scale.y
-            }
-        } else {
-            AABB = object[this.AABB]
+    updateObject(object: DisplayObjectWithCulling) {
+        let AABB: AABB
+        const box = object.getLocalBounds()
+        AABB = object.AABB = {
+            x: object.x + (box.x - object.pivot.x) * object.scale.x,
+            y: object.y + (box.y - object.pivot.y) * object.scale.y,
+            width: box.width * object.scale.x,
+            height: box.height * object.scale.y
         }
 
-        let spatial = object[this.spatial]
+        let spatial = object.spatial
         if (!spatial) {
-            spatial = object[this.spatial] = { hashes: [] }
+            spatial = object.spatial = { hashes: [] }
         }
         const { xStart, yStart, xEnd, yEnd } = this.getBounds(AABB)
 
@@ -216,7 +235,7 @@ class SpatialHash {
      * @param {number} [minimum=1]
      * @return {array} array of buckets
      */
-    getBuckets(minimum=1) {
+    getBuckets(minimum = 1) {
         const hashes = []
         for (let key in this.hash) {
             const hash = this.hash[key]
@@ -336,7 +355,7 @@ class SpatialHash {
                         for (let object of entry) {
                             const box = object[this.AABB]
                             if (box.x + box.width > AABB.x && box.x < AABB.x + AABB.width &&
-                            box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
+                                box.y + box.height > AABB.y && box.y < AABB.y + AABB.height) {
                                 results.push(object)
                                 callback(object)
                             }
@@ -375,7 +394,7 @@ class SpatialHash {
                         if (simpleTest) {
                             const AABB = object.AABB
                             if (AABB.x + AABB.width > AABB.x && AABB.x < AABB.x + AABB.width &&
-                            AABB.y + AABB.height > AABB.y && AABB.y < AABB.y + AABB.height) {
+                                AABB.y + AABB.height > AABB.y && AABB.y < AABB.y + AABB.height) {
                                 if (callback(object)) {
                                     return true
                                 }

@@ -12,7 +12,9 @@ Features include:
 
 ## Moving from v1 to v2
 
-pixi-cull has been reworked and ported to typescript. Some minor functionality was removed (ie, the ability to set the parameter names for displayObject.AABB and displayObject.dirty). Otherwise functionality is the same or better.
+pixi-cull has been reworked and ported to typescript. The following functionality was removed:
+- removed the options to change the object's parameter names for AABB, dirty, spatial, and visible (this greatly simplified) the code
+- removed calculatePIXI as an option, since this library is now solely designed for pixi.js
 
 ## Rationale
 

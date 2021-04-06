@@ -1,13 +1,11 @@
-body
-{
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
 }
 
-.container
-{
+.container {
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -15,45 +13,40 @@ body
     overflow: hidden;
 }
 
-.controls
-{
-    padding: 0 0.5em;
+.controls {
+    padding: 0 0.5rem;
     border-left: 10px solid rgb(220,220,220);
     background: rgb(240,240,240);
     height: 100%;
     white-space: nowrap;
-    width: 15em;
+    width: 12rem;
 }
 
-.title
-{
+.title {
     font-weight: bold;
-    font-size: 1.1em;
-    margin: 0.5em 0 1em;
+    font-size: 1.1rem;
+    margin: 0.5rem 0 1rem;
 }
 
-.checkbox
-{
-    margin-top: 0.5em;
+.checkbox {
+    margin-top: 0.5rem;
 }
 
-.pixi
-{
-    height: 100%;
+.pixi {
+    flex-grow: 1;
 }
 
-.instructions
-{
-    border-radius: 1em;
+.instructions {
+    border-radius: 1rem;
     background: rgb(240,240,240);
     border: 10px solid rgb(220,220,220);
-    padding: 2em;
+    padding: 2rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.2em;
-    max-width: 8em;
+    font-size: 1.2rem;
+    max-width: 8rem;
     text-align: center;
     opacity: 1;
     pointer-events: none;
