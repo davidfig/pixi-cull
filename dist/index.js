@@ -1,9 +1,0 @@
-'use strict';
-
-window.PixiCull = {
-    Simple: require('./simple'),
-    SpatialHash: require('./spatial-hash')
-};
-
-module.exports = window.PixiCull;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvZGUvaW5kZXguanMiXSwibmFtZXMiOlsid2luZG93IiwiUGl4aUN1bGwiLCJTaW1wbGUiLCJyZXF1aXJlIiwiU3BhdGlhbEhhc2giLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiOztBQUFBQSxPQUFPQyxRQUFQLEdBQWtCO0FBQ2RDLFlBQVFDLFFBQVEsVUFBUixDQURNO0FBRWRDLGlCQUFhRCxRQUFRLGdCQUFSO0FBRkMsQ0FBbEI7O0FBS0FFLE9BQU9DLE9BQVAsR0FBaUJOLE9BQU9DLFFBQXhCIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsid2luZG93LlBpeGlDdWxsID0ge1xuICAgIFNpbXBsZTogcmVxdWlyZSgnLi9zaW1wbGUnKSxcbiAgICBTcGF0aWFsSGFzaDogcmVxdWlyZSgnLi9zcGF0aWFsLWhhc2gnKVxufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHdpbmRvdy5QaXhpQ3VsbCJdfQ==

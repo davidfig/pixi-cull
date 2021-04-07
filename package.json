@@ -7,11 +7,11 @@
     "types": "@types/index.d.ts",
     "scripts": {
         "start": "esbuild docs/index.ts --bundle --servedir=docs --outfile=docs/index.js --sourcemap",
-
+        "bundle": "tsc --outfile dist/pixi-cull.js --skipLibCheck --declaration --declarationMap --esModuleInterop --target ES5 --module amd --moduleResolution node --skipLibCheck code/index.ts",
+        "declaration": "tsc --declaration --declarationDir @types --emitDeclarationOnly code/index.ts",
         "build-demo": "browserify docs/index.js -o docs/bundle.js",
         "docs": "jsdoc -c .jsdoc.json",
         "transpile": "babel code/ --out-dir dist --source-maps inline",
-        "bundle": "browserify dist/index.js -o bundle/pixi-cull.js && uglifyjs -mc -o bundle/pixi-cull.min.js bundle/pixi-cull.js",
         "prepublishOnly": "yarn transpile && yarn build-demo && yarn bundle && yarn docs"
     },
     "keywords": [

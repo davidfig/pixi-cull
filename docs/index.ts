@@ -37,8 +37,8 @@ function ui() {
     fps = new FPS({ side: 'bottomLeft' })
 
     el('.buckets').style.display = getMode() === 'hash' ? 'block' : 'none'
-    const mode = getMode()
     el('.choices').addEventListener('change', () => {
+        const mode = getMode()
         if (mode === 'none') {
             for (const dot of dots.children) {
                 dot.visible = true
@@ -47,10 +47,10 @@ function ui() {
         updateCull()
         el('.buckets').style.display = mode === 'hash' ? 'block' : 'none'
         if (mode === 'hash') {
-            el('.sparseness').innerHTML = Math.round(hash.getSparseness() * 100) + '%'
-            el('.largest').innerHTML = hash.getLargest() + ''
-            el('.average').innerHTML = Math.round(hash.getAverageSize() * 100) / 100 + ''
-            el('hash').style.display = 'block'
+            el('.sparseness-buckets').innerHTML = Math.round(hash.getSparseness() * 100) + '%'
+            el('.largest-bucket').innerHTML = hash.getLargest() + ''
+            el('.average-bucket').innerHTML = Math.round(hash.getAverageSize() * 100) / 100 + ''
+            el('.hash').style.display = 'block'
         } else {
             el('.hash').style.display = 'none'
         }

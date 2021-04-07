@@ -81,6 +81,9 @@ export class SpatialHash {
         options = { ...SpatialHashDefaultOptions, ...options }
         if (options && typeof options.size !== 'undefined') {
             this.xSize = this.ySize = options.size
+        } else {
+            this.xSize = options.xSize
+            this.ySize = options.ySize
         }
         this.simpleTest = options.simpleTest
         this.dirtyTest = options.dirtyTest
@@ -137,9 +140,11 @@ export class SpatialHash {
             this.removeFromHash(object)
         }
 
-        for (const object of container.children) {
-            (object as DisplayObjectWithCulling).spatial = { hashes: [] }
-            this.updateObject(object as DisplayObjectWithCulling)
+        const length = container.children.length
+        for (let i = 0; i < length; i++) {
+            const object = container.children[i] as DisplayObjectWithCulling
+            object.spatial = { hashes: [] }
+            this.updateObject(object)
         }
         container.cull = {}
         this.containers.push(container)
@@ -240,7 +245,10 @@ export class SpatialHash {
             }
             for (let container of this.containers) {
                 if (!container.cull.static) {
-                    container.children.forEach(object => this.updateObject(object))
+                    const length = container.children.length
+                    for (let i = 0; i < length; i++) {
+                        this.updateObject(container.children[i])
+                    }
                 }
             }
         }
@@ -249,8 +257,7 @@ export class SpatialHash {
     /**
      * update the has of an object
      * automatically called from updateObjects()
-     * @param {*} object
-     * @param {boolean} [force] force update for calculatePIXI
+     * @param {DisplayObjectWithCulling} object
      */
     updateObject(object: DisplayObjectWithCulling) {
         let AABB: AABB
