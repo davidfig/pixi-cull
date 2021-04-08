@@ -20,7 +20,6 @@ type DisplayObjectWithCullingArray = DisplayObjectWithCulling[] & { staticObject
 
 export class Simple {
     public options: SimpleOptions
-    public visible: string
     public dirtyTest: boolean
     protected lists: DisplayObjectWithCullingArray[]
 
@@ -30,12 +29,10 @@ export class Simple {
      * additional work to ensure displayObject.dirty is set when objects change)
      *
      * @param {object} [options]
-     * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {string} [options.dirtyTest=false] only update the AABB box for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
+     * @param {string} [options.dirtyTest=false] - only update the AABB box for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      */
     constructor(options: SimpleOptions = {}) {
         options = { ...defaultSimpleOptions, ...options }
-        this.visible = options.visible
         this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true
         this.lists = [[]]
     }
@@ -43,7 +40,7 @@ export class Simple {
     /**
      * add an array of objects to be culled, eg: `simple.addList(container.children)`
      * @param {Array} array
-     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @param {boolean} [staticObject] - set to true if the object's position/size does not change
      * @return {Array} array
      */
     addList(array: DisplayObjectWithCullingArray, staticObject?: boolean): object[] {
@@ -73,7 +70,7 @@ export class Simple {
      * NOTE: for implementation, add and remove uses this.lists[0]
      *
      * @param {DisplayObjectWithCulling} object
-     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @param {boolean} [staticObject] - set to true if the object's position/size does not change
      * @return {DisplayObjectWithCulling} object
      */
     add(object: DisplayObjectWithCulling, staticObject?: boolean): DisplayObjectWithCulling {
@@ -102,19 +99,18 @@ export class Simple {
     /**
      * cull the items in the list by changing the object.visible
      * @param {AABB} bounds
-     * @param {boolean} [skipUpdate] skip updating the AABB bounding box of all objects
+     * @param {boolean} [skipUpdate] - skip updating the AABB bounding box of all objects
      */
     cull(bounds: AABB, skipUpdate?: boolean) {
         if (!skipUpdate) {
             this.updateObjects()
         }
-        const visible = this.visible
         for (const list of this.lists) {
             const length = list.length
             for (let i = 0; i < length; i++) {
                 const object = list[i]
                 const box = object.AABB
-                object[visible] =
+                object.visible =
                     box.x + box.width > bounds.x && box.x < bounds.x + bounds.width &&
                     box.y + box.height > bounds.y && box.y < bounds.y + bounds.height
             }
@@ -170,8 +166,8 @@ export class Simple {
 
     /**
      * returns an array of objects contained within bounding box
-     * @param {AABB} bounds bounding box to search
-     * @return {DisplayObjectWithCulling[]} search results
+     * @param {AABB} bounds - bounding box to search
+     * @return {DisplayObjectWithCulling[]} - search results
      */
     query(bounds: AABB): DisplayObjectWithCulling[] {
         let results = []
@@ -190,9 +186,9 @@ export class Simple {
     /**
      * iterates through objects contained within bounding box
      * stops iterating if the callback returns true
-     * @param {AABB} bounds bounding box to search
+     * @param {AABB} bounds - bounding box to search
      * @param {function} callback
-     * @return {boolean} true if callback returned early
+     * @return {boolean} - true if callback returned early
      */
     queryCallback(bounds: AABB, callback: (object: DisplayObjectWithCulling) => boolean): boolean {
         for (let list of this.lists) {

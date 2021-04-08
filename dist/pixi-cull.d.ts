@@ -322,4 +322,3 @@ declare module "index" {
     export { Simple, SimpleStats } from "simple";
     export { SpatialHash, SpatialHashStats } from "spatial-hash";
 }
-//# sourceMappingURL=pixi-cull.d.ts.map

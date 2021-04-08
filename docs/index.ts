@@ -4,7 +4,7 @@ import random from 'yy-random'
 import forkMe from 'fork-me-github'
 import FPS from 'yy-fps'
 
-import { Simple, SpatialHash, SpatialHashStats } from '../code'
+import { Simple, SpatialHash, SpatialHashStats } from '../dist/pixi-cull.es.js'
 
 function el(query: string, parentQuery?: string): HTMLElement {
     if (parentQuery) {

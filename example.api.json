@@ -1,0 +1,292 @@
+{
+	"name": "",
+	"type": "RootDoc",
+	"members": [
+		{
+			"name": "Simple",
+			"type": "ClassDoc",
+			"brief": "",
+			"description": "",
+			"members": [
+				{
+					"name": "add",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>add an object to be culled\nNOTE: for implementation, add and remove uses this.lists[0]</p>"
+				},
+				{
+					"name": "addList",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>add an array of objects to be culled, eg: <code>simple.addList(container.children)</code></p>"
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>Creates a simple cull\nNote, options.dirtyTest defaults to false. Set to true for much better performance--this requires\nadditional work to ensure displayObject.dirty is set when objects change)</p>"
+				},
+				{
+					"name": "cull",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>cull the items in the list by changing the object.visible</p>"
+				},
+				{
+					"name": "query",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>returns an array of objects contained within bounding box</p>"
+				},
+				{
+					"name": "queryCallback",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>iterates through objects contained within bounding box\nstops iterating if the callback returns true</p>"
+				},
+				{
+					"name": "remove",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>remove an object added by add()\nNOTE: for implementation, add and remove uses this.lists[0]</p>"
+				},
+				{
+					"name": "removeList",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>remove an array added by addList()</p>"
+				},
+				{
+					"name": "stats",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>get stats (only updated after update() is called)</p>"
+				},
+				{
+					"name": "updateObject",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>update the has of an object\nautomatically called from updateObjects()</p>"
+				},
+				{
+					"name": "updateObjects",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>update the AABB for all objects\nautomatically called from update() when calculatePIXI=true and skipUpdate=false</p>"
+				}
+			]
+		},
+		{
+			"name": "SpatialHash",
+			"type": "ClassDoc",
+			"brief": "",
+			"description": "",
+			"members": [
+				{
+					"name": "dirtyTest",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>dirtyTest toggle</p>",
+					"description": ""
+				},
+				{
+					"name": "simpleTest",
+					"type": "PropertyDoc",
+					"access": "public",
+					"scope": "instance",
+					"brief": "<p>simpleTest toggle</p>",
+					"description": ""
+				},
+				{
+					"name": "containers",
+					"type": "PropertyDoc",
+					"access": "protected",
+					"scope": "instance",
+					"brief": "<p>array of PIXI.Containers added using addContainer()</p>",
+					"description": ""
+				},
+				{
+					"name": "elements",
+					"type": "PropertyDoc",
+					"access": "protected",
+					"scope": "instance",
+					"brief": "<p>array of DisplayObjects added using add()</p>",
+					"description": ""
+				},
+				{
+					"name": "add",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>add an object to be culled\nside effect: adds object.spatialHashes to track existing hashes</p>"
+				},
+				{
+					"name": "addContainer",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>add an array of objects to be culled</p>"
+				},
+				{
+					"name": "constructor",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>creates a spatial-hash cull\nNote, options.dirtyTest defaults to false. To greatly improve performance set to true and set\ndisplayObject.dirty=true when the displayObject changes)</p>"
+				},
+				{
+					"name": "cull",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>update the hashes and cull the items in the list</p>"
+				},
+				{
+					"name": "getAverageSize",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>helper function to evaluate hash table</p>"
+				},
+				{
+					"name": "getBounds",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>gets hash bounds</p>"
+				},
+				{
+					"name": "getBuckets",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>returns an array of buckets with &gt;= minimum of objects in each bucket</p>"
+				},
+				{
+					"name": "getLargest",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>helper function to evaluate the hash table</p>"
+				},
+				{
+					"name": "getNumberOfBuckets",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>helper function to evaluate hash table</p>"
+				},
+				{
+					"name": "getSparseness",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>helper function to evaluate the hash table</p>"
+				},
+				{
+					"name": "getWorldBounds",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>gets quadrant bounds</p>"
+				},
+				{
+					"name": "insert",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>insert object into the spatial hash\nautomatically called from updateObject()</p>"
+				},
+				{
+					"name": "invisible",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "<p>set all objects in hash to visible=false</p>",
+					"description": ""
+				},
+				{
+					"name": "neighbors",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>get all neighbors that share the same hash as object</p>"
+				},
+				{
+					"name": "query",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>returns an array of objects contained within bounding box</p>"
+				},
+				{
+					"name": "queryCallback",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>iterates through objects contained within bounding box\nstops iterating if the callback returns true</p>"
+				},
+				{
+					"name": "queryCallbackAll",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>returns an array of objects contained within bounding box with a callback on each non-culled object\nthis function is different from queryCallback, which cancels the query when a callback returns true</p>"
+				},
+				{
+					"name": "remove",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>remove an object added by add()</p>"
+				},
+				{
+					"name": "removeContainer",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>remove an array added by addContainer()</p>"
+				},
+				{
+					"name": "removeFromHash",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>removes object from the hash table\nshould be called when removing an object\nautomatically called from updateObject()</p>"
+				},
+				{
+					"name": "stats",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>Get stats</p>"
+				},
+				{
+					"name": "updateObject",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>update the has of an object\nautomatically called from updateObjects()</p>"
+				},
+				{
+					"name": "updateObjects",
+					"type": "MethodDoc",
+					"scope": "instance",
+					"brief": "",
+					"description": "<p>update the hashes for all objects\nautomatically called from update() when skipUpdate=false</p>"
+				}
+			]
+		}
+	]
+}

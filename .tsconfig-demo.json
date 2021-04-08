@@ -1,9 +1,0 @@
-{
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "sourceMap": true
-    },
-    "include": ["docs/index.ts"],
-    "exclude": ["node_modules"]
-}

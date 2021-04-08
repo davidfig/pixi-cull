@@ -16,9 +16,12 @@
     "linenums": true,
     "source": {
         "include": [
-            "./code"
+            "./code/index.ts",
+            "./code/types.ts",
+            "./code/simple.ts",
+            "./code/spatial-hash.ts"
         ],
-        "includePattern": ".+\\.js(doc)?$",
+        "includePattern": ".+\\.ts(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "opts": {
@@ -31,9 +34,13 @@
         "template": "./node_modules/yy-jsdoc-template"
     },
     "plugins": [
+        "jsdoc-plugin-typescript",
         "./node_modules/yy-jsdoc-template/plugins/skip-node_modules",
         "plugins/markdown"
     ],
+    "typescript": {
+        "moduleRoot": "code"
+    },
     "templates": {
         "default": {
             "outputSourceFiles": true

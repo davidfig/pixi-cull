@@ -1,0 +1,603 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Simple | pixi-cull</title>
+	<meta name="description" content="Documentation for pixi-cull">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">pixi-cull</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">pixi-cull</a>
+				</li>
+				<li>
+					<a href="simple.html">Simple</a>
+				</li>
+			</ul>
+			<h1>Class Simple</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Simple</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="simple.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="simple.html#dirtytest" class="tsd-kind-icon">dirty<wbr>Test</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="simple.html#options" class="tsd-kind-icon">options</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#add" class="tsd-kind-icon">add</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#addlist" class="tsd-kind-icon">add<wbr>List</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#cull" class="tsd-kind-icon">cull</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#query" class="tsd-kind-icon">query</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#querycallback" class="tsd-kind-icon">query<wbr>Callback</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#removelist" class="tsd-kind-icon">remove<wbr>List</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#stats" class="tsd-kind-icon">stats</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#updateobject" class="tsd-kind-icon">update<wbr>Object</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="simple.html#updateobjects" class="tsd-kind-icon">update<wbr>Objects</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Simple<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/simpleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SimpleOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="simple.html" class="tsd-signature-type" data-tsd-kind="Class">Simple</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L24">code/simple.ts:24</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a simple cull
+										Note, options.dirtyTest defaults to false. Set to true for much better performance--this requires
+									additional work to ensure displayObject.dirty is set when objects change)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/simpleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SimpleOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="simple.html" class="tsd-signature-type" data-tsd-kind="Class">Simple</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="dirtytest" class="tsd-anchor"></a>
+					<h3>dirty<wbr>Test</h3>
+					<div class="tsd-signature tsd-kind-icon">dirty<wbr>Test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L23">code/simple.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="options" class="tsd-anchor"></a>
+					<h3>options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/simpleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SimpleOptions</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L22">code/simple.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a>, staticObject<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L76">code/simple.ts:76</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>add an object to be culled
+									NOTE: for implementation, add and remove uses this.lists[0]</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> staticObject: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h4>
+							<p>object</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addlist" class="tsd-anchor"></a>
+					<h3>add<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>List<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObjectWithCullingArray</span>, staticObject<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L46">code/simple.ts:46</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>add an array of objects to be culled, eg: <code>simple.addList(container.children)</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>array: <span class="tsd-signature-type">DisplayObjectWithCullingArray</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> staticObject: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>array</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cull" class="tsd-anchor"></a>
+					<h3>cull</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">cull<span class="tsd-signature-symbol">(</span>bounds<span class="tsd-signature-symbol">: </span><a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a>, skipUpdate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L104">code/simple.ts:104</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>cull the items in the list by changing the object.visible</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>bounds: <a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> skipUpdate: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="query" class="tsd-anchor"></a>
+					<h3>query</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">query<span class="tsd-signature-symbol">(</span>bounds<span class="tsd-signature-symbol">: </span><a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L172">code/simple.ts:172</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>returns an array of objects contained within bounding box</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>bounds: <a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>bounding box to search</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>search results</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="querycallback" class="tsd-anchor"></a>
+					<h3>query<wbr>Callback</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">query<wbr>Callback<span class="tsd-signature-symbol">(</span>bounds<span class="tsd-signature-symbol">: </span><a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L193">code/simple.ts:193</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>iterates through objects contained within bounding box
+									stops iterating if the callback returns true</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>bounds: <a href="../interfaces/aabb.html" class="tsd-signature-type" data-tsd-kind="Interface">AABB</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>bounding box to search</p>
+									</div>
+								</li>
+								<li>
+									<h5>callback: <span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-signature">
+											<ul class="tsd-signatures tsd-kind-type-literal">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>object: <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<ul>
+								<li>true if callback returned early</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L94">code/simple.ts:94</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>remove an object added by add()
+									NOTE: for implementation, add and remove uses this.lists[0]</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h4>
+							<p>object</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removelist" class="tsd-anchor"></a>
+					<h3>remove<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>List<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObjectWithCullingArray</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DisplayObjectWithCullingArray</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L63">code/simple.ts:63</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>remove an array added by addList()</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>array: <span class="tsd-signature-type">DisplayObjectWithCullingArray</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DisplayObjectWithCullingArray</span></h4>
+							<p>array</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="stats" class="tsd-anchor"></a>
+					<h3>stats</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">stats<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/simplestats.html" class="tsd-signature-type" data-tsd-kind="Interface">SimpleStats</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L212">code/simple.ts:212</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>get stats (only updated after update() is called)</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/simplestats.html" class="tsd-signature-type" data-tsd-kind="Interface">SimpleStats</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updateobject" class="tsd-anchor"></a>
+					<h3>update<wbr>Object</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Object<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L158">code/simple.ts:158</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>update the has of an object
+									automatically called from updateObjects()</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <a href="../interfaces/displayobjectwithculling.html" class="tsd-signature-type" data-tsd-kind="Interface">DisplayObjectWithCulling</a></h5>
+									<div class="tsd-comment tsd-typography">
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updateobjects" class="tsd-anchor"></a>
+					<h3>update<wbr>Objects</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Objects<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/davidfig/pixi-cull/blob/810c953/code/simple.ts#L124">code/simple.ts:124</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>update the AABB for all objects
+									automatically called from update() when calculatePIXI=true and skipUpdate=false</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
+						<a href="simple.html" class="tsd-kind-icon">Simple</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="simple.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="simple.html#dirtytest" class="tsd-kind-icon">dirty<wbr>Test</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="simple.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#add" class="tsd-kind-icon">add</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#addlist" class="tsd-kind-icon">add<wbr>List</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#cull" class="tsd-kind-icon">cull</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#query" class="tsd-kind-icon">query</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#querycallback" class="tsd-kind-icon">query<wbr>Callback</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#removelist" class="tsd-kind-icon">remove<wbr>List</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#stats" class="tsd-kind-icon">stats</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#updateobject" class="tsd-kind-icon">update<wbr>Object</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="simple.html#updateobjects" class="tsd-kind-icon">update<wbr>Objects</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="spatialhash.html" class="tsd-kind-icon">Spatial<wbr>Hash</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/aabb.html" class="tsd-kind-icon">AABB</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/containercullobject.html" class="tsd-kind-icon">Container<wbr>Cull<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/containerwithculling.html" class="tsd-kind-icon">Container<wbr>With<wbr>Culling</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/displayobjectwithculling.html" class="tsd-kind-icon">Display<wbr>Object<wbr>With<wbr>Culling</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/simpleoptions.html" class="tsd-kind-icon">Simple<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/simplestats.html" class="tsd-kind-icon">Simple<wbr>Stats</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/spatialhashoptions.html" class="tsd-kind-icon">Spatial<wbr>Hash<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/spatialhashstats.html" class="tsd-kind-icon">Spatial<wbr>Hash<wbr>Stats</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

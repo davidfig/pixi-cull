@@ -1,3 +1,3 @@
-export { AABB } from './types'
-export { Simple, SimpleStats } from './simple'
-export { SpatialHash, SpatialHashStats } from './spatial-hash'
+export { AABB, DisplayObjectWithCulling } from './types'
+export { Simple, SimpleOptions, SimpleStats } from './simple'
+export { SpatialHash, SpatialHashOptions, SpatialHashStats, ContainerCullObject, ContainerWithCulling } from './spatial-hash'

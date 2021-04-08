@@ -1,327 +1,218 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="default no-js">
 <head>
-    <meta charset="utf-8">
-    <title>pixi-cull API Documentation</title>
-    
-    <meta name="description" content="Documentation for pixi-cull library" />
-    
-        <meta name="keywords" content="docs, documentation, html5, javascript, jsdoc, viewport, cull, bounce, 2d" />
-        <meta name="keyword" content="docs, documentation, html5, javascript, jsdoc, viewport, cull, bounce, 2d" />
-    
-    
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <script src="scripts/jquery.min.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="styles/main.css">
-
-    
-    <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true},"applicationName":"pixi-cull","footer":"by YOPEY YOPEY LLC (yopeyopey.com)","copyright":"Copyright © 2018 YOPEY YOPEY LLC.","meta":{"title":"pixi-cull API Documentation","description":"Documentation for pixi-cull library","keyword":"docs, documentation, html5, javascript, jsdoc, viewport, cull, bounce, 2d"},"matomo":{"url":"https://analytics.yopeyopey.com/piwik/","id":22}};
-    </script>
-    
-
-    
-    <script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-        var u="https://analytics.yopeyopey.com/piwik/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', '22']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-    </script>
-    
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>pixi-cull</title>
+	<meta name="description" content="Documentation for pixi-cull">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
-<div id="wrap" class="clearfix">
-    
-<div class="navigation">
-    <h3 class="applicationName"><a href="index.html">pixi-cull</a></h3>
-    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </button>
-    <div class="search">
-        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
-    </div>
-    <ul class="list">
-    
-        
-        <li class="item" data-name="global">
-            <span class="title namespace ">
-                
-                <span class="namespaceTag">
-                    <span class="glyphicon glyphicon-globe"></span>
-                </span>
-                
-                <a href="global.html">Global</a>
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            <span class="subtitle">Typedefs</span>
-            
-                <li class="parent" data-name="AABB"><a href="global.html#AABB">AABB</a></li>
-            
-                <li class="parent" data-name="Bounds"><a href="global.html#Bounds">Bounds</a></li>
-            
-                <li class="parent" data-name="SimpleStats"><a href="global.html#SimpleStats">SimpleStats</a></li>
-            
-                <li class="parent" data-name="Stats"><a href="global.html#Stats">Stats</a></li>
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        
-        <li class="item" data-name="Simple">
-            <span class="title  ">
-                
-                <a href="Simple.html">Simple</a>
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li class="parent  " data-name="Simple#add"><a href="Simple.html#add">add</a></li>
-            
-                <li class="parent  " data-name="Simple#addList"><a href="Simple.html#addList">addList</a></li>
-            
-                <li class="parent  " data-name="Simple#cull"><a href="Simple.html#cull">cull</a></li>
-            
-                <li class="parent  " data-name="Simple#query"><a href="Simple.html#query">query</a></li>
-            
-                <li class="parent  " data-name="Simple#queryCallback"><a href="Simple.html#queryCallback">queryCallback</a></li>
-            
-                <li class="parent  " data-name="Simple#remove"><a href="Simple.html#remove">remove</a></li>
-            
-                <li class="parent  " data-name="Simple#removeList"><a href="Simple.html#removeList">removeList</a></li>
-            
-                <li class="parent  " data-name="Simple#stats"><a href="Simple.html#stats">stats</a></li>
-            
-                <li class="parent  " data-name="Simple#updateObject"><a href="Simple.html#updateObject">updateObject</a></li>
-            
-                <li class="parent  " data-name="Simple#updateObjects"><a href="Simple.html#updateObjects">updateObjects</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        
-        <li class="item" data-name="SpatialHash">
-            <span class="title  ">
-                
-                <a href="SpatialHash.html">SpatialHash</a>
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li class="parent  " data-name="SpatialHash#add"><a href="SpatialHash.html#add">add</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#addContainer"><a href="SpatialHash.html#addContainer">addContainer</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#cull"><a href="SpatialHash.html#cull">cull</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getAverageSize"><a href="SpatialHash.html#getAverageSize">getAverageSize</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getBuckets"><a href="SpatialHash.html#getBuckets">getBuckets</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getLargest"><a href="SpatialHash.html#getLargest">getLargest</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getNumberOfBuckets"><a href="SpatialHash.html#getNumberOfBuckets">getNumberOfBuckets</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getSparseness"><a href="SpatialHash.html#getSparseness">getSparseness</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#getWorldBounds"><a href="SpatialHash.html#getWorldBounds">getWorldBounds</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#insert"><a href="SpatialHash.html#insert">insert</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#invisible"><a href="SpatialHash.html#invisible">invisible</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#neighbors"><a href="SpatialHash.html#neighbors">neighbors</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#query"><a href="SpatialHash.html#query">query</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#queryCallback"><a href="SpatialHash.html#queryCallback">queryCallback</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#queryCallbackAll"><a href="SpatialHash.html#queryCallbackAll">queryCallbackAll</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#remove"><a href="SpatialHash.html#remove">remove</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#removeContainer"><a href="SpatialHash.html#removeContainer">removeContainer</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#removeFromHash"><a href="SpatialHash.html#removeFromHash">removeFromHash</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#stats"><a href="SpatialHash.html#stats">stats</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#updateObject"><a href="SpatialHash.html#updateObject">updateObject</a></li>
-            
-                <li class="parent  " data-name="SpatialHash#updateObjects"><a href="SpatialHash.html#updateObjects">updateObjects</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-    </ul>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">pixi-cull</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>pixi-cull</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#pixi-cull" id="pixi-cull" style="color: inherit; text-decoration: none;">
+					<h1>pixi-cull</h1>
+				</a>
+				<p>A library to visibly cull objects designed to work with pixi.js (but not dependent on pixi.js).</p>
+				<p>Includes two types of culling algorithms: simple and spatial hash. The spatial hash may be also be used for collision detection, AI, etc.</p>
+				<p>Features include:</p>
+				<ul>
+					<li>automatic calculate bounding boxes for pixi.js objects</li>
+					<li>also allow manual calculation for objects</li>
+					<li>bounds calculated from any viewport including pixi-viewport (pixi-viewport.getVisibleBounds())</li>
+				</ul>
+				<a href="#moving-from-v1-to-v2" id="moving-from-v1-to-v2" style="color: inherit; text-decoration: none;">
+					<h2>Moving from v1 to v2</h2>
+				</a>
+				<p>pixi-cull has been reworked and ported to typescript. The following functionality was removed:</p>
+				<ul>
+					<li>removed the options to change the object&#39;s parameter names for AABB, dirty, spatial, and visible (this greatly simplified) the code</li>
+					<li>removed calculatePIXI as an option, since this library is now solely designed for pixi.js</li>
+				</ul>
+				<a href="#rationale" id="rationale" style="color: inherit; text-decoration: none;">
+					<h2>Rationale</h2>
+				</a>
+				<p>Since I maintain pixi-viewport, I was asked a number of times for a culling library. Well here it is. Choose from two drop-in algorithms to cull your objects.</p>
+				<a href="#simple-example" id="simple-example" style="color: inherit; text-decoration: none;">
+					<h2>Simple Example</h2>
+				</a>
+				<pre><code class="language-js"><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #0070C1">PIXI</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;pixi.js&quot;</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">Viewport</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;pixi-viewport&quot;</span><span style="color: #000000">); </span><span style="color: #008000">// you can use any viewport/camera as long as you can get the bounding box</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">Cull</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;pixi-cull&quot;</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">app</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0070C1">PIXI</span><span style="color: #000000">.</span><span style="color: #795E26">Application</span><span style="color: #000000">();</span>
+<span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">.</span><span style="color: #795E26">appendChild</span><span style="color: #000000">(</span><span style="color: #001080">app</span><span style="color: #000000">.</span><span style="color: #001080">view</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// create viewport</span>
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">viewport</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Viewport</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">screenWidth:</span><span style="color: #000000"> </span><span style="color: #001080">app</span><span style="color: #000000">.</span><span style="color: #001080">view</span><span style="color: #000000">.</span><span style="color: #001080">offsetWidth</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">screenHeight:</span><span style="color: #000000"> </span><span style="color: #001080">app</span><span style="color: #000000">.</span><span style="color: #001080">view</span><span style="color: #000000">.</span><span style="color: #001080">offsetHeight</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">worldWidth:</span><span style="color: #000000"> </span><span style="color: #098658">10000</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">worldHeight:</span><span style="color: #000000"> </span><span style="color: #098658">10000</span><span style="color: #000000">,</span>
+<span style="color: #000000">});</span>
+
+<span style="color: #001080">app</span><span style="color: #000000">.</span><span style="color: #001080">stage</span><span style="color: #000000">.</span><span style="color: #795E26">addChild</span><span style="color: #000000">(</span><span style="color: #001080">viewport</span><span style="color: #000000">);</span>
+<span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #795E26">drag</span><span style="color: #000000">().</span><span style="color: #795E26">pinch</span><span style="color: #000000">().</span><span style="color: #795E26">wheel</span><span style="color: #000000">().</span><span style="color: #795E26">decelerate</span><span style="color: #000000">().</span><span style="color: #795E26">moveCenter</span><span style="color: #000000">(</span><span style="color: #098658">5000</span><span style="color: #000000">, </span><span style="color: #098658">5000</span><span style="color: #000000">);</span>
+
+<span style="color: #008000">// add red boxes</span>
+<span style="color: #AF00DB">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> = </span><span style="color: #098658">0</span><span style="color: #000000">; </span><span style="color: #001080">i</span><span style="color: #000000"> &lt; </span><span style="color: #098658">500</span><span style="color: #000000">; </span><span style="color: #001080">i</span><span style="color: #000000">++) {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">sprite</span><span style="color: #000000"> = </span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #795E26">addChild</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #0070C1">PIXI</span><span style="color: #000000">.</span><span style="color: #795E26">Sprite</span><span style="color: #000000">(</span><span style="color: #0070C1">PIXI</span><span style="color: #000000">.</span><span style="color: #001080">Texture</span><span style="color: #000000">.</span><span style="color: #0070C1">WHITE</span><span style="color: #000000">));</span>
+<span style="color: #000000">  </span><span style="color: #001080">sprite</span><span style="color: #000000">.</span><span style="color: #001080">tint</span><span style="color: #000000"> = </span><span style="color: #098658">0xff0000</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">sprite</span><span style="color: #000000">.</span><span style="color: #001080">width</span><span style="color: #000000"> = </span><span style="color: #001080">sprite</span><span style="color: #000000">.</span><span style="color: #001080">height</span><span style="color: #000000"> = </span><span style="color: #098658">100</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">sprite</span><span style="color: #000000">.</span><span style="color: #001080">position</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #267F99">Math</span><span style="color: #000000">.</span><span style="color: #795E26">random</span><span style="color: #000000">() * </span><span style="color: #098658">10000</span><span style="color: #000000">, </span><span style="color: #267F99">Math</span><span style="color: #000000">.</span><span style="color: #795E26">random</span><span style="color: #000000">() * </span><span style="color: #098658">10000</span><span style="color: #000000">);</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #0000FF">var</span><span style="color: #000000"> </span><span style="color: #001080">cull</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #001080">Cull</span><span style="color: #000000">.</span><span style="color: #795E26">Simple</span><span style="color: #000000">();</span>
+<span style="color: #001080">cull</span><span style="color: #000000">.</span><span style="color: #795E26">addList</span><span style="color: #000000">(</span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #001080">children</span><span style="color: #000000">);</span>
+<span style="color: #001080">cull</span><span style="color: #000000">.</span><span style="color: #795E26">cull</span><span style="color: #000000">(</span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #795E26">getVisibleBounds</span><span style="color: #000000">());</span>
+
+<span style="color: #008000">// cull whenever the viewport moves</span>
+<span style="color: #0070C1">PIXI</span><span style="color: #000000">.</span><span style="color: #001080">ticker</span><span style="color: #000000">.</span><span style="color: #001080">shared</span><span style="color: #000000">.</span><span style="color: #795E26">add</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #001080">dirty</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">cull</span><span style="color: #000000">.</span><span style="color: #795E26">cull</span><span style="color: #000000">(</span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #795E26">getVisibleBounds</span><span style="color: #000000">());</span>
+<span style="color: #000000">    </span><span style="color: #001080">viewport</span><span style="color: #000000">.</span><span style="color: #001080">dirty</span><span style="color: #000000"> = </span><span style="color: #0000FF">false</span><span style="color: #000000">;</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#live-example" id="live-example" style="color: inherit; text-decoration: none;">
+					<h2>Live Example</h2>
+				</a>
+				<p><a href="https://davidfig.github.io/pixi-cull/">https://davidfig.github.io/pixi-cull/</a></p>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2>API Documentation</h2>
+				</a>
+				<p><a href="https://davidfig.github.io/pixi-cull/jsdoc/">https://davidfig.github.io/pixi-cull/jsdoc/</a></p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">i</span><span style="color: #000000"> </span><span style="color: #001080">pixi</span><span style="color: #000000">-</span><span style="color: #001080">cull</span>
+</code></pre>
+				<p>or <a href="https://github.com/davidfig/pixi-viewport/releases/">grab the latest release</a> and use it:</p>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;/directory-to-file/pixi.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+<span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;/directory-to-file/pixi-cull.min.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+<span style="color: #800000">&lt;script&gt;</span>
+<span style="color: #000000FF">  </span><span style="color: #0000FF">var</span><span style="color: #000000FF"> </span><span style="color: #001080">SimpleCull</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #0000FF">new</span><span style="color: #000000FF"> </span><span style="color: #0070C1">PIXI</span><span style="color: #000000FF">.</span><span style="color: #001080">extras</span><span style="color: #000000FF">.</span><span style="color: #001080">Cull</span><span style="color: #000000FF">.</span><span style="color: #795E26">Simple</span><span style="color: #000000FF">();</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+</code></pre>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>license</h2>
+				</a>
+				<p>MIT License
+				(c) 2018 <a href="https://yopeyopey.com/">YOPEY YOPEY LLC</a> by <a href="https://twitter.com/yopey_yopey/">David Figatner</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/simple.html" class="tsd-kind-icon">Simple</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/spatialhash.html" class="tsd-kind-icon">Spatial<wbr>Hash</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/aabb.html" class="tsd-kind-icon">AABB</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/containercullobject.html" class="tsd-kind-icon">Container<wbr>Cull<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/containerwithculling.html" class="tsd-kind-icon">Container<wbr>With<wbr>Culling</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/displayobjectwithculling.html" class="tsd-kind-icon">Display<wbr>Object<wbr>With<wbr>Culling</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/simpleoptions.html" class="tsd-kind-icon">Simple<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/simplestats.html" class="tsd-kind-icon">Simple<wbr>Stats</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/spatialhashoptions.html" class="tsd-kind-icon">Spatial<wbr>Hash<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/spatialhashstats.html" class="tsd-kind-icon">Spatial<wbr>Hash<wbr>Stats</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </div>
-    <div class="main">
-        
-        <h1 class="page-title" data-filename="index.html">Index</h1>
-        
-        
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-    
-
-
-
-
-    <section>
-        <article class="readme content-size"><h1>pixi-cull</h1>
-<p>A library to visibly cull objects designed to work with pixi.js (but not dependent on pixi.js).</p>
-<p>Includes two types of culling algorithms: simple and spatial hash. The spatial hash may be also be used for collision detection, AI, etc.</p>
-<p>Features include:</p>
-<ul>
-<li>automatic calculate bounding boxes for pixi.js objects</li>
-<li>also allow manual calculation for objects</li>
-<li>bounds calculated from any viewport including pixi-viewport (pixi-viewport.getVisibleBounds())</li>
-</ul>
-<h2>pixi.js notes</h2>
-<p>The Cull.SpatialHash.addContainer() only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved. The rest of the libraries functionality will work with older versions of pixi.js.</p>
-<h2>Rationale</h2>
-<p>Since I maintain pixi-viewport, I was asked a number of times for a culling library. Well here it is. Choose from two drop-in algorithms to cull your objects.</p>
-<h2>Simple Example</h2>
-<pre class="prettyprint source lang-js"><code>var PIXI = require('pixi.js');
-var Viewport = require('pixi-viewport'); // you can use any viewport/camera as long as you can get the bounding box
-var Cull = require('pixi-cull');
-
-var app = new PIXI.Application();
-document.body.appendChild(app.view);
-
-// create viewport
-var viewport = new Viewport({
-    screenWidth: app.view.offsetWidth,
-    screenHeight: app.view.offsetHeight,
-    worldWidth: 10000,
-    worldHeight: 10000
-});
-
-app.stage.addChild(viewport);
-viewport.drag().pinch().wheel().decelerate().moveCenter(5000, 5000);
-
-// add red boxes
-for (var i = 0; i &lt; 500; i++)
-{
-    var sprite = viewport.addChild(new PIXI.Sprite(PIXI.Texture.WHITE));
-    sprite.tint = 0xff0000;
-    sprite.width = sprite.height = 100
-    sprite.position.set(Math.random() * 10000, Math.random() * 10000);
-}
-
-var cull = new Cull.Simple();
-cull.addList(viewport.children);
-cull.cull(viewport.getVisibleBounds());
-
-// cull whenever the viewport moves
-PIXI.ticker.shared.add(() =>
-{
-    if (viewport.dirty)
-    {
-        cull.cull(viewport.getVisibleBounds());
-        viewport.dirty = false;
-    }
-});
-</code></pre>
-<h2>Live Example</h2>
-<p><a target="_blank" href="https://davidfig.github.io/pixi-cull/">https://davidfig.github.io/pixi-cull/</a></p>
-<h2>API Documentation</h2>
-<p><a target="_blank" href="https://davidfig.github.io/pixi-cull/jsdoc/">https://davidfig.github.io/pixi-cull/jsdoc/</a></p>
-<h2>Installation</h2>
-<pre class="prettyprint source"><code>npm i pixi-cull
-</code></pre>
-<p>or <a target="_blank" href="https://github.com/davidfig/pixi-viewport/releases/">grab the latest release</a> and use it:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;/directory-to-file/pixi.js&quot;>&lt;/script>
-&lt;script src=&quot;/directory-to-file/pixi-cull.min.js&quot;>&lt;/script>
-&lt;script>
-    var SimpleCull = new PIXI.extras.Cull.Simple();
-&lt;/script>
-</code></pre>
-<h2>license</h2>
-<p>MIT License<br>
-(c) 2018 <a target="_blank" href="https://yopeyopey.com/">YOPEY YOPEY LLC</a> by <a target="_blank" href="https://twitter.com/yopey_yopey/">David Figatner</a></p></article>
-    </section>
-
-
-
-
-
-
-        
-
-        <footer class="content-size">
-            <div class="footer">
-                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Sat Mar 27 2021 11:27:28 GMT+0800 (Taipei Standard Time)
-            </div>
-        </footer>
-    </div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
-<script>prettyPrint();</script>
-<script src="scripts/main.js"></script>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

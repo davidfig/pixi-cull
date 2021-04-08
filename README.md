@@ -13,6 +13,7 @@ Features include:
 ## Moving from v1 to v2
 
 pixi-cull has been reworked and ported to typescript. The following functionality was removed:
+
 - removed the options to change the object's parameter names for AABB, dirty, spatial, and visible (this greatly simplified) the code
 - removed calculatePIXI as an option, since this library is now solely designed for pixi.js
 
@@ -23,43 +24,43 @@ Since I maintain pixi-viewport, I was asked a number of times for a culling libr
 ## Simple Example
 
 ```js
-var PIXI = require("pixi.js");
-var Viewport = require("pixi-viewport"); // you can use any viewport/camera as long as you can get the bounding box
-var Cull = require("pixi-cull");
+import * as PIXI from "pixi.js"
+import { Viewport } from "pixi-viewport"
+import { Simple, SpatialHash } from "pixi-cull"
 
-var app = new PIXI.Application();
-document.body.appendChild(app.view);
+const app = new PIXI.Application()
+document.body.appendChild(app.view)
 
 // create viewport
-var viewport = new Viewport({
+const viewport = new Viewport({
   screenWidth: app.view.offsetWidth,
   screenHeight: app.view.offsetHeight,
   worldWidth: 10000,
   worldHeight: 10000,
-});
+})
 
-app.stage.addChild(viewport);
-viewport.drag().pinch().wheel().decelerate().moveCenter(5000, 5000);
+app.stage.addChild(viewport)
+viewport.drag().pinch().wheel().decelerate().moveCenter(5000, 5000)
 
 // add red boxes
-for (var i = 0; i < 500; i++) {
-  var sprite = viewport.addChild(new PIXI.Sprite(PIXI.Texture.WHITE));
-  sprite.tint = 0xff0000;
-  sprite.width = sprite.height = 100;
-  sprite.position.set(Math.random() * 10000, Math.random() * 10000);
+for (let i = 0; i < 500; i++) {
+  const sprite = viewport.addChild(new PIXI.Sprite(PIXI.Texture.WHITE))
+  sprite.tint = 0xff0000
+  sprite.width = sprite.height = 100
+  sprite.position.set(Math.random() * 10000, Math.random() * 10000)
 }
 
-var cull = new Cull.Simple();
-cull.addList(viewport.children);
-cull.cull(viewport.getVisibleBounds());
+const cull = new Simple() // new SpatialHash()
+cull.addList(viewport.children)
+cull.cull(viewport.getVisibleBounds())
 
 // cull whenever the viewport moves
-PIXI.ticker.shared.add(() => {
+PIXI.Ticker.shared.add(() => {
   if (viewport.dirty) {
-    cull.cull(viewport.getVisibleBounds());
-    viewport.dirty = false;
+    cull.cull(viewport.getVisibleBounds())
+    viewport.dirty = false
   }
-});
+})
 ```
 
 ## Live Example
@@ -82,11 +83,11 @@ or [grab the latest release](https://github.com/davidfig/pixi-viewport/releases/
 <script src="/directory-to-file/pixi.js"></script>
 <script src="/directory-to-file/pixi-cull.min.js"></script>
 <script>
-  var SimpleCull = new PIXI.extras.Cull.Simple();
+  const SimpleCull = new Cull.Simple()
 </script>
 ```
 
 ## license
 
 MIT License
-(c) 2018 [YOPEY YOPEY LLC](https://yopeyopey.com/) by [David Figatner](https://twitter.com/yopey_yopey/)
+(c) 2021 [YOPEY YOPEY LLC](https://yopeyopey.com/) by [David Figatner](https://twitter.com/yopey_yopey/)

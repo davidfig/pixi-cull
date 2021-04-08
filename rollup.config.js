@@ -2,7 +2,6 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import { terser } from 'rollup-plugin-terser'
 import { babel } from '@rollup/plugin-babel'
 import nodeResolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 
 export default [
@@ -14,10 +13,7 @@ export default [
                 {
                     preferBuiltins: false
                 }),
-            commonjs(),
             typescript({
-                "esModuleInterop": true,
-                "skipLibCheck": true,
             }),
             terser(),
             babel({
@@ -38,14 +34,13 @@ export default [
         }
     },
     {
-        input: 'code/.js',
+        input: 'code/index.ts',
         plugins: [
             peerDepsExternal(),
             nodeResolve(
                 {
                     preferBuiltins: false
                 }),
-            commonjs(),
             typescript()
         ],
         output:
