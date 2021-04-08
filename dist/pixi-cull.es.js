@@ -35,20 +35,18 @@ var Simple = /** @class */ (function () {
      * additional work to ensure displayObject.dirty is set when objects change)
      *
      * @param {object} [options]
-     * @param {boolean} [options.visible=visible] parameter of the object to set (usually visible or renderable)
-     * @param {string} [options.dirtyTest=false] only update the AABB box for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
+     * @param {string} [options.dirtyTest=false] - only update the AABB box for objects with object[options.dirtyTest]=true; this has a HUGE impact on performance
      */
     function Simple(options) {
         if (options === void 0) { options = {}; }
         options = __assign(__assign({}, defaultSimpleOptions), options);
-        this.visible = options.visible;
         this.dirtyTest = typeof options.dirtyTest !== 'undefined' ? options.dirtyTest : true;
         this.lists = [[]];
     }
     /**
      * add an array of objects to be culled, eg: `simple.addList(container.children)`
      * @param {Array} array
-     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @param {boolean} [staticObject] - set to true if the object's position/size does not change
      * @return {Array} array
      */
     Simple.prototype.addList = function (array, staticObject) {
@@ -76,7 +74,7 @@ var Simple = /** @class */ (function () {
      * NOTE: for implementation, add and remove uses this.lists[0]
      *
      * @param {DisplayObjectWithCulling} object
-     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @param {boolean} [staticObject] - set to true if the object's position/size does not change
      * @return {DisplayObjectWithCulling} object
      */
     Simple.prototype.add = function (object, staticObject) {
@@ -103,20 +101,19 @@ var Simple = /** @class */ (function () {
     /**
      * cull the items in the list by changing the object.visible
      * @param {AABB} bounds
-     * @param {boolean} [skipUpdate] skip updating the AABB bounding box of all objects
+     * @param {boolean} [skipUpdate] - skip updating the AABB bounding box of all objects
      */
     Simple.prototype.cull = function (bounds, skipUpdate) {
         if (!skipUpdate) {
             this.updateObjects();
         }
-        var visible = this.visible;
         for (var _i = 0, _a = this.lists; _i < _a.length; _i++) {
             var list = _a[_i];
             var length_1 = list.length;
             for (var i = 0; i < length_1; i++) {
                 var object = list[i];
                 var box = object.AABB;
-                object[visible] =
+                object.visible =
                     box.x + box.width > bounds.x && box.x < bounds.x + bounds.width &&
                         box.y + box.height > bounds.y && box.y < bounds.y + bounds.height;
             }
@@ -172,8 +169,8 @@ var Simple = /** @class */ (function () {
     };
     /**
      * returns an array of objects contained within bounding box
-     * @param {AABB} bounds bounding box to search
-     * @return {DisplayObjectWithCulling[]} search results
+     * @param {AABB} bounds - bounding box to search
+     * @return {DisplayObjectWithCulling[]} - search results
      */
     Simple.prototype.query = function (bounds) {
         var results = [];
@@ -193,9 +190,9 @@ var Simple = /** @class */ (function () {
     /**
      * iterates through objects contained within bounding box
      * stops iterating if the callback returns true
-     * @param {AABB} bounds bounding box to search
+     * @param {AABB} bounds - bounding box to search
      * @param {function} callback
-     * @return {boolean} true if callback returned early
+     * @return {boolean} - true if callback returned early
      */
     Simple.prototype.queryCallback = function (bounds, callback) {
         for (var _i = 0, _a = this.lists; _i < _a.length; _i++) {
@@ -244,13 +241,19 @@ var SpatialHash = /** @class */ (function () {
      * displayObject.dirty=true when the displayObject changes)
      *
      * @param {object} [options]
-     * @param {number} [options.size=1000] cell size used to create hash (xSize = ySize)
-     * @param {number} [options.xSize] horizontal cell size (leave undefined if size is set)
-     * @param {number} [options.ySize] vertical cell size (leave undefined if size is set)
-     * @param {boolean} [options.simpleTest=true] after finding visible buckets, iterates through items and tests individual bounds
-     * @param {string} [options.dirtyTest=false] only update spatial hash for objects with object.dirty=true; this has a HUGE impact on performance
+     * @param {number} [options.size=1000] - cell size used to create hash (xSize = ySize)
+     * @param {number} [options.xSize] - horizontal cell size (leave undefined if size is set)
+     * @param {number} [options.ySize] - vertical cell size (leave undefined if size is set)
+     * @param {boolean} [options.simpleTest=true] - after finding visible buckets, iterates through items and tests individual bounds
+     * @param {string} [options.dirtyTest=false] - only update spatial hash for objects with object.dirty=true; this has a HUGE impact on performance
      */
     function SpatialHash(options) {
+        this.xSize = 1000;
+        this.ySize = 1000;
+        /** simpleTest toggle */
+        this.simpleTest = true;
+        /** dirtyTest toggle */
+        this.dirtyTest = true;
         options = __assign(__assign({}, SpatialHashDefaultOptions), options);
         if (options && typeof options.size !== 'undefined') {
             this.xSize = this.ySize = options.size;
@@ -270,7 +273,7 @@ var SpatialHash = /** @class */ (function () {
      * add an object to be culled
      * side effect: adds object.spatialHashes to track existing hashes
      * @param {DisplayObjectWithCulling} object
-     * @param {boolean} [staticObject] set to true if the object's position/size does not change
+     * @param {boolean} [staticObject] - set to true if the object's position/size does not change
      * @return {DisplayObjectWithCulling} object
      */
     SpatialHash.prototype.add = function (object, staticObject) {
@@ -287,8 +290,8 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * remove an object added by add()
-     * @param {*} object
-     * @return {*} object
+     * @param {DisplayObjectWithCulling} object
+     * @return {DisplayObjectWithCulling} object
      */
     SpatialHash.prototype.remove = function (object) {
         this.elements.splice(this.elements.indexOf(object), 1);
@@ -298,8 +301,7 @@ var SpatialHash = /** @class */ (function () {
     /**
      * add an array of objects to be culled
      * @param {PIXI.Container} container
-     * @param {boolean} [staticObject] set to true if the objects in the container's position/size do not change
-     * note: this only works with pixi v5.0.0rc2+ because it relies on the new container events childAdded and childRemoved
+     * @param {boolean} [staticObject] - set to true if the objects in the container's position/size do not change
      */
     SpatialHash.prototype.addContainer = function (container, staticObject) {
         var _this = this;
@@ -343,8 +345,8 @@ var SpatialHash = /** @class */ (function () {
     /**
      * update the hashes and cull the items in the list
      * @param {AABB} AABB
-     * @param {boolean} [skipUpdate] skip updating the hashes of all objects
-     * @param {Function} [callback] callback for each item that is not culled - note, this function is called before setting `object.visible=true`
+     * @param {boolean} [skipUpdate] - skip updating the hashes of all objects
+     * @param {Function} [callback] - callback for each item that is not culled - note, this function is called before setting `object.visible=true`
      * @return {number} number of buckets in results
      */
     SpatialHash.prototype.cull = function (AABB, skipUpdate, callback) {
@@ -520,8 +522,8 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * get all neighbors that share the same hash as object
-     * @param {*} object in the spatial hash
-     * @return {Array} of objects that are in the same hash as object
+     * @param {DisplayObjectWithCulling} object - in the spatial hash
+     * @return {Array} - of objects that are in the same hash as object
      */
     SpatialHash.prototype.neighbors = function (object) {
         var _this = this;
@@ -531,9 +533,9 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * returns an array of objects contained within bounding box
-     * @param {AABB} AABB bounding box to search
-     * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
-     * @return {object[]} search results
+     * @param {AABB} AABB - bounding box to search
+     * @param {boolean} [simpleTest=true] - perform a simple bounds check of all items in the buckets
+     * @return {object[]} - search results
      */
     SpatialHash.prototype.query = function (AABB, simpleTest) {
         if (simpleTest === void 0) { simpleTest = true; }
@@ -569,10 +571,10 @@ var SpatialHash = /** @class */ (function () {
      * returns an array of objects contained within bounding box with a callback on each non-culled object
      * this function is different from queryCallback, which cancels the query when a callback returns true
      *
-     * @param {AABB} AABB bounding box to search
-     * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
+     * @param {AABB} AABB - bounding box to search
+     * @param {boolean} [simpleTest=true] - perform a simple bounds check of all items in the buckets
      * @param {Function} callback - function to run for each non-culled object
-     * @return {object[]} search results
+     * @return {object[]} - search results
      */
     SpatialHash.prototype.queryCallbackAll = function (AABB, simpleTest, callback) {
         if (simpleTest === void 0) { simpleTest = true; }
@@ -612,10 +614,10 @@ var SpatialHash = /** @class */ (function () {
     /**
      * iterates through objects contained within bounding box
      * stops iterating if the callback returns true
-     * @param {AABB} AABB bounding box to search
+     * @param {AABB} AABB - bounding box to search
      * @param {function} callback
-     * @param {boolean} [simpleTest=true] perform a simple bounds check of all items in the buckets
-     * @return {boolean} true if callback returned early
+     * @param {boolean} [simpleTest=true] - perform a simple bounds check of all items in the buckets
+     * @return {boolean} - true if callback returned early
      */
     SpatialHash.prototype.queryCallback = function (AABB, callback, simpleTest) {
         if (simpleTest === void 0) { simpleTest = true; }
@@ -676,14 +678,14 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * helper function to evaluate hash table
-     * @return {number} the number of buckets in the hash table
+     * @return {number} - the number of buckets in the hash table
      * */
     SpatialHash.prototype.getNumberOfBuckets = function () {
         return Object.keys(this.hash).length;
     };
     /**
      * helper function to evaluate hash table
-     * @return {number} the average number of entries in each bucket
+     * @return {number} - the average number of entries in each bucket
      */
     SpatialHash.prototype.getAverageSize = function () {
         var total = 0;
@@ -694,7 +696,7 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * helper function to evaluate the hash table
-     * @return {number} the largest sized bucket
+     * @return {number} - the largest sized bucket
      */
     SpatialHash.prototype.getLargest = function () {
         var largest = 0;
@@ -724,8 +726,8 @@ var SpatialHash = /** @class */ (function () {
     };
     /**
      * helper function to evaluate the hash table
-     * @param {AABB} [AABB] bounding box to search or entire world
-     * @return {number} sparseness percentage (i.e., buckets with at least 1 element divided by total possible buckets)
+     * @param {AABB} [AABB] - bounding box to search or entire world
+     * @return {number} - sparseness percentage (i.e., buckets with at least 1 element divided by total possible buckets)
      */
     SpatialHash.prototype.getSparseness = function (AABB) {
         var count = 0, total = 0;
