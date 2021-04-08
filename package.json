@@ -1,6 +1,6 @@
 {
     "name": "pixi-cull",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "a library to visibly cull objects designed to work with pixi.js",
     "main": "dist/pixi-cull.min.js",
     "module": "dist/pixi-cull.es.js",
