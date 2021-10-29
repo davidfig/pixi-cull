@@ -158,10 +158,10 @@ export class Simple {
     updateObject(object: DisplayObjectWithCulling) {
         const box = object.getLocalBounds()
         object.AABB = object.AABB || { x: 0, y: 0, width: 0, height: 0 }
-        object.AABB.x = object.x + (box.x - object.pivot.x) * object.scale.x
-        object.AABB.y = object.y + (box.y - object.pivot.y) * object.scale.y
-        object.AABB.width = box.width * object.scale.x
-        object.AABB.height = box.height * object.scale.y
+        object.AABB.x = object.x + (box.x - object.pivot.x) * Math.abs(object.scale.x)
+        object.AABB.y = object.y + (box.y - object.pivot.y) * Math.abs(object.scale.y)
+        object.AABB.width = box.width * Math.abs(object.scale.x)
+        object.AABB.height = box.height * Math.abs(object.scale.y)
     }
 
     /**
