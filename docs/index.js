@@ -13950,9 +13950,6 @@
           baseTexture.target = TARGETS$1.TEXTURE_CUBE_MAP;
       };
       CubeResource.prototype.addBaseTextureAt = function (baseTexture, index, linkBaseTexture) {
-          if (linkBaseTexture === undefined) {
-              linkBaseTexture = this.linkBaseTexture;
-          }
           if (!this.items[index]) {
               throw new Error("Index " + index + " is out of bounds");
           }
@@ -49689,10 +49686,10 @@
       Simple.prototype.updateObject = function (object) {
           var box = object.getLocalBounds();
           object.AABB = object.AABB || { x: 0, y: 0, width: 0, height: 0 };
-          object.AABB.x = object.x + (box.x - object.pivot.x) * object.scale.x;
-          object.AABB.y = object.y + (box.y - object.pivot.y) * object.scale.y;
-          object.AABB.width = box.width * object.scale.x;
-          object.AABB.height = box.height * object.scale.y;
+          object.AABB.x = object.x + (box.x - object.pivot.x) * Math.abs(object.scale.x);
+          object.AABB.y = object.y + (box.y - object.pivot.y) * Math.abs(object.scale.y);
+          object.AABB.width = box.width * Math.abs(object.scale.x);
+          object.AABB.height = box.height * Math.abs(object.scale.y);
       };
       /**
        * returns an array of objects contained within bounding box
@@ -50396,5 +50393,5 @@
       updateCull();
   };
 
-}());
+})();
 //# sourceMappingURL=index.js.map

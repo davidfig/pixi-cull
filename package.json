@@ -1,6 +1,6 @@
 {
     "name": "pixi-cull",
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "a library to visibly cull objects designed to work with pixi.js",
     "main": "dist/pixi-cull.min.js",
     "module": "dist/pixi-cull.es.js",
@@ -49,7 +49,7 @@
         "jsdoc-plugin-typescript": "^2.0.6",
         "pixi-viewport": "^4.13.2",
         "pixi.js": "6.0.1",
-        "rollup": "^2.44.0",
+        "rollup": "^2.58.3",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-serve": "^1.1.0",
         "rollup-plugin-terser": "^7.0.2",
