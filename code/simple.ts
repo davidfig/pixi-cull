@@ -61,7 +61,11 @@ export class Simple {
      * @return {Array} array
      */
     removeList(array: DisplayObjectWithCullingArray): DisplayObjectWithCullingArray {
-        this.lists.splice(this.lists.indexOf(array), 1)
+        const index = this.lists.indexOf(array)
+        if(index === -1){
+            return array
+        }
+        this.lists.splice(index, 1)
         return array
     }
 
@@ -92,7 +96,11 @@ export class Simple {
      * @return {DisplayObjectWithCulling} object
      */
     remove(object: DisplayObjectWithCulling): DisplayObjectWithCulling {
-        this.lists[0].splice(this.lists[0].indexOf(object), 1)
+        const index = this.lists[0].indexOf(object)
+        if(index === -1){
+            return object
+        }
+        this.lists[0].splice(index, 1)
         return object
     }
 
@@ -174,7 +182,8 @@ export class Simple {
         for (let list of this.lists) {
             for (let object of list) {
                 const box = object.AABB
-                if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
+                if (box && 
+                    box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
                     box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
                     results.push(object)
                 }
@@ -194,7 +203,8 @@ export class Simple {
         for (let list of this.lists) {
             for (let object of list) {
                 const box = object.AABB
-                if (box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
+                if (box && 
+                    box.x + box.width > bounds.x && box.x - box.width < bounds.x + bounds.width &&
                     box.y + box.height > bounds.y && box.y - box.height < bounds.y + bounds.height) {
                     if (callback(object)) {
                         return true
